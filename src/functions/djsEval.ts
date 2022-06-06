@@ -1,0 +1,66 @@
+import { TranspilerError } from "../error";
+import { Scope } from "../scope";
+import { parseString } from "../stringparser";
+import { funcData, FunctionData } from "../typings/interface";
+import { convertToBool, escapeResult } from "../util";
+export const $djsEval: FunctionData = {
+  name: "$djsEval",
+  brackets: true,
+  optional:false,
+  type: "function_getter",
+  fields: [
+    {
+      name: "output",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "code",
+      type: "string",
+      required: true,
+    },
+  ],
+  code: (data: funcData, scope: Scope[]) => {
+    const splits = data.splits;
+    const [output, ...code] = splits;
+    const parsedOutput = convertToBool(output);
+    console.log({ parsedOutput });
+    if ($djsEval.brackets) {
+      if (!data.total.startsWith($djsEval.name + "[")) {
+        throw new TranspilerError(`${data.name} requires closure brackets`);
+      }
+    }
+    if (splits.length < 2) {
+      throw new TranspilerError(`${data.name} requires 2 arguments`);
+    }
+    const currentScope = scope[scope.length - 1];
+    const Code = parseString(code.join(";"));
+    if (
+      !currentScope.functions.includes("async function __$djsEval$__(Code) {")
+    ) {
+      const setres = `
+    async function __$djsEval$__(Code) {
+      try {
+        const evaled =  await eval(Code);
+        return typeof evaled === "object" ? UTIL.inspect(evaled,{depth:0}) : evaled;
+      } catch (e) {
+        return e;
+      }
+    }`;
+      if (!currentScope.packages.includes("const UTIL = await import('util');")) {
+        currentScope.packages += "const UTIL = await import('util');\n";
+      }
+      currentScope.functions += escapeResult(setres) + "\n";
+    }
+    const res = `${escapeResult(`await __$djsEval$__.call(__$DISCORD_DATA$__,${Code})`)}`;
+    console.log({djsevalrest: currentScope.rest,djsevaltotal:data.total});
+    currentScope.rest = currentScope.rest.replace(
+      data.total,
+      res,
+    );
+    return {
+      code: parsedOutput ? res : "",
+      scope: scope,
+    };
+  },
+};
