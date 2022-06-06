@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.$author = void 0;
+exports.$footer = void 0;
 const error_1 = require("../error");
 const stringparser_1 = require("../stringparser");
 const util_1 = require("../util");
-exports.$author = {
-    name: "$author",
+exports.$footer = {
+    name: "$footer",
     type: "setter",
     brackets: true,
     optional: false,
@@ -16,7 +16,7 @@ exports.$author = {
             required: false,
         },
         {
-            name: "author",
+            name: "text",
             type: "string",
             required: true,
         },
@@ -25,36 +25,28 @@ exports.$author = {
             type: "string",
             required: false,
         },
-        {
-            name: "url",
-            type: "string",
-            required: false,
-        },
     ],
     code: (data, scope) => {
         const fields = data.splits;
         const currentScope = scope[scope.length - 1];
         if (isNaN(Number(fields[0]))) {
-            const author = (0, stringparser_1.parseString)(fields[0]);
+            const text = (0, stringparser_1.parseString)(fields[0]);
             const iconUrl = fields[1] ? (0, stringparser_1.parseString)(fields[1]) : undefined;
-            const url = fields[2] ? (0, stringparser_1.parseString)(fields[2]) : undefined;
             const index = 0;
             if (!currentScope.embeds[index]) {
                 currentScope.embeds[index] = { fields: [] };
                 currentScope.setters += `${(0, util_1.escapeVars)(`${currentScope.name}_embeds`)}[${index}] = {fields: []};\n`;
             }
-            currentScope.embeds[index].author = {
-                name: author,
+            currentScope.embeds[index].footer = {
+                text,
                 iconURL: iconUrl,
-                url,
             };
             currentScope.rest = currentScope.rest.replace(data.total, "");
             scope[scope.length - 1] = currentScope;
             const res = (0, util_1.escapeResult)((0, util_1.escapeVars)(`${currentScope.name}_embeds`) +
-                `[${index}].author = {
-          name: ${author},
+                `[${index}].footer = {
+          text: ${text},
           iconURL: ${iconUrl},
-          url: ${url},
           }`);
             currentScope.setters += res + "\n";
             return {
@@ -67,24 +59,21 @@ exports.$author = {
             if (index < 0 || index > 9) {
                 throw new error_1.TranspilerError(`${data.name} requires a valid index`);
             }
-            const author = (0, stringparser_1.parseString)(fields[1]);
+            const text = (0, stringparser_1.parseString)(fields[1]);
             const iconUrl = fields[2] ? (0, stringparser_1.parseString)(fields[2]) : undefined;
-            const url = fields[3] ? (0, stringparser_1.parseString)(fields[3]) : undefined;
             if (!currentScope.embeds[index]) {
                 currentScope.embeds[index] = { fields: [] };
                 currentScope.setters += `${(0, util_1.escapeVars)(`${currentScope.name}_embeds`)}[${index}] = {fields: []};\n`;
             }
-            currentScope.embeds[index].author = {
-                name: author,
+            currentScope.embeds[index].footer = {
+                text,
                 iconURL: iconUrl,
-                url,
             };
             currentScope.rest = currentScope.rest.replace(data.total, "");
             const res = (0, util_1.escapeResult)((0, util_1.escapeVars)(`${currentScope.name}_embeds`) +
-                `[${index}].author = {
-          name: ${author},
+                `[${index}].footer = {
+          text: ${text},
           iconURL: ${iconUrl},
-          url: ${url},
           }`);
             currentScope.setters += res + "\n";
             scope[scope.length - 1] = currentScope;
@@ -95,4 +84,4 @@ exports.$author = {
         }
     },
 };
-//# sourceMappingURL=author.js.map
+//# sourceMappingURL=footer.js.map

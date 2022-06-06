@@ -4,8 +4,8 @@ import { parseString } from "../stringparser";
 import { FunctionData } from "../typings/interface";
 import { escapeResult, escapeVars } from "../util";
 
-export const $author: FunctionData = {
-  name: "$author",
+export const $footer: FunctionData = {
+  name: "$footer",
   type: "setter",
   brackets: true,
   optional: false,
@@ -16,7 +16,7 @@ export const $author: FunctionData = {
       required: false,
     },
     {
-      name: "author",
+      name: "text",
       type: "string",
       required: true,
     },
@@ -25,19 +25,13 @@ export const $author: FunctionData = {
       type: "string",
       required: false,
     },
-    {
-      name: "url",
-      type: "string",
-      required: false,
-    },
   ],
   code: (data, scope) => {
     const fields = data.splits;
     const currentScope = scope[scope.length - 1];
     if (isNaN(Number(fields[0]))) {
-      const author = parseString(fields[0]);
+      const text = parseString(fields[0]);
       const iconUrl = fields[1] ? parseString(fields[1]) : undefined;
-      const url = fields[2] ? parseString(fields[2]) : undefined;
       const index = 0;
       if (!currentScope.embeds[index]) {
         currentScope.embeds[index] = { fields: [] };
@@ -45,19 +39,17 @@ export const $author: FunctionData = {
           `${currentScope.name}_embeds`,
         )}[${index}] = {fields: []};\n`;
       }
-      currentScope.embeds[index].author = {
-        name: author,
+      currentScope.embeds[index].footer = {
+        text,
         iconURL: iconUrl,
-        url,
       };
       currentScope.rest = currentScope.rest.replace(data.total, "");
       scope[scope.length - 1] = currentScope;
       const res = escapeResult(
         escapeVars(`${currentScope.name}_embeds`) +
-          `[${index}].author = {
-          name: ${author},
+          `[${index}].footer = {
+          text: ${text},
           iconURL: ${iconUrl},
-          url: ${url},
           }`,
       );
       currentScope.setters += res + "\n";
@@ -70,27 +62,24 @@ export const $author: FunctionData = {
       if (index < 0 || index > 9) {
         throw new TranspilerError(`${data.name} requires a valid index`);
       }
-      const author = parseString(fields[1]);
+      const text = parseString(fields[1]);
       const iconUrl = fields[2] ? parseString(fields[2]) : undefined;
-      const url = fields[3] ? parseString(fields[3]) : undefined;
       if (!currentScope.embeds[index]) {
         currentScope.embeds[index] = { fields: [] };
         currentScope.setters += `${escapeVars(
           `${currentScope.name}_embeds`,
         )}[${index}] = {fields: []};\n`;
       }
-      currentScope.embeds[index].author = {
-        name: author,
+      currentScope.embeds[index].footer = {
+        text,
         iconURL: iconUrl,
-        url,
       };
       currentScope.rest = currentScope.rest.replace(data.total, "");
       const res = escapeResult(
         escapeVars(`${currentScope.name}_embeds`) +
-          `[${index}].author = {
-          name: ${author},
+          `[${index}].footer = {
+          text: ${text},
           iconURL: ${iconUrl},
-          url: ${url},
           }`,
       );
       currentScope.setters += res + "\n";

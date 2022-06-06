@@ -37,6 +37,11 @@ import { $description } from "./description";
 import { $divide } from "./divide";
 import { $editMessage } from "./editMessage";
 import { $slashOption } from "./slashOption";
+import { $endsWith } from "./endsWith";
+import { $ephemeral } from "./ephemeral";
+import { $footer } from "./footer";
+import { $guildId } from "./guildId";
+import { $has } from "./has";
 export const datas: Record<string, FunctionData> = {
   $let,
   $get,
@@ -60,7 +65,12 @@ export const datas: Record<string, FunctionData> = {
   $if,
   $elseIf,
   $else,
+  $endsWith,
+  $ephemeral,
   $eval,
+  $footer,
+  $guildId,
+  $has,
   $message,
   $channelName,
   $channelSendMessage,

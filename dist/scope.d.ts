@@ -10,6 +10,7 @@ export declare class Scope {
     components: ActionRow<ButtonComponent | SelectMenuComponent | TextInputComponent>[];
     files: MessageAttachment[];
     stickers: StickerResolvable[];
+    ephemeral: boolean;
     variables: string[];
     setters: string;
     rest: string;

@@ -28,6 +28,7 @@ export class Scope {
   >[] = [];
   files: MessageAttachment[] = [];
   stickers: StickerResolvable[] = [];
+  ephemeral: boolean = false;
   variables: string[];
   setters: string;
   rest: string;
@@ -201,7 +202,8 @@ export class Scope {
   components: ${escapeVars(`${this.name}_components`)},
   files: ${escapeVars(`${this.name}_files`)},
   stickers: ${escapeVars(`${this.name}_stickers`)},
-    }`.replaceAll("#NEW_LINE#", "\\\\n");
+  ephemeral: ${this.ephemeral},
+}`.replaceAll("#NEW_LINE#", "\\\\n");
 
     console.log({ sent });
     return parseResult(

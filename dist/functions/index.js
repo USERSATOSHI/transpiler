@@ -39,6 +39,11 @@ const description_1 = require("./description");
 const divide_1 = require("./divide");
 const editMessage_1 = require("./editMessage");
 const slashOption_1 = require("./slashOption");
+const endsWith_1 = require("./endsWith");
+const ephemeral_1 = require("./ephemeral");
+const footer_1 = require("./footer");
+const guildId_1 = require("./guildId");
+const has_1 = require("./has");
 exports.datas = {
     $let: let_1.$let,
     $get: get_1.$get,
@@ -62,7 +67,12 @@ exports.datas = {
     $if: if_1.$if,
     $elseIf: elseIf_1.$elseIf,
     $else: else_1.$else,
+    $endsWith: endsWith_1.$endsWith,
+    $ephemeral: ephemeral_1.$ephemeral,
     $eval: eval_1.$eval,
+    $footer: footer_1.$footer,
+    $guildId: guildId_1.$guildId,
+    $has: has_1.$has,
     $message: message_1.$message,
     $channelName: channelName_1.$channelName,
     $channelSendMessage: channelSendMessage_1.$channelSendMessage,

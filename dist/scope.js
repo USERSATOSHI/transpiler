@@ -12,6 +12,7 @@ class Scope {
     components = [];
     files = [];
     stickers = [];
+    ephemeral = false;
     variables;
     setters;
     rest;
@@ -151,7 +152,8 @@ class Scope {
   components: ${(0, util_1.escapeVars)(`${this.name}_components`)},
   files: ${(0, util_1.escapeVars)(`${this.name}_files`)},
   stickers: ${(0, util_1.escapeVars)(`${this.name}_stickers`)},
-    }`.replaceAll("#NEW_LINE#", "\\\\n");
+  ephemeral: ${this.ephemeral},
+}`.replaceAll("#NEW_LINE#", "\\\\n");
         console.log({ sent });
         return (0, util_1.parseResult)(`const ${(0, util_1.escapeVars)(`${this.name}_embeds`)} = [];\n` +
             `const ${(0, util_1.escapeVars)(`${this.name}_components`)} = [];\n` +

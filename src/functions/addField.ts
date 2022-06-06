@@ -59,16 +59,11 @@ export const $addField: FunctionData = {
       currentScope.rest = currentScope.rest.replace(data.total, "");
       const res = escapeResult(
         escapeVars(`${currentScope.name}_embeds`) +
-          `[${index}].fields.push(${inspect(
-            {
-              name,
-              value,
-              inline,
-            },
-            { depth: null },
-          )
-            .replace(`name: '${name}'`, `name: ${name}`)
-            .replace(`value: '${value}'`, `value: ${value}`)});`,
+          `[${index}].fields.push({
+        name: ${name},
+        value: ${value},
+        inline: ${inline},
+          })`,
       );
       currentScope.setters += res + "\n";
       scope[scope.length - 1] = currentScope;
@@ -97,19 +92,14 @@ export const $addField: FunctionData = {
         value,
         inline,
       });
-      const res = escapeResult(
-        escapeVars(`${currentScope.name}_embeds`) +
-          `[${index}].fields.push(${inspect(
-            {
-              name,
-              value,
-              inline,
-            },
-            { depth: null },
-          )
-            .replace(`name: '${name}'`, `name: ${name}`)
-            .replace(`value: '${value}'`, `value: ${value}`)});`,
-      );
+const res = escapeResult(
+  escapeVars(`${currentScope.name}_embeds`) +
+    `[${index}].fields.push({
+        name: ${name},
+        value: ${value},
+        inline: ${inline},
+          })`,
+);
       currentScope.setters += res + "\n";
       currentScope.rest = currentScope.rest.replace(data.total, "");
       scope[scope.length - 1] = currentScope;
