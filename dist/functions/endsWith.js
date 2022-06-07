@@ -20,6 +20,9 @@ exports.$endsWith = {
             required: true,
         },
     ],
+    default: ["void", "void"],
+    returns: "boolean",
+    description: "Checks if the text ends with the search",
     code: (data, scope) => {
         const currentScope = scope[scope.length - 1];
         const [text, search] = data.splits;

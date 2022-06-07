@@ -23,7 +23,42 @@ exports.$addButton = {
     name: "$addButton",
     brackets: false,
     optional: false,
-    fields: [],
+    fields: [
+        {
+            name: "label",
+            type: "string",
+            required: false,
+        },
+        {
+            name: "style",
+            type: "string | number",
+            required: true,
+        },
+        {
+            name: "customId | url",
+            type: "string",
+            required: true,
+        },
+        {
+            name: "disabled",
+            type: "boolean",
+            required: false,
+        },
+        {
+            name: "emoji",
+            type: "string",
+            required: false,
+        },
+    ],
+    default: [
+        "",
+        "void",
+        "void",
+        "no",
+        "",
+    ],
+    description: "Adds a button to the ActionRow",
+    returns: "void",
     type: "setter",
     code: (data, scope) => {
         const currentScope = scope[scope.length - 1];

@@ -8,6 +8,9 @@ export const $commandName: FunctionData = {
   brackets: false,
   optional: false,
   fields: [],
+  default: [],
+  returns: "string",
+  description: "Returns the command's name",
   code: (data: funcData, scope: Scope[]) => {
     const currentScope = scope[scope.length - 1];
     const res = escapeResult(`__$DISCORD_DATA$__.interaction.commandName`);

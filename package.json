@@ -32,9 +32,10 @@
     "build": "tsc -p tsconfig.json",
     "test": "node tests/transpiler.js",
     "prettier": "prettier --write '**/*.{ts,js}'",
-    "docs" : "typedoc"
+    "docs": "typedoc && node dist/generators/functionDoc.js"
   },
   "devDependencies": {
+    "@types/showdown": "^2.0.0",
     "@types/uglify-js": "^3.13.2",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
@@ -42,6 +43,7 @@
     "benny": "^3.7.1",
     "eslint": "^8.17.0",
     "eslint-config-google": "^0.14.0",
+    "showdown": "^2.1.0",
     "typescript": "^4.6.2"
   },
   "dependencies": {

@@ -8,6 +8,9 @@ exports.$authorId = {
     optional: true,
     type: "getter",
     fields: [],
+    default: [],
+    returns: "Snowflake",
+    description: "Returns the author's ID",
     code: (data, scope) => {
         let res = (0, util_1.escapeResult)("__$DISCORD_DATA$__.author?.id");
         const currentScope = scope[scope.length - 1];

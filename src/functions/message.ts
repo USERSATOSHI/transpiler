@@ -15,6 +15,9 @@ export const $message: FunctionData = {
       required: false,
     },
   ],
+  default: [""],
+  returns: "string",
+  description: "Returns the message",
   code: (data: funcData, scope: Scope[]) => {
     let [arg] = data.splits;
     const parsedArg = Number(arg);

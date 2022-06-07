@@ -15,6 +15,9 @@ export const $log: FunctionData = {
       required: true,
     },
   ],
+  default: ["void"],
+  returns: "void",
+  description: "Logs the text",
   code: (data: funcData, scope: Scope[]) => {
     let res;
     const splits = data.splits;

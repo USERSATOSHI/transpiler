@@ -24,6 +24,9 @@ exports.$activity = {
             required: false,
         },
     ],
+    description: "Returns the activity of provided user",
+    default: ["__$DISCORD_DATA$__.author?.id", "__$DISCORD_DATA$__.guild?.id", ","],
+    returns: "string",
     code: (data, scope) => {
         const splits = data.splits;
         const [userId = (0, util_1.escapeResult)("__$DISCORD_DATA$__.author?.id"), guildId = (0, util_1.escapeResult)("__$DISCORD_DATA$__.guild?.id"), separator = ",",] = splits;

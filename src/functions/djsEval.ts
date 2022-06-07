@@ -20,6 +20,9 @@ export const $djsEval: FunctionData = {
       required: true,
     },
   ],
+  default: ["void","void"],
+  returns: "any",
+  description: "Evaluates the provided Js code",
   code: (data: funcData, scope: Scope[]) => {
     const splits = data.splits;
     const [output, ...code] = splits;

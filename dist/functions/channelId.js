@@ -12,8 +12,11 @@ exports.$channelId = {
             name: "channel",
             type: "string",
             required: true,
-        }
+        },
     ],
+    default: [""],
+    returns: "Snowflake",
+    description: "Returns the channel's ID",
     code: (data, scope) => {
         const channelName = data.inside;
         let res = channelName

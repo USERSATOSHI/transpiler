@@ -14,6 +14,9 @@ export const $and: FunctionData = {
       required: true,
     },
   ],
+  default: ["void"],
+  returns: "boolean",
+  description: "Returns true if all conditions are true",
   code: (data, scope) => {
     const conditions = data.splits;
     const currentScope = scope[scope.length - 1];

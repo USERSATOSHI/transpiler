@@ -17,11 +17,14 @@ export const $if: FunctionData = {
       required: true,
     },
     {
-      name: "errorMsg",
+      name: "code",
       type: "string",
-      required: false,
+      required: true,
     },
   ],
+  default: ["void","void"],
+  returns: "void",
+  description: "If statement",
   code: (data: funcData, scope: Scope[]) => {
     const splits = data.splits;
     const currentScope = scope[scope.length - 1];

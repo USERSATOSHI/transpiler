@@ -8,6 +8,9 @@ exports.$clientId = {
     optional: true,
     type: "getter",
     fields: [],
+    default: [],
+    returns: "Snowflake",
+    description: "Returns the client's ID",
     code: (data, scope) => {
         let res = (0, util_1.escapeResult)("__$DISCORD_DATA$__.client.user?.id");
         const currentScope = scope[scope.length - 1];

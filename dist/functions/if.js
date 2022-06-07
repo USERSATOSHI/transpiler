@@ -19,11 +19,14 @@ exports.$if = {
             required: true,
         },
         {
-            name: "errorMsg",
+            name: "code",
             type: "string",
-            required: false,
+            required: true,
         },
     ],
+    default: ["void", "void"],
+    returns: "void",
+    description: "If statement",
     code: (data, scope) => {
         const splits = data.splits;
         const currentScope = scope[scope.length - 1];

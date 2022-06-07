@@ -4,7 +4,6 @@ import { Transpiler } from "../transpiler";
 import { funcData, FunctionData } from "../typings/interface";
 import {
   convertToBool,
-  escapeFunctionResult,
   escapeResult,
   getFunctionList,
   parseResult,
@@ -32,6 +31,9 @@ export const $channelSendMessage: FunctionData = {
       required: false,
     },
   ],
+  default: ["void", "void",  "no"],
+  returns: "?string",
+  description: "Sends a message to a channel",
   code: (data: funcData, scope: Scope[]) => {
     const [channel, message, output = "no"] = data.splits;
     const parsedOutput = convertToBool(output);

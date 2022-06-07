@@ -14,12 +14,17 @@ export const $clientOwnerId: FunctionData = {
       required: false,
     },
   ],
+  default: [","],
+  returns: "string",
+  description: "Returns the client's owner ID",
   code: (data: funcData, scope: Scope[]) => {
     let setres;
     const separator = data.inside || ",";
     const currentScope = scope[scope.length - 1];
     if (
-      !currentScope.setters.includes("async function __$getClientOwnerId$__(sep)")
+      !currentScope.setters.includes(
+        "async function __$getClientOwnerId$__(sep)",
+      )
     ) {
       setres = `
             async function __$getClientOwnerId$__(sep) {
@@ -29,8 +34,13 @@ export const $clientOwnerId: FunctionData = {
                 return __$DISCORD_DATA$__.client.application.owner instanceof DISCORDJS.User ? __$DISCORD_DATA$__.client.application.owner.id : __$DISCORD_DATA$__.client.application.owner.members.map(x => x.id).join(sep);
             }
         `;
-      if(!currentScope.packages.includes("const DISCORDJS = await import('discord.js');")) {
-        currentScope.packages += "const DISCORDJS = await import('discord.js');\n";
+      if (
+        !currentScope.packages.includes(
+          "const DISCORDJS = await import('discord.js');",
+        )
+      ) {
+        currentScope.packages +=
+          "const DISCORDJS = await import('discord.js');\n";
       }
       currentScope.functions += escapeResult(setres) + "\n";
     }

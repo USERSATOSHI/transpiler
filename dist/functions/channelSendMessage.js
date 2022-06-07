@@ -27,6 +27,9 @@ exports.$channelSendMessage = {
             required: false,
         },
     ],
+    default: ["void", "void", "no"],
+    returns: "?string",
+    description: "Sends a message to a channel",
     code: (data, scope) => {
         const [channel, message, output = "no"] = data.splits;
         const parsedOutput = (0, util_1.convertToBool)(output);

@@ -10,6 +10,9 @@ exports.$addActionRow = {
     optional: false,
     fields: [],
     type: "setter",
+    default: [],
+    returns: "void",
+    description: "Adds a row to the components table",
     code: (data, scope) => {
         const currentScope = scope[scope.length - 1];
         if (data.inside) {

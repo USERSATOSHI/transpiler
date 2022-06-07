@@ -19,6 +19,9 @@ export const $endsWith: FunctionData = {
       required: true,
     },
   ],
+  default: ["void", "void"],
+  returns: "boolean",
+  description: "Checks if the text ends with the search",
   code: (data: funcData, scope: Scope[]) => {
     const currentScope = scope[scope.length - 1];
     const [text, search] = data.splits;

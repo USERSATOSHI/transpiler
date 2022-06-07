@@ -31,6 +31,9 @@ export const $addField: FunctionData = {
       required: false,
     },
   ],
+  description: "Adds a field to the Embed",
+  default: ["1", "void", "void", "no"],
+  returns: "void",
   code: (data, scope) => {
     const fields = data.splits;
     const currentScope = scope[scope.length - 1];
@@ -92,14 +95,14 @@ export const $addField: FunctionData = {
         value,
         inline,
       });
-const res = escapeResult(
-  escapeVars(`${currentScope.name}_embeds`) +
-    `[${index}].fields.push({
+      const res = escapeResult(
+        escapeVars(`${currentScope.name}_embeds`) +
+          `[${index}].fields.push({
         name: ${name},
         value: ${value},
         inline: ${inline},
           })`,
-);
+      );
       currentScope.setters += res + "\n";
       currentScope.rest = currentScope.rest.replace(data.total, "");
       scope[scope.length - 1] = currentScope;

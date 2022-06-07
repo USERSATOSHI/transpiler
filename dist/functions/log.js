@@ -16,6 +16,9 @@ exports.$log = {
             required: true,
         },
     ],
+    default: ["void"],
+    returns: "void",
+    description: "Logs the text",
     code: (data, scope) => {
         let res;
         const splits = data.splits;

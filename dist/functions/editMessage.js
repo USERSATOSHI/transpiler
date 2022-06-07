@@ -27,6 +27,9 @@ exports.$editMessage = {
             required: true,
         },
     ],
+    default: ["void", "void", "void"],
+    returns: "void",
+    description: "Edits a message",
     code: (data, scope) => {
         const [channel, message, content] = data.splits;
         const currentScope = scope[scope.length - 1];

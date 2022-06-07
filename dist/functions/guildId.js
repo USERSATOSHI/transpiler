@@ -11,9 +11,12 @@ exports.$guildId = {
         {
             name: "guildName",
             type: "string",
-            required: true,
+            required: false,
         },
     ],
+    default: [""],
+    returns: "Snowflake",
+    description: "Returns the guild's ID",
     code: (data, scope) => {
         const guildName = data.inside;
         let res = guildName

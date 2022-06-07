@@ -23,6 +23,9 @@ exports.$while = {
             required: true,
         },
     ],
+    default: ["void", "void"],
+    returns: "void",
+    description: "While statement",
     code: (data, scope) => {
         const splits = data.splits;
         if (data.inside?.trim() === "" || !data.inside) {

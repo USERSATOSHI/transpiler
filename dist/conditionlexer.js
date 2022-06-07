@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.conditionLexer = exports.operators = exports.areSBracketsBalanced = exports.countSBrackets = exports.Condition = void 0;
+exports.conditionLexer = exports.areSBracketsBalanced = exports.countSBrackets = exports.Condition = exports.operators = void 0;
 const util_1 = require("util");
 const stringparser_1 = require("./stringparser");
 const util_2 = require("./util");
@@ -14,6 +14,7 @@ const opposites = {
     ">=": "<",
     "<=": ">",
 };
+exports.operators = ["===", "!==", "==", "!=", ">", "<", ">=", "<="];
 class Condition {
     condition;
     nest;
@@ -182,7 +183,6 @@ function areSBracketsBalanced(condition) {
     return left === right;
 }
 exports.areSBracketsBalanced = areSBracketsBalanced;
-exports.operators = ["===", "!==", "==", "!=", ">", "<", ">=", "<="];
 function conditionLexer(condition) {
     let tempCondition;
     if (condition.includes("#FUNCTION_START#")) {

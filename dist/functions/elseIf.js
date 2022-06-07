@@ -19,11 +19,14 @@ exports.$elseIf = {
             required: true,
         },
         {
-            name: "errorMsg",
+            name: "code",
             type: "string",
             required: false,
         },
     ],
+    default: ["void", ""],
+    returns: "void",
+    description: "Else if statement",
     code: (data, scope) => {
         const splits = data.splits;
         const currentScope = scope[scope.length - 1];

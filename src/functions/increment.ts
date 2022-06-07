@@ -20,6 +20,12 @@ export const $increment: FunctionData = {
       required: false,
     },
   ],
+  default: ["void", "++"],
+  extra: {
+    example: "$increment[$get[i];++]"
+  },
+  returns: "void",
+  description: "Increments the variable",
   code: (data: funcData, scope: Scope[]) => {
     const [variable, ...incrementFunction] = data.splits;
     const currentScope = scope[scope.length - 1];

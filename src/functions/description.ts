@@ -19,6 +19,9 @@ export const $description: FunctionData = {
       required: true,
     },
   ],
+  default: ["1", "void"],
+  returns: "void",
+  description: "Sets the description of the embed",
   code: (data, scope) => {
     const fields = data.splits;
     const currentScope = scope[scope.length - 1];

@@ -33,6 +33,9 @@ export const $editMessage: FunctionData = {
       required: true,
     },
   ],
+  default: ["void", "void", "void"],
+  returns: "void",
+  description: "Edits a message",
   code: (data: funcData, scope: Scope[]) => {
     const [channel, message, content] = data.splits;
     const currentScope = scope[scope.length - 1];

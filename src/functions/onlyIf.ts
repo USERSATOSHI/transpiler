@@ -22,6 +22,9 @@ export const $onlyIf: FunctionData = {
       required: false,
     },
   ],
+  default: ["void", ""],
+  returns: "void",
+  description: "If statement",
   code: (data: funcData, scope: Scope[]) => {
     const splits = data.splits;
     const currentScope = scope[scope.length - 1];

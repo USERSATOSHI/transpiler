@@ -15,6 +15,9 @@ export const $get: FunctionData = {
       required: true,
     },
   ],
+  default: ["void"],
+  returns: "any",
+  description: "Gets the value of the variable",
   code: (data: funcData, scope: Scope[]) => {
     let res;
     const splits = data.splits;

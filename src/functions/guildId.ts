@@ -11,9 +11,12 @@ export const $guildId: FunctionData = {
     {
       name: "guildName",
       type: "string",
-      required: true,
+      required: false,
     },
   ],
+  default: [""],
+  returns: "Snowflake",
+  description: "Returns the guild's ID",
   code: (data: funcData, scope: Scope[]) => {
     const guildName = data.inside;
     let res = guildName

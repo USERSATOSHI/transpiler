@@ -15,6 +15,9 @@ exports.$has = {
             required: true,
         },
     ],
+    default: ["void"],
+    returns: "boolean",
+    description: "Checks if the variable exists",
     code: (data, scope) => {
         let res;
         const splits = data.splits;

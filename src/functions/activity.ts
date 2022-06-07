@@ -23,6 +23,9 @@ export const $activity: FunctionData = {
       required: false,
     },
   ],
+  description: "Returns the activity of provided user",
+  default: ["__$DISCORD_DATA$__.author?.id", "__$DISCORD_DATA$__.guild?.id",","],
+  returns: "string",
   code: (data: funcData, scope: Scope[]) => {
     const splits = data.splits;
     const [

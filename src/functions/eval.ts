@@ -1,6 +1,5 @@
 import { Scope } from "../scope";
 import { parseString } from "../stringparser";
-import { Transpiler } from "../transpiler";
 import { funcData, FunctionData } from "../typings/interface";
 import { convertToBool, escapeResult } from "../util";
 
@@ -21,6 +20,9 @@ export const $eval: FunctionData = {
       required: true,
     },
   ],
+  default: ["void", "void"],
+  returns: "any",
+  description: "Evaluates the code",
   code: (data: funcData, scope: Scope[]) => {
     const [output, ...code] = data.splits;
     const parsedOutput = convertToBool(output);

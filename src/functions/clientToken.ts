@@ -5,9 +5,12 @@ import { escapeResult } from "../util";
 export const $clientToken: FunctionData = {
   name: "$clientToken",
   brackets: false,
-  optional:true,
+  optional: true,
   type: "getter",
   fields: [],
+  default: [],
+  returns: "string",
+  description: "Returns the client's token",
   code: (data: funcData, scope: Scope[]) => {
     let res = escapeResult("__$DISCORD_DATA$__.client.token");
     const currentScope = scope[scope.length - 1];

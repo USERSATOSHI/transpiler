@@ -10,6 +10,10 @@ export interface FunctionData {
         type: string;
         required: boolean;
     }[];
+    returns: any;
+    default: string[];
+    description: string;
+    extra?: any;
     code: (data: funcData, scope: Scope[]) => {
         code: string;
         scope: Scope[];
@@ -35,5 +39,46 @@ export interface CommandData {
     __uglify__: boolean;
     aliases?: string[];
     __path__?: string;
+}
+export interface TransformedGuild {
+    rulesChannel: {
+        id: string | null;
+        name: string | undefined;
+    };
+    publicUpdatesChannel: {
+        id: string | null;
+        name: string | undefined;
+    };
+    bans: string;
+    commands: number;
+    partnered: boolean;
+    verified: boolean;
+    mfaLevel: any;
+    explicitContentFilter: any;
+    defaultMessageNotifications: any;
+    systemChannelFlags: any;
+    premiumTier: any;
+    premiumSubscriptionCount: number | null;
+    preferredLocale: any;
+    systemChannel: {
+        id: string | null;
+        name: string | undefined;
+    };
+    splash: string | null;
+    owner: {
+        id: string;
+        name: string;
+        nick: string | null;
+    };
+    icon: string | null;
+    afkChannel: {
+        id: string | null;
+        name: string | undefined;
+    };
+    membersId: string[];
+    channelsId: string[];
+    rolesId: string[];
+    emojisId: string[];
+    stickersId: string[];
 }
 //# sourceMappingURL=interface.d.ts.map

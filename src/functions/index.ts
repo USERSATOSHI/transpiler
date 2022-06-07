@@ -42,6 +42,18 @@ import { $ephemeral } from "./ephemeral";
 import { $footer } from "./footer";
 import { $guildId } from "./guildId";
 import { $has } from "./has";
+import { $cpu } from "./cpu";
+import { $ram } from "./ram";
+import { $image } from "./image";
+import { $includes } from "./includes";
+import { $authorAvatar } from "./authorAvatar";
+import { $isBot } from "./isBot";
+import { $isNumber } from "./isNumber";
+import { $isServerPremiumProgressBarEnabled } from "./isServerPremiumProgressBarEnabled";
+import { $isServerAvailable } from "./isServerAvailable";
+import { $isServerLarge } from "./isServerLarge";
+import { $isServerPartnered } from "./isServerPartnered";
+import { $isServerVerified } from "./isServerVerified";
 export const datas: Record<string, FunctionData> = {
   $let,
   $get,
@@ -86,4 +98,16 @@ export const datas: Record<string, FunctionData> = {
   $divide,
   $editMessage,
   $slashOption,
+  $cpu,
+  $ram,
+  $image,
+  $includes,
+  $authorAvatar,
+  $isBot,
+  $isNumber,
+  $isServerPremiumProgressBarEnabled,
+  $isServerAvailable,
+  $isServerLarge,
+  $isServerPartnered,
+  $isServerVerified,
 };

@@ -15,6 +15,9 @@ exports.$message = {
             required: false,
         },
     ],
+    default: [""],
+    returns: "string",
+    description: "Returns the message",
     code: (data, scope) => {
         let [arg] = data.splits;
         const parsedArg = Number(arg);

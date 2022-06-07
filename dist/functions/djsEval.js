@@ -21,6 +21,9 @@ exports.$djsEval = {
             required: true,
         },
     ],
+    default: ["void", "void"],
+    returns: "any",
+    description: "Evaluates the provided Js code",
     code: (data, scope) => {
         const splits = data.splits;
         const [output, ...code] = splits;

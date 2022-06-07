@@ -31,6 +31,9 @@ exports.$addField = {
             required: false,
         },
     ],
+    description: "Adds a field to the Embed",
+    default: ["1", "void", "void", "no"],
+    returns: "void",
     code: (data, scope) => {
         const fields = data.splits;
         const currentScope = scope[scope.length - 1];

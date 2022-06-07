@@ -14,6 +14,9 @@ exports.$comment = {
             required: true,
         },
     ],
+    default: ["void"],
+    returns: "void",
+    description: "Converts provided code to a comment",
     code: (data, scope) => {
         const comment = data.inside;
         const currentScope = scope[scope.length - 1];

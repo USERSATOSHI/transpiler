@@ -8,6 +8,9 @@ export const $commandId: FunctionData = {
   brackets: false,
   optional: false,
   fields: [],
+  default: [],
+  returns: "Snowflake",
+  description: "Returns the command's ID",
   code: (data: funcData, scope: Scope[]) => {
     const currentScope = scope[scope.length - 1];
     const res = escapeResult(`__$DISCORD_DATA$__.interaction.commandId`);

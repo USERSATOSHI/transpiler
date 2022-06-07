@@ -31,6 +31,9 @@ exports.$author = {
             required: false,
         },
     ],
+    default: ["1", "void", "", ""],
+    returns: "void",
+    description: "Sets the author of the embed",
     code: (data, scope) => {
         const fields = data.splits;
         const currentScope = scope[scope.length - 1];

@@ -15,6 +15,9 @@ export const $slashOption: FunctionData = {
       required: true,
     },
   ],
+  default: ["void"],
+  returns: "any",
+  description: "Returns the value of the slash option",
   code: (data: funcData, scope: Scope[]) => {
     const currentScope = scope[scope.length - 1];
     const text = <string>data.inside;

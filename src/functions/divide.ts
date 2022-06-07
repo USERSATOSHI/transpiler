@@ -14,6 +14,9 @@ export const $divide: FunctionData = {
       required: true,
     },
   ],
+  default: ["void"],
+  returns: "number",
+  description: "Divides the numbers",
   code: (data, scope) => {
     const numbers = data.splits;
     const currentScope = scope[scope.length - 1];

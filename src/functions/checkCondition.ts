@@ -16,6 +16,9 @@ export const $checkCondition: FunctionData = {
       required: true,
     },
   ],
+  default: ["void"],
+  returns: "boolean",
+  description: "Checks the condition",
   code: (data: funcData, scope: Scope[]) => {
     const condition = data.inside;
     const currentScope = scope[scope.length - 1];

@@ -15,6 +15,9 @@ export const $has: FunctionData = {
       required: true,
     },
   ],
+  default: ["void"],
+  returns: "boolean",
+  description: "Checks if the variable exists",
   code: (data: funcData, scope: Scope[]) => {
     let res;
     const splits = data.splits;

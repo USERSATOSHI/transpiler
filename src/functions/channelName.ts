@@ -12,8 +12,11 @@ export const $channelName: FunctionData = {
       name: "channelId",
       type: "Snowflake",
       required: true,
-    }
+    },
   ],
+  default: [""],
+  returns: "string",
+  description: "Returns the channel's name",
   code: (data: funcData, scope: Scope[]) => {
     const id = data.inside;
     let res = id

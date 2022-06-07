@@ -11,6 +11,7 @@ const opposites = {
   ">=": "<",
   "<=": ">",
 };
+export const operators = ["===", "!==", "==", "!=", ">", "<", ">=", "<="];
 export class Condition {
   condition: string;
   nest: Condition[];
@@ -188,7 +189,6 @@ export function areSBracketsBalanced(condition: string) {
   const { left, right } = countSBrackets(condition);
   return left === right;
 }
-export const operators = ["===", "!==", "==", "!=", ">", "<", ">=", "<="];
 export function conditionLexer(condition: string) {
   let tempCondition;
   if (condition.includes("#FUNCTION_START#")) {

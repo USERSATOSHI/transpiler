@@ -15,6 +15,9 @@ exports.$sum = {
             required: true,
         },
     ],
+    default: ["void"],
+    returns: "number",
+    description: "Returns the sum of the numbers",
     code: (data, scope) => {
         const numbers = data.splits;
         const currentScope = scope[scope.length - 1];

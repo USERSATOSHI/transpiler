@@ -1,3 +1,4 @@
+export declare const operators: string[];
 export declare class Condition {
     condition: string;
     nest: Condition[];
@@ -14,6 +15,5 @@ export declare function countSBrackets(condition: string): {
     left: number;
 };
 export declare function areSBracketsBalanced(condition: string): boolean;
-export declare const operators: string[];
 export declare function conditionLexer(condition: string): Condition;
 //# sourceMappingURL=conditionlexer.d.ts.map

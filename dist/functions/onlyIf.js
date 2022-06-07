@@ -24,6 +24,9 @@ exports.$onlyIf = {
             required: false,
         },
     ],
+    default: ["void", ""],
+    returns: "void",
+    description: "If statement",
     code: (data, scope) => {
         const splits = data.splits;
         const currentScope = scope[scope.length - 1];

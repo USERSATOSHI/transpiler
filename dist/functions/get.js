@@ -15,6 +15,9 @@ exports.$get = {
             required: true,
         },
     ],
+    default: ["void"],
+    returns: "any",
+    description: "Gets the value of the variable",
     code: (data, scope) => {
         let res;
         const splits = data.splits;

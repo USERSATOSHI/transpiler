@@ -15,6 +15,9 @@ exports.$slashOption = {
             required: true,
         },
     ],
+    default: ["void"],
+    returns: "any",
+    description: "Returns the value of the slash option",
     code: (data, scope) => {
         const currentScope = scope[scope.length - 1];
         const text = data.inside;

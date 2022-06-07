@@ -13,16 +13,14 @@ exports.$else = {
     type: "scope",
     fields: [
         {
-            name: "condition",
-            type: "string",
-            required: true,
-        },
-        {
-            name: "errorMsg",
+            name: "code",
             type: "string",
             required: false,
         },
     ],
+    default: ["void"],
+    returns: "void",
+    description: "Else statement",
     code: (data, scope) => {
         const splits = data.splits;
         const currentScope = scope[scope.length - 1];

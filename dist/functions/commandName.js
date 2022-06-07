@@ -8,6 +8,9 @@ exports.$commandName = {
     brackets: false,
     optional: false,
     fields: [],
+    default: [],
+    returns: "string",
+    description: "Returns the command's name",
     code: (data, scope) => {
         const currentScope = scope[scope.length - 1];
         const res = (0, util_1.escapeResult)(`__$DISCORD_DATA$__.interaction.commandName`);

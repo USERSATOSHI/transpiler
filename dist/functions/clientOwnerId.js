@@ -14,6 +14,9 @@ exports.$clientOwnerId = {
             required: false,
         },
     ],
+    default: [","],
+    returns: "string",
+    description: "Returns the client's owner ID",
     code: (data, scope) => {
         let setres;
         const separator = data.inside || ",";
@@ -28,7 +31,8 @@ exports.$clientOwnerId = {
             }
         `;
             if (!currentScope.packages.includes("const DISCORDJS = await import('discord.js');")) {
-                currentScope.packages += "const DISCORDJS = await import('discord.js');\n";
+                currentScope.packages +=
+                    "const DISCORDJS = await import('discord.js');\n";
             }
             currentScope.functions += (0, util_1.escapeResult)(setres) + "\n";
         }

@@ -8,6 +8,9 @@ exports.$clientToken = {
     optional: true,
     type: "getter",
     fields: [],
+    default: [],
+    returns: "string",
+    description: "Returns the client's token",
     code: (data, scope) => {
         let res = (0, util_1.escapeResult)("__$DISCORD_DATA$__.client.token");
         const currentScope = scope[scope.length - 1];

@@ -7,6 +7,9 @@ export const $break: FunctionData = {
   brackets: false,
   optional: false,
   fields: [],
+  default: [],
+  returns: "void",
+  description: "Breaks out of a loop",
   code: (data, scope) => {
     const currentScope = scope[scope.length - 1];
     const res = escapeFunctionResult(`break;`);

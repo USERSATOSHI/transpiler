@@ -26,6 +26,9 @@ export const $let: FunctionData = {
       required: true,
     },
   ],
+  default: ["void", "void"],
+  returns: "void",
+  description: "Sets the value of the variable",
   code: (data: funcData, scope: Scope[]) => {
     let res;
     const splits = data.splits;

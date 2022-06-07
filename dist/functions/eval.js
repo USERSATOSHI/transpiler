@@ -20,6 +20,9 @@ exports.$eval = {
             required: true,
         },
     ],
+    default: ["void", "void"],
+    returns: "any",
+    description: "Evaluates the code",
     code: (data, scope) => {
         const [output, ...code] = data.splits;
         const parsedOutput = (0, util_1.convertToBool)(output);

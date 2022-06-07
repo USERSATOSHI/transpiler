@@ -5,9 +5,12 @@ import { escapeResult } from "../util";
 export const $clientId: FunctionData = {
   name: "$clientId",
   brackets: false,
-  optional:true,
+  optional: true,
   type: "getter",
   fields: [],
+  default: [],
+  returns: "Snowflake",
+  description: "Returns the client's ID",
   code: (data: funcData, scope: Scope[]) => {
     let res = escapeResult("__$DISCORD_DATA$__.client.user?.id");
     const currentScope = scope[scope.length - 1];

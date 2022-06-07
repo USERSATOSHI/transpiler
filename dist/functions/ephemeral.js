@@ -7,6 +7,9 @@ exports.$ephemeral = {
     brackets: false,
     optional: false,
     fields: [],
+    default: [],
+    returns: "void",
+    description: "Sets the ephemeral value",
     code: (data, scope) => {
         const currentScope = scope[scope.length - 1];
         const res = "";

@@ -10,6 +10,9 @@ export const $addActionRow: FunctionData = {
   optional: false,
   fields: [],
   type: "setter",
+  default: [],
+  returns: "void",
+  description: "Adds a row to the components table",
   code: (data: funcData, scope: Scope[]) => {
     const currentScope = scope[scope.length - 1];
     if (data.inside) {
@@ -29,7 +32,7 @@ export const $addActionRow: FunctionData = {
         { depth: null },
       )});`,
     );
-        currentScope.setters += res + "\n";
+    currentScope.setters += res + "\n";
     return {
       code: res,
       scope: scope,

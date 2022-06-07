@@ -8,6 +8,9 @@ export const $ping: FunctionData = {
   optional: true,
   type: "getter",
   fields: [],
+  default: [],
+  returns: "number",
+  description: "Returns the bot's ping",
   code: (data: funcData, scope: Scope[]) => {
     const res = escapeResult("__$DISCORD_DATA$__.client.ws.ping");
       const currentScope = scope[scope.length - 1];

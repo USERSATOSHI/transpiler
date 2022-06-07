@@ -1,11 +1,9 @@
-import { inspect } from 'util';
+import { inspect } from "util";
 import {
   ActionRow,
   ButtonBuilder,
   ButtonStyle,
-  ButtonComponentData,
   ButtonComponent,
-  Component,
 } from "discord.js";
 import { TranspilerError } from "../error";
 import { Scope } from "../scope";
@@ -29,7 +27,42 @@ export const $addButton: FunctionData = {
   name: "$addButton",
   brackets: false,
   optional: false,
-  fields: [],
+  fields: [
+    {
+      name: "label",
+      type: "string",
+      required: false,
+    },
+    {
+      name: "style",
+      type: "string | number",
+      required: true,
+    },
+    {
+      name: "customId | url",
+      type: "string",
+      required: true,
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      required: false,
+    },
+    {
+      name: "emoji",
+      type: "string",
+      required: false,
+    },
+  ],
+  default: [
+    "",
+    "void",
+    "void",
+    "no",
+    "",
+  ],
+  description: "Adds a button to the ActionRow",
+  returns: "void",
   type: "setter",
   code: (data: funcData, scope: Scope[]) => {
     const currentScope = scope[scope.length - 1];
@@ -89,4 +122,3 @@ export const $addButton: FunctionData = {
     };
   },
 };
-

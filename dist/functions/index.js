@@ -44,6 +44,18 @@ const ephemeral_1 = require("./ephemeral");
 const footer_1 = require("./footer");
 const guildId_1 = require("./guildId");
 const has_1 = require("./has");
+const cpu_1 = require("./cpu");
+const ram_1 = require("./ram");
+const image_1 = require("./image");
+const includes_1 = require("./includes");
+const authorAvatar_1 = require("./authorAvatar");
+const isBot_1 = require("./isBot");
+const isNumber_1 = require("./isNumber");
+const isServerPremiumProgressBarEnabled_1 = require("./isServerPremiumProgressBarEnabled");
+const isServerAvailable_1 = require("./isServerAvailable");
+const isServerLarge_1 = require("./isServerLarge");
+const isServerPartnered_1 = require("./isServerPartnered");
+const isServerVerified_1 = require("./isServerVerified");
 exports.datas = {
     $let: let_1.$let,
     $get: get_1.$get,
@@ -88,5 +100,17 @@ exports.datas = {
     $divide: divide_1.$divide,
     $editMessage: editMessage_1.$editMessage,
     $slashOption: slashOption_1.$slashOption,
+    $cpu: cpu_1.$cpu,
+    $ram: ram_1.$ram,
+    $image: image_1.$image,
+    $includes: includes_1.$includes,
+    $authorAvatar: authorAvatar_1.$authorAvatar,
+    $isBot: isBot_1.$isBot,
+    $isNumber: isNumber_1.$isNumber,
+    $isServerPremiumProgressBarEnabled: isServerPremiumProgressBarEnabled_1.$isServerPremiumProgressBarEnabled,
+    $isServerAvailable: isServerAvailable_1.$isServerAvailable,
+    $isServerLarge: isServerLarge_1.$isServerLarge,
+    $isServerPartnered: isServerPartnered_1.$isServerPartnered,
+    $isServerVerified: isServerVerified_1.$isServerVerified,
 };
 //# sourceMappingURL=index.js.map
