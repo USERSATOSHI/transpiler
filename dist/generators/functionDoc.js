@@ -7,30 +7,32 @@ const fs_1 = require("fs");
 const showdown_1 = require("showdown");
 const convert = new showdown_1.Converter();
 convert.setFlavor("github");
-convert.setOption('table', true);
+convert.setOption("tables", true);
+convert.setOption("tablesHeaderId", true);
 async function docGen() {
-    (0, fs_1.mkdirSync)("./docs/functions");
+    (0, fs_1.mkdirSync)("./docs/functions", { recursive: true });
     for (const func of Object.values(functions_1.datas)) {
         const format = `# ${func.name}
 ${func.description}
 
 ${func.fields.length
             ? `## Parameters
-|Name |Type |Required|
-|-----|-----|--------|
+| Name | Type | Required |
+| ------ | :------: | -------: |
 ${func.fields
                 .map((x) => {
-                `|${x.name}|${x.type}|${x.required}|`;
+                return `| ${x.name} | ${x.type} | ${x.required} |`;
             })
                 .join("\n")}
-|-----|-----|--------|
 `
             : ""}
 
 ## Usage
 \`\`\`php
 ${func.name}${func.fields.length
-            ? `[${func.fields.map((x) => x.required ? `${x.name}` : `${x.name}?`)}]`
+            ? `[${func.fields
+                .map((x) => (x.required ? `${x.name}` : `${x.name}?`))
+                .join(";")}]`
             : ""}
 \`\`\`
 ## Returns
