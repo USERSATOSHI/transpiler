@@ -14,8 +14,35 @@ async function docGen() {
     for (const func of Object.values(functions_1.datas)) {
         const format = `
 <style>
+td,tr {
+    padding: 10px;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: black;
+    transition: 0.5s;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white;
+  transition: 0.5s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+::-webkit-scrollbar-track:hover {
+  background: white;
+}
 html {
     background-color: black;
+    overflow-x: hidden;
 }
 body {
     font-family: 'Lato', sans-serif;
@@ -75,14 +102,17 @@ body {
 .navbar {
     width: 100%;
     height: 60px;
+    margin-top:20px;
+    font-size: 30px;
+    padding: 10px;
+    cursor: pointer;
+    margin-left: 20px;
 }
 </style>
-<div class = "navbar"><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span></div>
+<div class = "navbar" onclick="openNav()">&#9776;</div>
 <div markdown ="1" class="sidenav" id = "mySidenav">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-${sortedFuncs
-            .map((x) => `<a href="./${x}.html">${x}</a>`)
-            .join("\n")}
+${sortedFuncs.map((x) => `<a href="./${x}.html">${x}</a>`).join("\n")}
 </div>
 <div markdown ="1" class="main" id = "main">
 # ${func.name}
@@ -94,7 +124,7 @@ ${func.fields.length
 | ------ | :------: | -------: |
 ${func.fields
                 .map((x) => {
-                return `| ${x.name} | ${x.type.replaceAll("|", "&#124;")} | ${x.required} |`;
+                return `| ${x.name} | ${x.type.replaceAll("|", " &#124; ")} | ${x.required} |`;
             })
                 .join("\n")}
 `
