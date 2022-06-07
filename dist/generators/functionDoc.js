@@ -8,6 +8,7 @@ const showdown_1 = require("showdown");
 const convert = new showdown_1.Converter();
 convert.setFlavor("github");
 convert.setOption("tables", true);
+const sortedFuncs = Object.keys(functions_1.datas).sort();
 async function docGen() {
     (0, fs_1.mkdirSync)("./docs/functions", { recursive: true });
     for (const func of Object.values(functions_1.datas)) {
@@ -79,7 +80,7 @@ body {
 <div class = "navbar"><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span></div>
 <div markdown ="1" class="sidenav" id = "mySidenav">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-${Object.keys(functions_1.datas)
+${sortedFuncs
             .map((x) => `<a href="./${x}.html">${x}</a>`)
             .join("\n")}
 </div>
@@ -93,7 +94,7 @@ ${func.fields.length
 | ------ | :------: | -------: |
 ${func.fields
                 .map((x) => {
-                return `| ${x.name} | ${x.type} | ${x.required} |`;
+                return `| ${x.name} | ${x.type.replaceAll("|", "&#124;")} | ${x.required} |`;
             })
                 .join("\n")}
 `

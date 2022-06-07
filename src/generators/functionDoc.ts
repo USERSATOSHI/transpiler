@@ -6,6 +6,8 @@ const convert = new Converter();
 convert.setFlavor("github");
 convert.setOption("tables", true);
 
+const sortedFuncs = Object.keys(funcs).sort();
+
 export async function docGen() {
   mkdirSync("./docs/functions", { recursive: true });
   for (const func of Object.values(funcs)) {
@@ -77,7 +79,7 @@ body {
 <div class = "navbar"><span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span></div>
 <div markdown ="1" class="sidenav" id = "mySidenav">
 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-${Object.keys(funcs)
+${sortedFuncs
   .map((x) => `<a href="./${x}.html">${x}</a>`)
   .join("\n")}
 </div>
@@ -92,7 +94,9 @@ ${
 | ------ | :------: | -------: |
 ${func.fields
   .map((x) => {
-    return `| ${x.name} | ${x.type} | ${x.required} |`;
+    return `| ${x.name} | ${x.type.replaceAll("|", " &#124; ")} | ${
+      x.required
+    } |`;
   })
   .join("\n")}
 `
