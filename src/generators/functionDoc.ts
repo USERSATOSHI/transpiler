@@ -1,15 +1,19 @@
 import { datas as funcs } from "../functions";
 import { writeFile } from "fs/promises";
-import { mkdirSync} from "fs"
+import { mkdirSync } from "fs";
 import { Converter } from "showdown";
 const convert = new Converter();
+convert.setFlavor("github");
+convert.setOption('table', true)
 export async function docGen() {
-    mkdirSync("./docs/functions");
+  mkdirSync("./docs/functions");
   for (const func of Object.values(funcs)) {
     const format = `# ${func.name}
 ${func.description}
 
-## Parameters
+${
+  func.fields.length
+    ? `## Parameters
 |Name |Type |Required|
 |-----|-----|--------|
 ${func.fields
@@ -18,9 +22,13 @@ ${func.fields
   })
   .join("\n")}
 |-----|-----|--------|
+`
+    : ""
+}
+
 ## Usage
 \`\`\`php
-$${func.name}${
+${func.name}${
       func.fields.length
         ? `[${func.fields.map((x) =>
             x.required ? `${x.name}` : `${x.name}?`,
@@ -33,7 +41,9 @@ ${func.returns}
 ## Default
 ${func.default
   .map((x, y) =>
-    x === "void" ? func.fields[y] + ": required" : func.fields[y] + ": " + x,
+    x === "void"
+      ? func.fields[y].name + ": required"
+      : func.fields[y].name + ": " + x,
   )
   .join("\n")}
 `;

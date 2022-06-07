@@ -1,5 +1,5 @@
-<h1 id="onlyif">$onlyIf</h1>
-<p>If statement</p>
+<h1 id="isserverlarge">$isServerLarge</h1>
+<p>Checks if the server is large</p>
 <h2 id="parameters">Parameters</h2>
 <table>
 <thead>
@@ -14,9 +14,8 @@
 </table>
 <p>|-----|-----|--------|</p>
 <h2 id="usage">Usage</h2>
-<pre><code class="php language-php">$onlyIf[condition,errorMsg?]</code></pre>
+<pre><code class="php language-php">$isServerLarge[guildId?]</code></pre>
 <h2 id="returns">Returns</h2>
-<p>void</p>
+<p>boolean</p>
 <h2 id="default">Default</h2>
-<p>condition: required<br />
-errorMsg: </p>
+<p>guildId: <strong>$DISCORD_DATA$</strong>.guild?.id</p>
