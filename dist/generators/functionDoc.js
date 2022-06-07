@@ -13,6 +13,12 @@ async function docGen() {
     (0, fs_1.mkdirSync)("./docs/functions", { recursive: true });
     for (const func of Object.values(functions_1.datas)) {
         const format = `
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
 <style>
 td,tr {
     padding: 10px;
@@ -98,7 +104,17 @@ body {
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+
 }
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 40px;
+  }
+    td,tr {
+    font-size: 30px;
+  }
+}
+
 .navbar {
     width: 100%;
     height: 60px;
@@ -161,6 +177,9 @@ function closeNav() {
   document.body.style.backgroundColor = "black";
 }
 </script>
+
+</body>
+</html>
   `;
         const htmlfile = convert.makeHtml(format);
         await (0, promises_1.writeFile)(`./docs/functions/${func.name}.html`, htmlfile);
