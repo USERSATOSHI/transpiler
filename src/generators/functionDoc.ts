@@ -6,18 +6,14 @@ const convert = new Converter();
 convert.setFlavor("github");
 convert.setOption("tables", true);
 
+
 const sortedFuncs = Object.keys(funcs).sort();
 
 export async function docGen() {
   mkdirSync("./docs/functions", { recursive: true });
   for (const func of Object.values(funcs)) {
     const format = `
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width" /></head><body>
 <style>
 td,tr {
     padding: 10px;
@@ -105,7 +101,7 @@ body {
   .sidenav a {font-size: 18px;}
 
 }
-@media screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   body {
     font-size: 40px;
   }
@@ -117,7 +113,6 @@ body {
 .navbar {
     width: 100%;
     height: 60px;
-    margin-top:20px;
     font-size: 30px;
     padding: 10px;
     cursor: pointer;
