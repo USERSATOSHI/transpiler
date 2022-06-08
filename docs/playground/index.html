@@ -1,0 +1,63 @@
+<html class="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>User Satoshi</title>
+    <link href="playground.css" rel="stylesheet" type="text/css" />
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js"></script>
+<link href="https://code.jquery.com/ui/1.8.23/themes/base/jquery-ui.css" rel="stylesheet" type="text/css">
+</link>
+
+<body data-stellar-background-ratio="2">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"
+        integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>var exports = {};</script>
+    <script src="./playground.js">
+
+    </script>
+    <script src="https://code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <div class="topnav" id="myTopnav">
+        <image
+            src="https://cdn.discordapp.com/attachments/734127839544344678/984115861445034034/Untitled32_20220608163112.png"
+            class="logo"></image>
+        <a href="https://usersatoshi.github.io/transpiler/home">Home</a>
+        <a href="https://usersatoshi.github.io/transpiler/playground.html" class="active">PlayGround</a>
+        <a href="../functions">Functions</a>
+        <a href="https://usersatoshi.github.io/transpiler">Typedoc</a>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars">&backepsilon;</i>
+        </a>
+    </div>
+    <div class="main">
+        <div class="header">
+            <h1>PlayGround</h1>
+        </div>
+        <!-- code playground area -->
+        <form action="https://transpilerPlaygroundapi.usersatoshi.repl.co/transpile" method="post">
+            <div class=textarea>
+                <textarea name="code" id="code" rows="5" cols="10">Type your code here</textarea>
+                <br>
+            <div class=submit>
+                <button class="home">Submit</button>
+            </div>
+        </form>
+        <br>
+        <br>
+        <div class=resarea id=resarea>
+            <h2>Result</h2>
+            <textarea readonly=true id=resareaText rows="5" cols="50">
+            result will be shown here
+            </textarea>
+        </div>
+        <br>
+        <br>
+    </div>
+    <br>
+        <footer class="copyright">Created by Ayaka | Made possible by Akarui Development Team</footer>
+        
+  </body>
+</html>

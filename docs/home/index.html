@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html class="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>User Satoshi</title>
+    <link href="home.css" rel="stylesheet" type="text/css" />
+  </head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js"></script>
+  <body data-stellar-background-ratio="2">
+    <div class="topnav" id="myTopnav">
+      <image src="https://cdn.discordapp.com/attachments/734127839544344678/984115861445034034/Untitled32_20220608163112.png" class="logo"></image>
+      <a href="https://usersatoshi.github.io/transpiler/home" class="active">Home</a>
+      <a href="https://usersatoshi.github.io/transpiler/playground"
+        >PlayGround</a
+      >
+      <a href="../functions">Functions</a>
+      <a href="https://usersatoshi.github.io/transpiler">Typedoc</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars">&backepsilon;</i>
+      </a>
+    </div>
+
+    <div class="main">
+      <div class="header">
+        <h1>Aoi-Transpiler</h1>
+      </div>
+      <div class="intro">
+A Transpiler that converts aoi.js code to javascript.
+      </div>
+      <br />
+      <br />
+      <div class="example">
+        <h2>Example</h2>
+        <div class="codeblock" id="setupcode">
+          <button class="copy" id="copy" onclick="copy()">Copy</button>
+          <br />
+          &nbsp;&nbspconst { <br /><i class="function">&nbsp;&nbsp;Transpiler</i><br />
+          &nbsp;&nbsp} = <i class="function">require</i>(<i class="string"
+            >&nbsp;'aoi-transpiler'&nbsp;</i
+          >);<br /><br />
+          &nbsp;&nbspconst <i class="variable">code</i> =
+          <i class="string">`<br />&nbsp;&nbsp$let[hi;1]<br />&nbsp;&nbsp$get[hi]<br />&nbsp;&nbsp`</i
+          >;<br /><br />
+          &nbsp;&nbspconst <i class="variable">func</i> =
+          <i class="function">Transpiler</i>(&nbsp;<i class="variable">code</i
+          >,&nbsp;<i class="boolean">true</i>,&nbsp;<i class="property">{}</i
+          >,&nbsp;<i class="boolean">true</i>,&nbsp;).<i class="property"
+            >func</i
+          >;<br /><br />
+          &nbsp;&nbsp<i class="global">console</i>.<i class="function">log</i>(&nbsp;<i
+            class="variable"
+            >func</i
+          >&nbsp;);<br />
+          <br />
+        </div>
+        <br />
+        <br />
+      </div>
+      <br />
+      <br />
+      <div class = mainlinks>
+      <div class="links">
+        <a href="https://github.com/usersatoshi/transpiler"
+          ><img
+            class="round"
+            src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+        /></a>
+      </div>&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class = links>
+        <a href="https://aoi.js.org/invite"
+          ><img
+            class="round"
+            src="https://cdn.discordapp.com/attachments/734127839544344678/984112343954903141/ezgif.com-gif-maker_11.png"
+        /></a>
+      </div>
+      </div>
+      <br />
+      <br />
+    </div>
+    <br />
+    <br />
+    <footer class="copyright">Created by Ayaka | Made possible by Akarui Development Team</footer>
+    <script src="home.js"></script>
+  </body>
+</html>

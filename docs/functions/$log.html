@@ -62,6 +62,7 @@ body {
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
   background-color: white;
+      transform: scale(1.1) translateX(5px);
   color: #111;
 }
 
@@ -100,11 +101,53 @@ body {
     height: 60px;
     font-size: 30px;
     padding: 10px;
-    cursor: pointer;
     margin-left: 20px;
+    overflow-x:hidden;
+    display: flex;
+    justify-content: space-between;
+}
+.sidebarbutton {
+    transition: 0.5s;
+        cursor: pointer;
+        width: 30px;
+        float:left;
+}
+.sidebarbutton:hover {
+    background-color: white;
+    color: black;
+    transform: scale(1.1) translateX(5px);
+
+}
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    float:right;
+    margin-left:50%;
+}
+.home {
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-size: 30px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.home:hover {
+    background-color: white;
+    color: black;
+    transform: scale(1.1) translateX(5px);
 }
 </style>
-<div class = "navbar" onclick="openNav()">&#9776;</div>
+<div class = "navbar" >
+<div class = "sidebarbutton" onclick="openNav()" >&#9776;</div>
+<div class = "buttons">
+<button class = "home" onclick = "home()">Home</button>
+<button class = "home" onclick = "playground()">Playground</button>
+<button class = "home" onclick = "typedoc()">Typedoc</button>
+</div>
+</div>
 <div markdown ="1" class="sidenav" id = "mySidenav"><p><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a><br />
 <a href="./$activity.html">$activity</a><br />
 <a href="./$addActionRow.html">$addActionRow</a><br />
@@ -187,6 +230,15 @@ body {
 <h2 id="default">Default</h2>
 <p>text: required</p></div>
 <script>
+function typedoc() { 
+  window.location.href = 'https://usersatoshi.github.io/transpiler/'
+}
+function home() { 
+  window.location.href = '../home'
+}
+function playground() {
+  window.location.href = 'https://usersatoshi.github.io/transpiler/playground.html'
+}
 function openNav() {
   document.getElementById("mySidenav").style.width = "30%";
   document.getElementById("main").style.marginLeft = "30%";

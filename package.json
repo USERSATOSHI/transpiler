@@ -35,6 +35,8 @@
     "docs": "typedoc && node dist/generators/functionDoc.js"
   },
   "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.2",
     "@types/showdown": "^2.0.0",
     "@types/uglify-js": "^3.13.2",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
