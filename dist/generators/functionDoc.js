@@ -11,7 +11,7 @@ convert.setOption("tables", true);
 const sortedFuncs = Object.keys(functions_1.datas).sort();
 async function docGen() {
     (0, fs_1.mkdirSync)("./docs/functions", { recursive: true });
-    const functionmd = `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width" /></head><body>
+    const functionmd = `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width" /><title>Transpiler Functions</title></head><body>
 <style>
 td,tr {
     padding: 10px;

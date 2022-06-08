@@ -10,7 +10,7 @@ const sortedFuncs = Object.keys(funcs).sort();
 
 export async function docGen() {
   mkdirSync("./docs/functions", { recursive: true });
-  const functionmd = `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width" /></head><body>
+  const functionmd = `<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width" /><title>Transpiler Functions</title></head><body>
 <style>
 td,tr {
     padding: 10px;

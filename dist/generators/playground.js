@@ -8,7 +8,7 @@ const html = `<html class="light">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>User Satoshi</title>
+    <title>Transpiler PlayGround</title>
     <link href="playground.css" rel="stylesheet" type="text/css" />
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
