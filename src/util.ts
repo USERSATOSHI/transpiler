@@ -83,6 +83,7 @@ export function getFunctionData(
   const FuncD = FUNCDATA[func];
   const reg = new RegExp(`${func.replace("$", "\\$")}`, "i");
   code = code.replace(reg, func);
+  code = code.replaceAll("`", "#STRING_LITERAL#");
   //console.log({ getfuncdatacodebef: code });
   const functionPosition = code.indexOf(func);
   code = code.substring(functionPosition, code.length);

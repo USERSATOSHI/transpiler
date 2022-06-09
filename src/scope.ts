@@ -308,7 +308,7 @@ export class Scope {
           }
         })()}` +
         "\n}",
-    ).replaceAll("#STRING_LITERAL#", "`");
+    ).replaceAll("#STRING_LITERAL#", "\\`");
   }
   addEmbeds(embeds: EmbedData[]) {
     this.embeds = [...this.embeds, ...embeds];
@@ -439,6 +439,6 @@ export class Scope {
           }
         })()}` +
         "\n}",
-    ).replaceAll("#STRING_LITERAL#", "`");
+    ).replaceAll("#STRING_LITERAL#", "\\`");
   }
 }

@@ -234,7 +234,7 @@ class Scope {
                     return "";
                 }
             })()}` +
-            "\n}").replaceAll("#STRING_LITERAL#", "`");
+            "\n}").replaceAll("#STRING_LITERAL#", "\\`");
     }
     addEmbeds(embeds) {
         this.embeds = [...this.embeds, ...embeds];
@@ -334,7 +334,7 @@ class Scope {
                     return "";
                 }
             })()}` +
-            "\n}").replaceAll("#STRING_LITERAL#", "`");
+            "\n}").replaceAll("#STRING_LITERAL#", "\\`");
     }
 }
 exports.Scope = Scope;

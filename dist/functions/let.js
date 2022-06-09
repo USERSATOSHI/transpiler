@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.$let = void 0;
 const error_1 = require("../error");
+const stringparser_1 = require("../stringparser");
 const util_1 = require("../util");
 exports.$let = {
     name: "$let",
@@ -36,7 +37,10 @@ exports.$let = {
             throw new error_1.TranspilerError(`${data.name} requires 2 arguments`);
         }
         const name = (0, util_1.removeSetFunc)(splits[0]);
-        const value = (0, util_1.parseData)((0, util_1.removeSetFunc)(splits[1]));
+        let value = (0, util_1.parseData)((0, util_1.removeSetFunc)(splits[1]));
+        if (typeof value === "string" && value.includes("#FUNCTION_START#")) {
+            value = (0, stringparser_1.parseString)(value);
+        }
         if (name === "") {
             throw new error_1.TranspilerError(`${data.name} requires a name`);
         }

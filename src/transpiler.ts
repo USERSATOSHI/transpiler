@@ -46,7 +46,7 @@ export function Transpiler(
   }
   const str = res.scope[0].toString(sendMessage);
   const functionString = uglify ? minify(str) : str;
-  //console.log({ str,functionString, uglify });
+  console.log({ str,functionString, uglify });
   if (uglify && (<MinifyOutput>functionString).error) {
     console.log(str);
     throw new TranspilerError(

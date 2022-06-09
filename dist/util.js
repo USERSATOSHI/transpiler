@@ -88,6 +88,7 @@ function getFunctionData(code, func, functions) {
     const FuncD = index_1.datas[func];
     const reg = new RegExp(`${func.replace("$", "\\$")}`, "i");
     code = code.replace(reg, func);
+    code = code.replaceAll("`", "#STRING_LITERAL#");
     //console.log({ getfuncdatacodebef: code });
     const functionPosition = code.indexOf(func);
     code = code.substring(functionPosition, code.length);

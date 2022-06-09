@@ -36,7 +36,7 @@ function Transpiler(code, sendMessage = true, scopeData, uglify = false) {
     }
     const str = res.scope[0].toString(sendMessage);
     const functionString = uglify ? (0, uglify_js_1.minify)(str) : str;
-    //console.log({ str,functionString, uglify });
+    console.log({ str, functionString, uglify });
     if (uglify && functionString.error) {
         console.log(str);
         throw new error_1.TranspilerError(`Failed To Transpile Code with error ${functionString.error}`);

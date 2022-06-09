@@ -1,5 +1,6 @@
 import { TranspilerError } from "../error";
 import { Scope } from "../scope";
+import { parseString } from "../stringparser";
 import { funcData, FunctionData } from "../typings/interface";
 import {
   escapeResult,
@@ -42,7 +43,10 @@ export const $let: FunctionData = {
       throw new TranspilerError(`${data.name} requires 2 arguments`);
     }
     const name = removeSetFunc(splits[0]);
-    const value = parseData(removeSetFunc(splits[1]));
+    let value = parseData(removeSetFunc(splits[1]));
+    if(typeof value === "string" && value.includes("#FUNCTION_START#")) {
+      value = parseString(value);
+    }
 
     if (name === "") {
       throw new TranspilerError(`${data.name} requires a name`);
