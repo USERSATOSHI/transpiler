@@ -30,9 +30,8 @@ const html = `<html class="light">
         <a href="https://usersatoshi.github.io/transpiler/playground.html" class="active">PlayGround</a>
         <a href="../functions">Functions</a>
         <a href="https://usersatoshi.github.io/transpiler">Typedoc</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars">&backepsilon;</i>
-        </a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">&backepsilon;
+      </a>
     </div>
     <div class="main">
         <div class="header">
@@ -41,7 +40,7 @@ const html = `<html class="light">
         <!-- code playground area -->
         <form action="https://transpilerPlaygroundapi.usersatoshi.repl.co/transpile" method="post">
             <div class=textarea>
-                <textarea name="code" id="code" rows="5" cols="10">Type your code here</textarea>
+                <textarea name="code" id="code" rows="5" cols="10" placeholder="Type your code here"></textarea>
                 <br>
             <div class=submit>
                 <button class="home">Submit</button>
@@ -51,8 +50,7 @@ const html = `<html class="light">
         <br>
         <div class=resarea id=resarea>
             <h2>Result</h2>
-            <textarea readonly=true id=resareaText rows="5" cols="50">
-            result will be shown here
+            <textarea readonly=true id=resareaText rows="5" cols="50" placeholder="result will be shown here">
             </textarea>
         </div>
         <br>
@@ -267,7 +265,7 @@ body::backdrop {
   }
   .topnav.responsive .icon {
     position: absolute;
-    color: white;
+    color: black;
     right: 0;
     top: 0;
   }
@@ -275,6 +273,12 @@ body::backdrop {
     float: none;
     display: block;
     text-align: left;
+  }
+  * ,textarea{
+    font-size: 30px;
+  }
+  .header,#code, .textarea ,.resarea {
+    font-size: 20px;
   }
 }
 

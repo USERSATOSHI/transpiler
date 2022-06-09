@@ -16,6 +16,10 @@ async function docGen() {
 td,tr {
     padding: 10px;
 }
+h1 {
+    text-align: center;
+    word-wrap: break-word;
+}
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -117,10 +121,17 @@ h1 {
 }
 @media only screen and (max-width: 600px) {
   body {
-    font-size: 40px;
+    margin: 0;
+    font-size: 25px;
+  }
+  * {
+    font-size: 25px;
   }
     td,tr {
-    font-size: 30px;
+    font-size: 20px;
+  }
+  h1 {
+    font-size: 30px
   }
 }
 
@@ -150,8 +161,8 @@ h1 {
     width: 100%;
     display: flex;
     justify-content: space-around;
+    flex-direction: safe;
     float:right;
-    margin-left:50%;
 }
 .home {
     background-color: transparent;
@@ -303,11 +314,18 @@ body {
 
 }
 @media only screen and (max-width: 600px) {
+  
   body {
-    font-size: 40px;
+    font-size: 25px;
   }
     td,tr {
-    font-size: 30px;
+    font-size: 20px;
+  }
+  * {
+    font-size: 18px;
+  }
+  h1 {
+    font-size: 30px
   }
 }
 
@@ -338,7 +356,6 @@ body {
     display: flex;
     justify-content: space-around;
     float:right;
-    margin-left:50%;
 }
 .home {
     background-color: transparent;

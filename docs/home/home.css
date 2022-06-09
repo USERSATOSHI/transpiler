@@ -184,9 +184,15 @@ body::backdrop {
   .topnav a:not(:first-child) {
     display: none;
   }
+  .copyright {
+      position: static;
+  }
   .topnav a.icon {
     float: right;
     display: block;
+  }
+  .topnav .responsive .icon {
+    color: black;
   }
 }
 
@@ -195,12 +201,15 @@ body::backdrop {
   .codeblock {
     font-size: 20px;
   }
+  h1,h2 {
+    font-size: 28px;
+  }
   .topnav.responsive {
     position: relative;
   }
   .topnav.responsive .icon {
     position: absolute;
-    color: white;
+    color: black;
     right: 0;
     top: 0;
   }

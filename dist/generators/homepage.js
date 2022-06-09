@@ -13,7 +13,7 @@ const homehtml = `<!DOCTYPE html>
   </head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar.js/0.6.2/jquery.stellar.min.js"></script>
-  <body data-stellar-background-ratio="2">
+  <body data-stellar-background-ratio="5">
     <div class="topnav" id="myTopnav">
       <image src="https://cdn.discordapp.com/attachments/734127839544344678/984115861445034034/Untitled32_20220608163112.png" class="logo"></image>
       <a href="https://usersatoshi.github.io/transpiler/home" class="active">Home</a>
@@ -22,8 +22,7 @@ const homehtml = `<!DOCTYPE html>
       >
       <a href="../functions">Functions</a>
       <a href="https://usersatoshi.github.io/transpiler">Typedoc</a>
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars">&backepsilon;</i>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">&backepsilon;
       </a>
     </div>
 
@@ -277,9 +276,15 @@ body::backdrop {
   .topnav a:not(:first-child) {
     display: none;
   }
+  .copyright {
+      position: static;
+  }
   .topnav a.icon {
     float: right;
     display: block;
+  }
+  .topnav .responsive .icon {
+    color: black;
   }
 }
 
@@ -288,12 +293,15 @@ body::backdrop {
   .codeblock {
     font-size: 20px;
   }
+  h1,h2 {
+    font-size: 28px;
+  }
   .topnav.responsive {
     position: relative;
   }
   .topnav.responsive .icon {
     position: absolute;
-    color: white;
+    color: black;
     right: 0;
     top: 0;
   }

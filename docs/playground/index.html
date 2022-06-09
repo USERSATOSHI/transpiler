@@ -28,9 +28,8 @@
         <a href="https://usersatoshi.github.io/transpiler/playground.html" class="active">PlayGround</a>
         <a href="../functions">Functions</a>
         <a href="https://usersatoshi.github.io/transpiler">Typedoc</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-            <i class="fa fa-bars">&backepsilon;</i>
-        </a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">&backepsilon;
+      </a>
     </div>
     <div class="main">
         <div class="header">
@@ -39,7 +38,7 @@
         <!-- code playground area -->
         <form action="https://transpilerPlaygroundapi.usersatoshi.repl.co/transpile" method="post">
             <div class=textarea>
-                <textarea name="code" id="code" rows="5" cols="10">Type your code here</textarea>
+                <textarea name="code" id="code" rows="5" cols="10" placeholder="Type your code here"></textarea>
                 <br>
             <div class=submit>
                 <button class="home">Submit</button>
@@ -49,8 +48,7 @@
         <br>
         <div class=resarea id=resarea>
             <h2>Result</h2>
-            <textarea readonly=true id=resareaText rows="5" cols="50">
-            result will be shown here
+            <textarea readonly=true id=resareaText rows="5" cols="50" placeholder="result will be shown here">
             </textarea>
         </div>
         <br>
