@@ -40,7 +40,7 @@ const html = `<html class="light">
         <!-- code playground area -->
         <form action="https://transpilerPlaygroundapi.usersatoshi.repl.co/transpile" method="post">
             <div class=textarea>
-                <textarea name="code" id="code" rows="5" cols="10" placeholder="Type your code here"></textarea>
+                <textarea name="code" id="code" rows="5" cols="10" placeholder="Type your code here" spellcheck = "false"></textarea>
                 <br>
             <div class=submit>
                 <button class="home">Submit</button>
@@ -50,7 +50,7 @@ const html = `<html class="light">
         <br>
         <div class=resarea id=resarea>
             <h2>Result</h2>
-            <textarea readonly=true id=resareaText rows="5" cols="50" placeholder="result will be shown here">
+            <textarea readonly=true id=resareaText rows="5" cols="50" spellcheck = "false>result will be shown here
             </textarea>
         </div>
         <br>
