@@ -50,7 +50,8 @@ const html = `<html class="light">
         <br>
         <div class=resarea id=resarea>
             <h2>Result</h2>
-            <textarea readonly=true id=resareaText rows="5" cols="50" spellcheck = "false>result will be shown here
+            <textarea readonly=true id=resareaText rows="5" cols="50" spellcheck = "false">
+            result will be shown here
             </textarea>
         </div>
         <br>
@@ -277,7 +278,7 @@ body::backdrop {
   * ,textarea{
     font-size: 30px;
   }
-  .header,#code, .textarea ,.resarea {
+  .header,#code,#resareaText, .textarea ,.resarea {
     font-size: 20px;
   }
 }

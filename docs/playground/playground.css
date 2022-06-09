@@ -213,7 +213,7 @@ body::backdrop {
   * ,textarea{
     font-size: 30px;
   }
-  .header,#code, .textarea ,.resarea {
+  .header,#code,#resareaText, .textarea ,.resarea {
     font-size: 20px;
   }
 }
