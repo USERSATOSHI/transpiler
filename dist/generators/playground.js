@@ -53,9 +53,7 @@ const html = `<html class="light">
         <br>
         <div class=resarea id=resarea>
             <h2>Result</h2>
-            <textarea readonly=true id=resareaText rows="5" cols="50" spellcheck = "false">
-            result will be shown here
-            </textarea>
+            <textarea readonly=true id=resareaText rows="5" cols="50" spellcheck = "false">result will be shown here</textarea>
         </div>
         <br>
         <br>
