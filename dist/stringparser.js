@@ -98,6 +98,6 @@ function parseString(text) {
     return ast.parse();
 }
 exports.parseString = parseString;
-console.log(createStringAST('\\`#FUNCTION_START#1\\`').parse());
+console.log(createStringAST('#FUNCTION_START#__$DISCORD_DATA$__.client.ws.ping#FUNCTION_END#').parse());
 console.log("$hi$".replace("$hi$", "hello"));
 //# sourceMappingURL=stringparser.js.map

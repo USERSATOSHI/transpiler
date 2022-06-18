@@ -210,9 +210,9 @@ export class LoadCommands {
     for (const dp of this.paths) {
       for (const cmd of dp.keys) {
         try {
-          let a = dp.commandsLocation.get(cmd);
+          let a = dp.commandsLocation[cmd];
           if (!a) continue;
-          a = dp.commandsLocation.get(cmd)?.filter((x) => !x.load);
+          a = dp.commandsLocation[cmd].filter((x) => !x.load);
         } catch (e) {
           continue;
         }
