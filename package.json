@@ -1,5 +1,5 @@
 {
-  "name": "aoi-transpiler",
+  "name": "@akarui/transpiler",
   "description": "A transpiler for aoi.js that converts aoi.js code to js",
   "keywords": [
     "aoi",
@@ -8,7 +8,7 @@
     "typescript",
     "aoi.js"
   ],
-  "version": "1.0.0",
+  "version": "0.0.2",
   "author": "Leref",
   "maintainers": [
     {
