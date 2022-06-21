@@ -49,8 +49,8 @@ export const $let: FunctionData = {
     }
     console.log({
       letvalue: value,
-      starts: value.startsWith("`"),
-      ends: value.endsWith("`"),
+      starts: value.toString().startsWith("`"),
+      ends: value.toString().endsWith("`"),
     });
 
     if (name === "") {

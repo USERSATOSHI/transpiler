@@ -43,8 +43,8 @@ exports.$let = {
         }
         console.log({
             letvalue: value,
-            starts: value.startsWith("`"),
-            ends: value.endsWith("`"),
+            starts: value.toString().startsWith("`"),
+            ends: value.toString().endsWith("`"),
         });
         if (name === "") {
             throw new error_1.TranspilerError(`${data.name} requires a name`);
