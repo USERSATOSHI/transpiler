@@ -48,7 +48,6 @@ exports.$editMessage = {
             currentScope.setters += executedchan.scope[0].setters + "\n";
             currentScope.rest += executedchan.scope[0].rest + "\n";
             executedchan = executedchan.code;
-            console.log({ executedchan });
         }
         else {
             executedchan = channel;
@@ -93,7 +92,6 @@ exports.$editMessage = {
         let res = newscope.toEditString(executedchan, exectedmsg);
         res += `\nawait ${newscope.name}(__$DISCORD_DATA$__);`;
         res = (0, util_1.escapeResult)(res);
-        console.log({ newscope });
         currentScope.rest = currentScope.rest.replace(data.total, res);
         data.funcs = [];
         return {

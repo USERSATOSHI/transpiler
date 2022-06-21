@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html class="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 max-scale=1.0">
+    <meta name="title" content="Functions">
+    <meta name="description" content="Function information">
+    <meta name="thumbnail"
+        content="https://cdn.discordapp.com/attachments/734127839544344678/984115861445034034/Untitled32_20220608163112.png">
+    <meta name="image" content="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <!-- jsquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- particle.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.9.2/dist/tsparticles.min.js"
+        integrity="sha256-5kED68Spy7K2CEbfu4CjV92DmZR5ZQFUoIR5qmPzZWg=" crossorigin="anonymous"></script>
+    <!-- stellar.js -->
+    <script src="../jquery.stellar.min.js"></script>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+    <link id="loader-css" rel="stylesheet" href="../loader.css" />
+    <link id="html-css" rel="stylesheet" href="./light.css" />
+</head>
+
+<body>
+    <script src="./index.js"></script>
+    <script id=loader src="./loader.js"></script>
+    <div id="particleloader2"></div>
+    <div class="loadingscreenbox">
+        <image src="https://cdn.discordapp.com/attachments/734127839544344678/986390479807606814/unknown.png"
+            class="bg">
+        </image>
+        <image src="https://cdn.discordapp.com/attachments/734127839544344678/986364350778466324/unknown.png"
+            class="text"></image>
+    </div>
+    <div class="body">
+        <div class="sidebar">
+            <div class="closebtn" style="--i: 7" onclick="closesidebar()">
+                Close
+            </div>
+        <a href="https://aoi.js.org" style="--i: 6">Aoi.js</a>
+        <a href="https://github.com/usersatoshi/transpiler" style="--i: 5"
+          >Github</a
+        >
+        <a href="../typedoc/" style="--i: 4">TypeDoc</a>
+        <a href="../" style="--i: 3">Home</a>
+        <a href="https://transpilerplaygroundapi.usersatoshi.repl.co" style="--i: 2">Playground</a>
+        </div>
+        <div class="settingbar">
+            <div class="closebtn" style="--i: 7" onclick="closesettingbar()">
+                <i class="material-icons">close</i>
+            </div>
+            <div class="3d-animations" style="--top: 70px">
+                <i class="material-icons">animation</i><i>Enable 3d Animation</i><label class="switch">
+                    <input type="checkbox" checked id="3dmode" onclick="dmode()" />
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="website-mode" style="--top: 170px">
+                <i class="material-icons">filter_vintage</i>
+                <i class="text">Enable special mode</i><label class="switch">
+                    <input type="checkbox" />
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+        <div class="displaybox">
+            <div class="navbar">
+                <div class="sidebaricon" onclick="sidebaricon()">
+                    <image
+                        src="https://cdn.discordapp.com/attachments/734127839544344678/986390479807606814/unknown.png">
+                    </image>
+                </div>
+                <div class="navbarbtns">
+                <input type="text" id="search" placeholder="Search" oninput="search()"></input>
+                </div>
+                        <div class="settings">
+          <div class="mode">
+            <div class="modebtn" id="modeb" onclick="mode(this)">
+              <i id="modebtext" class="material-icons">light_mode</i>
+            </div>
+          </div>
+          <div class="sets">
+            <div class="setbtn" id="setb" onclick="sets(this)">
+              <i id="setbtext" class="material-icons">settings</i>
+            </div>
+          </div>
+        </div>
+            </div>
+            <div id="functions" class="container">
+                
+    <a href="./funcs/$activity.html" class="functions">
+                    <div class= 'functionName'>$activity</div>
+                    <div id="$activity" class = 'functionDesc'>Returns the activity of provided user</div>
+                </a>
+
+
+    <a href="./funcs/$addActionRow.html" class="functions">
+                    <div class= 'functionName'>$addActionRow</div>
+                    <div id="$addActionRow" class = 'functionDesc'>Adds a row to the components table</div>
+                </a>
+
+
+    <a href="./funcs/$addButton.html" class="functions">
+                    <div class= 'functionName'>$addButton</div>
+                    <div id="$addButton" class = 'functionDesc'>Adds a button to the ActionRow</div>
+                </a>
+
+
+    <a href="./funcs/$addField.html" class="functions">
+                    <div class= 'functionName'>$addField</div>
+                    <div id="$addField" class = 'functionDesc'>Adds a field to the Embed</div>
+                </a>
+
+
+    <a href="./funcs/$and.html" class="functions">
+                    <div class= 'functionName'>$and</div>
+                    <div id="$and" class = 'functionDesc'>Returns true if all conditions are true</div>
+                </a>
+
+
+    <a href="./funcs/$author.html" class="functions">
+                    <div class= 'functionName'>$author</div>
+                    <div id="$author" class = 'functionDesc'>Sets the author of the embed</div>
+                </a>
+
+
+    <a href="./funcs/$authorAvatar.html" class="functions">
+                    <div class= 'functionName'>$authorAvatar</div>
+                    <div id="$authorAvatar" class = 'functionDesc'>Returns the avatar of the author</div>
+                </a>
+
+
+    <a href="./funcs/$authorId.html" class="functions">
+                    <div class= 'functionName'>$authorId</div>
+                    <div id="$authorId" class = 'functionDesc'>Returns the author's ID</div>
+                </a>
+
+
+    <a href="./funcs/$break.html" class="functions">
+                    <div class= 'functionName'>$break</div>
+                    <div id="$break" class = 'functionDesc'>Breaks out of a loop</div>
+                </a>
+
+
+    <a href="./funcs/$channelId.html" class="functions">
+                    <div class= 'functionName'>$channelId</div>
+                    <div id="$channelId" class = 'functionDesc'>Returns the channel's ID</div>
+                </a>
+
+
+    <a href="./funcs/$channelName.html" class="functions">
+                    <div class= 'functionName'>$channelName</div>
+                    <div id="$channelName" class = 'functionDesc'>Returns the channel's name</div>
+                </a>
+
+
+    <a href="./funcs/$channelSendMessage.html" class="functions">
+                    <div class= 'functionName'>$channelSendMessage</div>
+                    <div id="$channelSendMessage" class = 'functionDesc'>Sends a message to a channel</div>
+                </a>
+
+
+    <a href="./funcs/$checkCondition.html" class="functions">
+                    <div class= 'functionName'>$checkCondition</div>
+                    <div id="$checkCondition" class = 'functionDesc'>Checks the condition</div>
+                </a>
+
+
+    <a href="./funcs/$clientId.html" class="functions">
+                    <div class= 'functionName'>$clientId</div>
+                    <div id="$clientId" class = 'functionDesc'>Returns the client's ID</div>
+                </a>
+
+
+    <a href="./funcs/$clientOwnerId.html" class="functions">
+                    <div class= 'functionName'>$clientOwnerId</div>
+                    <div id="$clientOwnerId" class = 'functionDesc'>Returns the client's owner ID</div>
+                </a>
+
+
+    <a href="./funcs/$clientToken.html" class="functions">
+                    <div class= 'functionName'>$clientToken</div>
+                    <div id="$clientToken" class = 'functionDesc'>Returns the client's token</div>
+                </a>
+
+
+    <a href="./funcs/$color.html" class="functions">
+                    <div class= 'functionName'>$color</div>
+                    <div id="$color" class = 'functionDesc'>Sets the color of the embed</div>
+                </a>
+
+
+    <a href="./funcs/$commandId.html" class="functions">
+                    <div class= 'functionName'>$commandId</div>
+                    <div id="$commandId" class = 'functionDesc'>Returns the command's ID</div>
+                </a>
+
+
+    <a href="./funcs/$commandName.html" class="functions">
+                    <div class= 'functionName'>$commandName</div>
+                    <div id="$commandName" class = 'functionDesc'>Returns the command's name</div>
+                </a>
+
+
+    <a href="./funcs/$comment.html" class="functions">
+                    <div class= 'functionName'>$comment</div>
+                    <div id="$comment" class = 'functionDesc'>Converts provided code to a comment</div>
+                </a>
+
+
+    <a href="./funcs/$cpu.html" class="functions">
+                    <div class= 'functionName'>$cpu</div>
+                    <div id="$cpu" class = 'functionDesc'>Returns the CPU usage</div>
+                </a>
+
+
+    <a href="./funcs/$customId.html" class="functions">
+                    <div class= 'functionName'>$customId</div>
+                    <div id="$customId" class = 'functionDesc'>Returns the custom ID</div>
+                </a>
+
+
+    <a href="./funcs/$description.html" class="functions">
+                    <div class= 'functionName'>$description</div>
+                    <div id="$description" class = 'functionDesc'>Sets the description of the embed</div>
+                </a>
+
+
+    <a href="./funcs/$divide.html" class="functions">
+                    <div class= 'functionName'>$divide</div>
+                    <div id="$divide" class = 'functionDesc'>Divides the numbers</div>
+                </a>
+
+
+    <a href="./funcs/$djsEval.html" class="functions">
+                    <div class= 'functionName'>$djsEval</div>
+                    <div id="$djsEval" class = 'functionDesc'>Evaluates the provided Js code</div>
+                </a>
+
+
+    <a href="./funcs/$editMessage.html" class="functions">
+                    <div class= 'functionName'>$editMessage</div>
+                    <div id="$editMessage" class = 'functionDesc'>Edits a message</div>
+                </a>
+
+
+    <a href="./funcs/$else.html" class="functions">
+                    <div class= 'functionName'>$else</div>
+                    <div id="$else" class = 'functionDesc'>Else statement</div>
+                </a>
+
+
+    <a href="./funcs/$elseIf.html" class="functions">
+                    <div class= 'functionName'>$elseIf</div>
+                    <div id="$elseIf" class = 'functionDesc'>Else if statement</div>
+                </a>
+
+
+    <a href="./funcs/$endsWith.html" class="functions">
+                    <div class= 'functionName'>$endsWith</div>
+                    <div id="$endsWith" class = 'functionDesc'>Checks if the text ends with the search</div>
+                </a>
+
+
+    <a href="./funcs/$ephemeral.html" class="functions">
+                    <div class= 'functionName'>$ephemeral</div>
+                    <div id="$ephemeral" class = 'functionDesc'>Sets the ephemeral value</div>
+                </a>
+
+
+    <a href="./funcs/$eval.html" class="functions">
+                    <div class= 'functionName'>$eval</div>
+                    <div id="$eval" class = 'functionDesc'>Evaluates the code</div>
+                </a>
+
+
+    <a href="./funcs/$footer.html" class="functions">
+                    <div class= 'functionName'>$footer</div>
+                    <div id="$footer" class = 'functionDesc'>Sets the footer of the embed</div>
+                </a>
+
+
+    <a href="./funcs/$get.html" class="functions">
+                    <div class= 'functionName'>$get</div>
+                    <div id="$get" class = 'functionDesc'>Gets the value of the variable</div>
+                </a>
+
+
+    <a href="./funcs/$guildId.html" class="functions">
+                    <div class= 'functionName'>$guildId</div>
+                    <div id="$guildId" class = 'functionDesc'>Returns the guild's ID</div>
+                </a>
+
+
+    <a href="./funcs/$has.html" class="functions">
+                    <div class= 'functionName'>$has</div>
+                    <div id="$has" class = 'functionDesc'>Checks if the variable exists</div>
+                </a>
+
+
+    <a href="./funcs/$if.html" class="functions">
+                    <div class= 'functionName'>$if</div>
+                    <div id="$if" class = 'functionDesc'>If statement</div>
+                </a>
+
+
+    <a href="./funcs/$image.html" class="functions">
+                    <div class= 'functionName'>$image</div>
+                    <div id="$image" class = 'functionDesc'>Sets the image of the embed</div>
+                </a>
+
+
+    <a href="./funcs/$includes.html" class="functions">
+                    <div class= 'functionName'>$includes</div>
+                    <div id="$includes" class = 'functionDesc'>Checks if the text includes the search</div>
+                </a>
+
+
+    <a href="./funcs/$increment.html" class="functions">
+                    <div class= 'functionName'>$increment</div>
+                    <div id="$increment" class = 'functionDesc'>Increments the variable</div>
+                </a>
+
+
+    <a href="./funcs/$isBot.html" class="functions">
+                    <div class= 'functionName'>$isBot</div>
+                    <div id="$isBot" class = 'functionDesc'>Checks if the author is a bot</div>
+                </a>
+
+
+    <a href="./funcs/$isNumber.html" class="functions">
+                    <div class= 'functionName'>$isNumber</div>
+                    <div id="$isNumber" class = 'functionDesc'>Checks if the query is a number</div>
+                </a>
+
+
+    <a href="./funcs/$isServerAvailable.html" class="functions">
+                    <div class= 'functionName'>$isServerAvailable</div>
+                    <div id="$isServerAvailable" class = 'functionDesc'>Checks if the server is available</div>
+                </a>
+
+
+    <a href="./funcs/$isServerLarge.html" class="functions">
+                    <div class= 'functionName'>$isServerLarge</div>
+                    <div id="$isServerLarge" class = 'functionDesc'>Checks if the server is large</div>
+                </a>
+
+
+    <a href="./funcs/$isServerPartnered.html" class="functions">
+                    <div class= 'functionName'>$isServerPartnered</div>
+                    <div id="$isServerPartnered" class = 'functionDesc'>Checks if the server is partnered</div>
+                </a>
+
+
+    <a href="./funcs/$isServerPremiumProgressBarEnabled.html" class="functions">
+                    <div class= 'functionName'>$isServerPremiumProgressBarEnabled</div>
+                    <div id="$isServerPremiumProgressBarEnabled" class = 'functionDesc'>Checks if the server has premium progress bar enabled</div>
+                </a>
+
+
+    <a href="./funcs/$isServerVerified.html" class="functions">
+                    <div class= 'functionName'>$isServerVerified</div>
+                    <div id="$isServerVerified" class = 'functionDesc'>Checks if the server is verified</div>
+                </a>
+
+
+    <a href="./funcs/$let.html" class="functions">
+                    <div class= 'functionName'>$let</div>
+                    <div id="$let" class = 'functionDesc'>Sets the value of the variable</div>
+                </a>
+
+
+    <a href="./funcs/$log.html" class="functions">
+                    <div class= 'functionName'>$log</div>
+                    <div id="$log" class = 'functionDesc'>Logs the text</div>
+                </a>
+
+
+    <a href="./funcs/$message.html" class="functions">
+                    <div class= 'functionName'>$message</div>
+                    <div id="$message" class = 'functionDesc'>Returns the message</div>
+                </a>
+
+
+    <a href="./funcs/$onlyIf.html" class="functions">
+                    <div class= 'functionName'>$onlyIf</div>
+                    <div id="$onlyIf" class = 'functionDesc'>If statement</div>
+                </a>
+
+
+    <a href="./funcs/$ping.html" class="functions">
+                    <div class= 'functionName'>$ping</div>
+                    <div id="$ping" class = 'functionDesc'>Returns the bot's ping</div>
+                </a>
+
+
+    <a href="./funcs/$ram.html" class="functions">
+                    <div class= 'functionName'>$ram</div>
+                    <div id="$ram" class = 'functionDesc'>Returns the bot's ram usage</div>
+                </a>
+
+
+    <a href="./funcs/$slashOption.html" class="functions">
+                    <div class= 'functionName'>$slashOption</div>
+                    <div id="$slashOption" class = 'functionDesc'>Returns the value of the slash option</div>
+                </a>
+
+
+    <a href="./funcs/$sum.html" class="functions">
+                    <div class= 'functionName'>$sum</div>
+                    <div id="$sum" class = 'functionDesc'>Returns the sum of the numbers</div>
+                </a>
+
+
+    <a href="./funcs/$while.html" class="functions">
+                    <div class= 'functionName'>$while</div>
+                    <div id="$while" class = 'functionDesc'>While statement</div>
+                </a>
+
+            </div>
+        </div>
+</body>
+
+</html>

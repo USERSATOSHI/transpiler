@@ -34,7 +34,6 @@ export const $get: FunctionData = {
       throw new TranspilerError(`${data.name} requires a name`);
     }
     const currentScope = scope[scope.length - 1];
-    ////console.log({vars:currentScope.variables})
     if (!currentScope.variables.includes(name)) {
       throw new TranspilerError(`${data.name} cannot find ${name}`);
     }

@@ -1,0 +1,69 @@
+#particleloader canvas,#particleloader2 canvas,#particleloader3 canvas {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: white;
+}
+
+.bg {
+  width: 75%;
+  height: 75%;
+  z-index: 20;
+  object-fit: contain;
+}
+
+.loadingscreenbox {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.9));
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.text {
+  width: 75%;
+  height: 75%;
+  z-index: 20;
+  object-fit: contain;
+}
+
+.body {
+    display: none;
+}
+@media only screen and (max-width:720px) {
+    .loadingscreenbox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .text {
+        width: 100%;
+        height: 100%;
+        z-index: 20;
+        object-fit: contain;
+    }
+    .bg {
+        width: 100%;
+        height: 100%;
+        z-index: 20;
+        object-fit: contain;
+    }
+}

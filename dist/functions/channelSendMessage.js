@@ -48,7 +48,6 @@ exports.$channelSendMessage = {
             currentScope.setters += executedchan.scope[0].setters + "\n";
             currentScope.rest += executedchan.scope[0].rest + "\n";
             executedchan = executedchan.code;
-            console.log({ executedchan });
         }
         else {
             executedchan = channel;
@@ -78,7 +77,6 @@ exports.$channelSendMessage = {
         newscope.useChannel = executedchan;
         newscope.addReturn = parsedOutput;
         let res = (0, util_1.escapeResult)(newscope.toString(true));
-        console.log({ newscope });
         currentScope.functions += res + "\n";
         res = (0, util_1.escapeResult)(`(await ${newscope.name}(__$DISCORD_DATA$__))?.id`);
         currentScope.rest = currentScope.rest.replace(data.total, res);

@@ -48,10 +48,7 @@ exports.$onlyIf = {
             executedCondition = condition;
         }
         executedCondition = (0, conditionlexer_1.conditionLexer)(executedCondition);
-        console.log({ executedCondition });
-        console.log({ nested: executedCondition.nest });
         executedCondition = executedCondition.solve(true);
-        console.log({ executedCondition });
         const hash = Math.floor(Math.random() * 100000);
         const newscope = new scope_1.Scope(`${data.name}_${hash}`, currentScope.name, errorMsg.join(";"), true);
         let executedErrorMsg;

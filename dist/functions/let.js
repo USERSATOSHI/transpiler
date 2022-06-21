@@ -32,7 +32,6 @@ exports.$let = {
                 throw new error_1.TranspilerError(`${data.name} requires closure brackets`);
             }
         }
-        console.log({ letData: data });
         if (splits.length !== 2) {
             throw new error_1.TranspilerError(`${data.name} requires 2 arguments`);
         }
@@ -41,11 +40,6 @@ exports.$let = {
         if (typeof value === "string" && value.includes("#FUNCTION_START#")) {
             value = (0, stringparser_1.parseString)(value);
         }
-        console.log({
-            letvalue: value,
-            starts: value.startsWith("`"),
-            ends: value.endsWith("`"),
-        });
         if (name === "") {
             throw new error_1.TranspilerError(`${data.name} requires a name`);
         }
@@ -55,8 +49,8 @@ exports.$let = {
         const currentScope = scope[scope.length - 1];
         if (currentScope.variables.includes(name)) {
             if (currentScope.variables.includes((0, util_1.parseResult)(value)) ||
-                value.startsWith("#FUNCTION_START#") ||
-                (value.startsWith("`") && value.endsWith("`"))) {
+                value.toString().startsWith("#FUNCTION_START#") ||
+                (value.toString().startsWith("`") && value.toString().endsWith("`"))) {
                 res = `${(0, util_1.escapeVars)(name)} = ${value};`;
             }
             else {
@@ -67,14 +61,13 @@ exports.$let = {
             if (typeof value !== "string" ||
                 currentScope.variables.includes((0, util_1.parseResult)(value.toString())) ||
                 value.toString().startsWith("#FUNCTION_START#") ||
-                (value.startsWith("`") && value.endsWith("`"))) {
+                (value.toString().startsWith("`") && value.toString().endsWith("`"))) {
                 res = `let ${(0, util_1.escapeVars)(name)} = ${value};`;
             }
             else {
                 res = `let ${(0, util_1.escapeVars)(name)} = \`${value}\`;`;
             }
         }
-        console.log({ lteres: res });
         currentScope.variables.push(name);
         currentScope.setters += (0, util_1.escapeResult)(res) + "\n";
         currentScope.rest = currentScope.rest.replace((0, util_1.removeSetFunc)(data.total).replaceAll("#FUNCTION_SEPARATOR", ";"), "");

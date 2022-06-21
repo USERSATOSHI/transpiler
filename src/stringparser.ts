@@ -61,7 +61,6 @@ export function createStringAST(text: string) {
   }
   i = 0;
   res = "";
-  console.log({ textafter: text });
   while (i <= text.length) {
     if (res.includes("#FUNCTION_START#")) {
       const nest = new Block(block.nest.length, false, block);
@@ -90,6 +89,3 @@ export function parseString(text: string) {
   return ast.parse();
 }
 
-console.log(createStringAST('#FUNCTION_START#__$DISCORD_DATA$__.client.ws.ping#FUNCTION_END#').parse());
-
-console.log("$hi$".replace("$hi$", "hello"));

@@ -16,10 +16,9 @@ export async function messageCreate(message: Message, client: AoiClient) {
   const commands = <Collection<number, Command>>(<
     unknown // @ts-ignore
   >(<LoadCommands>client.loader).paths[0].commandsLocation["basicCommand"]?.filter((c: Command) => c.name.toLowerCase() === cmd || (c.aliases ? c.aliases.includes(cmd) : false)));
-  //console.log({commands})
+
   if (!commands?.size) return;
   for (const cmd of commands.values()) {
-    const start = performance.now();
     await cmd.__compiled__.func({
       message,
       channel: message.channel,
@@ -31,6 +30,5 @@ export async function messageCreate(message: Message, client: AoiClient) {
       member: message.member,
       command: cmd,
     });
-    console.log("transpiler: " + (performance.now() - start));
   }
 }

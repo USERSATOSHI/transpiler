@@ -28,7 +28,6 @@ exports.$djsEval = {
         const splits = data.splits;
         const [output, ...code] = splits;
         const parsedOutput = (0, util_1.convertToBool)(output);
-        console.log({ parsedOutput });
         if (exports.$djsEval.brackets) {
             if (!data.total.startsWith(exports.$djsEval.name + "[")) {
                 throw new error_1.TranspilerError(`${data.name} requires closure brackets`);
@@ -55,7 +54,6 @@ exports.$djsEval = {
             currentScope.functions += (0, util_1.escapeResult)(setres) + "\n";
         }
         const res = `${(0, util_1.escapeResult)(`await __$djsEval$__.call(__$DISCORD_DATA$__,${Code})`)}`;
-        console.log({ djsevalrest: currentScope.rest, djsevaltotal: data.total });
         currentScope.rest = currentScope.rest.replace(data.total, res);
         return {
             code: parsedOutput ? res : "",

@@ -1,5 +1,5 @@
 {
-  "name": "aoi-transpiler",
+  "name": "@akarui/transpiler",
   "description": "A transpiler for aoi.js that converts aoi.js code to js",
   "keywords": [
     "aoi",
@@ -8,7 +8,7 @@
     "typescript",
     "aoi.js"
   ],
-  "version": "1.0.0",
+  "version": "0.0.2",
   "author": "Leref",
   "maintainers": [
     {
@@ -32,7 +32,7 @@
     "build": "tsc -p tsconfig.json",
     "test": "node tests/transpiler.js",
     "prettier": "prettier --write '**/*.{ts,js}'",
-    "docs": "typedoc && node dist/generators/functionDoc.js && node dist/generators/homepage.js && node dist/generators/playground.js"
+    "docs": "typedoc && node docgen/index.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",

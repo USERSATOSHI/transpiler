@@ -24,7 +24,6 @@ exports.$log = {
         const splits = data.splits;
         if (exports.$log.brackets) {
             if (!data.total.startsWith(exports.$log.name + "[")) {
-                console.log({ t: data.total, n: exports.$log.name });
                 throw new error_1.TranspilerError(`${data.name} requires closure brackets`);
             }
         }
@@ -38,7 +37,6 @@ exports.$log = {
         }
         const parsedText = (0, stringparser_1.parseString)(text);
         res = `${(0, util_1.escapeFunctionResult)(`console.log(${parsedText});`)}`;
-        console.log({ total: data.total, res, rest: currentScope.rest });
         currentScope.rest = currentScope.rest.replace(data.total, res);
         return { code: res, scope: scope, data };
     },

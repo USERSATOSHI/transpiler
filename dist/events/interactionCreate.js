@@ -18,7 +18,6 @@ async function interactionCreate(interaction, client) {
         if (!cmd.size)
             return;
         for (const cmd of cmds.values()) {
-            const start = performance.now();
             await cmd.__compiled__.func({
                 interaction,
                 channel: interaction.channel,
@@ -29,7 +28,6 @@ async function interactionCreate(interaction, client) {
                 bot: client,
                 command: cmd,
             });
-            console.log("transpiler: " + (performance.now() - start));
         }
     }
     else if (interaction instanceof discord_js_1.ContextMenuCommandInteraction) {
@@ -41,7 +39,6 @@ async function interactionCreate(interaction, client) {
         if (!cmd.size)
             return;
         for (const cmd of cmds.values()) {
-            const start = performance.now();
             await cmd.__compiled__.func({
                 interaction,
                 channel: interaction.channel,
@@ -52,7 +49,6 @@ async function interactionCreate(interaction, client) {
                 bot: client,
                 command: cmd,
             });
-            console.log("transpiler: " + (performance.now() - start));
         }
     }
     else if (interaction instanceof discord_js_1.ModalSubmitInteraction) {
@@ -64,7 +60,6 @@ async function interactionCreate(interaction, client) {
         if (!cmd.size)
             return;
         for (const cmd of cmds.values()) {
-            const start = performance.now();
             await cmd.__compiled__.func({
                 interaction,
                 channel: interaction.channel,
@@ -75,7 +70,6 @@ async function interactionCreate(interaction, client) {
                 bot: client,
                 command: cmd,
             });
-            console.log("transpiler: " + (performance.now() - start));
         }
     }
     else if (interaction instanceof discord_js_1.ButtonInteraction) {
@@ -87,7 +81,6 @@ async function interactionCreate(interaction, client) {
         if (!cmd.size)
             return;
         for (const cmd of cmds.values()) {
-            const start = performance.now();
             await cmd.__compiled__.func({
                 interaction,
                 channel: interaction.channel,
@@ -98,7 +91,6 @@ async function interactionCreate(interaction, client) {
                 bot: client,
                 command: cmd,
             });
-            console.log("transpiler: " + (performance.now() - start));
         }
     }
     else if (interaction instanceof discord_js_1.SelectMenuInteraction) {
@@ -110,7 +102,6 @@ async function interactionCreate(interaction, client) {
         if (!cmd.size)
             return;
         for (const cmd of cmds.values()) {
-            const start = performance.now();
             await cmd.__compiled__.func({
                 interaction,
                 channel: interaction.channel,
@@ -121,7 +112,6 @@ async function interactionCreate(interaction, client) {
                 bot: client,
                 command: cmd,
             });
-            console.log("transpiler: " + (performance.now() - start));
         }
     }
 }

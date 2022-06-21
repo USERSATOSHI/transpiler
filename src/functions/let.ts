@@ -38,7 +38,6 @@ export const $let: FunctionData = {
         throw new TranspilerError(`${data.name} requires closure brackets`);
       }
     }
-    console.log({ letData: data });
     if (splits.length !== 2) {
       throw new TranspilerError(`${data.name} requires 2 arguments`);
     }
@@ -47,11 +46,6 @@ export const $let: FunctionData = {
     if (typeof value === "string" && value.includes("#FUNCTION_START#")) {
       value = parseString(value);
     }
-    console.log({
-      letvalue: value,
-      starts: value.startsWith("`"),
-      ends: value.endsWith("`"),
-    });
 
     if (name === "") {
       throw new TranspilerError(`${data.name} requires a name`);
@@ -64,8 +58,8 @@ export const $let: FunctionData = {
     if (currentScope.variables.includes(name)) {
       if (
         currentScope.variables.includes(parseResult(value)) ||
-        value.startsWith("#FUNCTION_START#") ||
-        (value.startsWith("`") && value.endsWith("`"))
+        value.toString().startsWith("#FUNCTION_START#") ||
+        (value.toString().startsWith("`") && value.toString().endsWith("`"))
       ) {
         res = `${escapeVars(name)} = ${value};`;
       } else {
@@ -76,14 +70,13 @@ export const $let: FunctionData = {
         typeof value !== "string" ||
         currentScope.variables.includes(parseResult(value.toString())) ||
         value.toString().startsWith("#FUNCTION_START#") ||
-        (value.startsWith("`") && value.endsWith("`"))
+        (value.toString().startsWith("`") && value.toString().endsWith("`"))
       ) {
         res = `let ${escapeVars(name)} = ${value};`;
       } else {
         res = `let ${escapeVars(name)} = \`${value}\`;`;
       }
     }
-    console.log({ lteres: res });
     currentScope.variables.push(name);
     currentScope.setters += escapeResult(res) + "\n";
     currentScope.rest = currentScope.rest.replace(

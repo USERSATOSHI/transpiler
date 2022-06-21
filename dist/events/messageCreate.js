@@ -16,11 +16,9 @@ async function messageCreate(message, client) {
     if (!cmd)
         return;
     const commands = client.loader.paths[0].commandsLocation["basicCommand"]?.filter((c) => c.name.toLowerCase() === cmd || (c.aliases ? c.aliases.includes(cmd) : false));
-    //console.log({commands})
     if (!commands?.size)
         return;
     for (const cmd of commands.values()) {
-        const start = performance.now();
         await cmd.__compiled__.func({
             message,
             channel: message.channel,
@@ -32,7 +30,6 @@ async function messageCreate(message, client) {
             member: message.member,
             command: cmd,
         });
-        console.log("transpiler: " + (performance.now() - start));
     }
 }
 exports.messageCreate = messageCreate;

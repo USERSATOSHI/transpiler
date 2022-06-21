@@ -35,8 +35,7 @@ export const $activity: FunctionData = {
     ] = splits;
     const currentScope = scope[scope.length - 1];
     const reg =
-      /((#FUNCTION_START#([\s$a-z.0-9?(){}\[\]._:'"`;=><,!-]|\n)+#FUNCTION_END#)|(__\$[a-z_?.()]+\$__))/gim;
-    console.log({ gmatch: guildId.match(reg), umatch: userId.match(reg) });
+      /((#FUNCTION_START#([\s$a-z.0-9?(){}\[\]._:'"`;=><,!-]|\n)+#FUNCTION_END#)|(__\$[a-z_?.()]+\$__))/gim;;
     let res = escapeResult(
       `__$DISCORD_DATA$__.client.guilds.cache.get(\`${guildId}\`)?.members.cache.get(\`${userId}\`)?.presence.activities.join(\`${separator}\`) ?? "None"`,
     );

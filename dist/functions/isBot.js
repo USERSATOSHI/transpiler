@@ -28,7 +28,6 @@ exports.$isBot = {
             }
         }
         const currentScope = scope[scope.length - 1];
-        ////console.log({vars:currentScope.variables})
         if (!currentScope.packages.includes(`const TRANSPILER_HELPERS = await import("./helpers.js")`)) {
             currentScope.packages += `const TRANSPILER_HELPERS = await import("./helpers.js");\n`;
         }

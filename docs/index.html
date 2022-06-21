@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 max-scale=1.0"
+    />
+    <meta name="title" content="Transpiler" />
+    <meta
+      name="description"
+      content="A transpiler that converts aoi.js code to Js for faster executation of cmds"
+    />
+    <title>@akarui/transpiler</title>
+    <meta
+      name="thumbnail"
+      content="https://cdn.discordapp.com/attachments/734127839544344678/984115861445034034/Untitled32_20220608163112.png"
+    />
+    <meta name="image" content="" />
+    <link
+      rel="icon"
+      href="https://cdn.discordapp.com/attachments/734127839544344678/984115861445034034/Untitled32_20220608163112.png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <!-- jsquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- particle.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/tsparticles@1.9.2/dist/tsparticles.min.js"
+      integrity="sha256-5kED68Spy7K2CEbfu4CjV92DmZR5ZQFUoIR5qmPzZWg="
+      crossorigin="anonymous"
+    ></script>
+    <!-- stellar.js -->
+    <script src="./jquery.stellar.min.js"></script>
+    <!-- fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+
+    <link id="loader-css" rel="stylesheet" href="./loader.css" />
+    <link id="html-css" rel="stylesheet" href="./light.css" />
+  </head>
+
+  <body>
+    <script src="./home.js"></script>
+    <script id="loader" src="./loader.js"></script>
+    <div id="particleloader"></div>
+    <div class="loadingscreenbox">
+      <image
+        src="https://cdn.discordapp.com/attachments/734127839544344678/986390479807606814/unknown.png"
+        class="bg"
+      >
+      </image>
+      <image
+        src="https://cdn.discordapp.com/attachments/734127839544344678/986364350778466324/unknown.png"
+        class="text"
+      >
+      </image>
+    </div>
+    <div class="body">
+      <div class="background" data-stellar-background-ratio="1.1"></div>
+      <div class="sidebar">
+        <div class="closebtn" style="--i: 7" onclick="closesidebar()">
+          Close
+        </div>
+        <a href="https://aoi.js.org" style="--i: 6">Aoi.js</a>
+        <a href="https://github.com/usersatoshi/transpiler" style="--i: 5"
+          >Github</a
+        >
+        <a href="./typedoc/" style="--i: 4">TypeDoc</a>
+        <a href="./functions/index.html" style="--i: 3">Functions</a>
+        <a href="https://transpilerplaygroundapi.usersatoshi.repl.co" style="--i: 2">Playground</a>
+      </div>
+      <div class="settingbar">
+        <div class="closebtn" style="--i: 7" onclick="closesettingbar()">
+          <i class="material-icons">close</i>
+        </div>
+        <div class="3d-animations" style="--top: 70px">
+          <i class="material-icons">animation</i><i>Enable 3d Animation</i
+          ><label class="switch">
+            <input type="checkbox" checked id="3dmode" onclick="dmode()" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="website-mode" style="--top: 170px">
+          <i class="material-icons">filter_vintage</i>
+          <i class="text">Enable special mode</i
+          ><label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+      <div class="displaybox">
+        <div class="navbar">
+          <div class="sidebaricon" onclick="sidebaricon()">
+            <image
+              src="https://cdn.discordapp.com/attachments/734127839544344678/986390479807606814/unknown.png"
+            >
+            </image>
+          </div>
+          <div class="navbarbtns">
+            <div class="link">
+              <div class="forwarda"></div>
+              <a class="active" href="./index.html">Home</a>
+              <div class="backwarda"></div>
+            </div>
+            <div class="link">
+              <div class="forwarda"></div>
+              <a href="#about">About</a>
+              <div class="backwarda"></div>
+            </div>
+            <div class="link">
+              <div class="forwarda"></div>
+              <a href="#example">Example</a>
+              <div class="backwarda"></div>
+            </div>
+            <div class="link">
+              <div class="forwarda"></div>
+              <a href="#collaborators">Collabs</a>
+              <div class="backwarda"></div>
+            </div>
+          </div>
+          <div class="settings">
+            <div class="mode">
+              <div class="modebtn" id="modeb" onclick="mode(this)">
+                <i id="modebtext" class="material-icons">light_mode</i>
+              </div>
+            </div>
+            <div class="sets">
+              <div class="setbtn" id="setb" onclick="sets(this)">
+                <i id="setbtext" class="material-icons">settings</i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <h1 data-stellar-ratio="0.8">@akarui/Transpizler</h1> -->
+        <div class="container" id="about">
+          @akarui/Transpiler is an extension that allows transpilation of aoi.js
+          code to Js for faster execution of cmds.
+        </div>
+        <div class="background3"></div>
+        <div class="container" id="example">
+          <h1>Example</h1>
+          <div class="codeblock">
+            <div class="copyButton">
+              <i class="material-icons" id="copy">content_copy</i>
+            </div>
+            <code class="code">
+              <span class="comment">//example</span><br />
+
+              <span class="keyword">const</span> {
+              <span class="function">
+                <span>Transpiler</span>
+                <span style="display: none" id="Transpiler"
+                  >Function that transpiles aoi.js code to js</span
+                > </span
+              >,
+              <span class="class">
+                <span>LoadCommands</span>
+                <span style="display: none" id="LoadCommands"
+                  >Class to load commands from files</span
+                > </span
+              >,
+              <span class="function"
+                >onMessage<span style="display: none" id="onMessage"
+                  >Function to listen to messageCreate event</span
+                ></span
+              >
+              } = <span class="global">require</span>(
+              <span class="string">"@akarui/transpiler"</span> );<br /><br />
+
+              <span class="keyword">const</span> {
+              <span class="class">AoiClient</span> } =
+              <span class="global">require</span>(
+              <span class="string">"aoi.js"</span> );
+              <span class="comment">//aoi.js ( version: 6.0.0 )</span><br />
+
+              <span class="keyword">const</span> {
+              <span class="class">Collection</span> } =
+              <span class="global">require</span>(
+              <span class="string">"@discordjs/collection"</span> );<br /><br />
+
+              <span class="keyword">const</span>
+              <span class="variable">client</span> =
+              <span class="global">new</span>
+              <span class="class">AoiClient</span>({<br />
+              &nbsp;&nbsp;<span class="keyword">token</span>:
+              <span class="string">"token"</span>,<br />
+              &nbsp;&nbsp;<span class="keyword">prefix</span>:
+              <span class="string">"!"</span>,<br />
+              &nbsp;&nbsp;<span class="keyword">intents</span>: [
+              <span class="string">"Guilds"</span>,
+              <span class="string">"GuildMessages"</span>,
+              <span class="string">"MessageContent"</span> ],<br />
+              });<br /><br />
+
+              <span class="function">onMessage</span>(
+              <span class="variable">client</span> );<br /><br />
+
+              <span class="variable">client</span>.cmds = {<br />
+              &nbsp;&nbsp;<span class="keyword">basicCommand</span>:
+              <span class="global">new</span>
+              <span class="class">Collection()</span>,<br />
+              &nbsp;&nbsp;<span class="keyword">slashCommand</span>:
+              <span class="global">new</span>
+              <span class="class">Collection()</span>,<br />
+              };<br /><br />
+
+              <span class="keyword">const</span>
+              <span class="variable">loader</span> =
+              <span class="global">new</span>
+              <span class="class">LoadCommands</span>(
+              <span class="variable">client</span>,
+              <span class="boolean">true</span> );<br /><br />
+              <span class="variable">loader</span>.<span class="function"
+                >load</span
+              >( <span class="variable">client</span>.cmds,
+              <span class="string">"./commands/"</span> );<br /><br />
+
+              <span class="variable">client</span>.<span class="function"
+                >start</span
+              >();<br />
+            </code>
+          </div>
+        </div>
+        <div class="background2" data-stellar-background-ratio="1.01"></div>
+        <div class="container" id="collaborators">
+          <h1>Collaborators</h1>
+          <div class="collabs">
+            <div class="profile">
+              <div class="img">
+                <img
+                  src="https://cdn.discordapp.com/attachments/734127839544344678/986944130527690812/IMG_20190418_033503.jpg"
+                />
+              </div>
+              <div class="details">
+                <div class="h1">UserSatoshi</div>
+                <span class="role">Maintainer</span>
+                <div class="social">
+                  <a
+                    href="https://github.com/usersatoshi"
+                    class="fa-brands fa-github"
+                  ></a>
+                  <a
+                    href="discord.com/channels/users/715755977483223081"
+                    class="fa-brands fa-discord"
+                  ></a>
+                  <a
+                    href="https://twitter.com/usersatoshi"
+                    class="fa-brands fa-twitter"
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div class="profile">
+              <div class="img">
+                <img src="https://github.com/leref.png" />
+              </div>
+              <div class="details">
+                <div class="h1">Leref</div>
+                <span class="role">Owner</span>
+                <div class="social">
+                  <a
+                    href="https://github.com/leref"
+                    class="fa-brands fa-github"
+                  ></a>
+                  <a
+                    href="discord.com/channels/users/608358453580136499"
+                    class="fa-brands fa-discord"
+                  ></a>
+                  <a
+                    href="https://twitter.com/Leref_"
+                    class="fa-brands fa-twitter"
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer">Copyright (c) 2022 Ayaka</div>
+    </div>
+    <script>
+      $.stellar({
+        horizontalScrolling: false,
+        verticalScrolling: true,
+        verticalOffset: 0,
+        responsive: false,
+        hideDistantElements: false,
+        horizontalOffset: 0,
+        parallaxBackgrounds: true,
+        parallaxElements: true,
+        hideElement: function (elem) {
+          $(elem).hide();
+        },
+        showElement: function (elem) {
+          $(elem).show();
+        },
+      });
+    </script>
+  </body>
+</html>

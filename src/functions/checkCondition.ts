@@ -26,7 +26,6 @@ export const $checkCondition: FunctionData = {
       throw new TranspilerError(`${data.name}: condition is required`);
     }
     const parsedCondition = conditionLexer(condition).solve(false);
-    console.log({ parsedCondition });
     const res = escapeResult(parseResult(parsedCondition));
     currentScope.rest = currentScope.rest.replace(data.total, res);
 
