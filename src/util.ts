@@ -23,9 +23,7 @@ export function countBrackets(code: string) {
   return { leftbracketCount, rightbracketCount };
 }
 export function parseData(text: string) {
-  if (!areBracketsBalanced(text))
-    throw new TranspilerError("Brackets are not balanced");
-  else if (text === "") return text;
+  if (text === "") return text;
   else if (!isNaN(Number(text)) && Number.isSafeInteger(Number(text)))
     return Number(text);
   else if (!isNaN(Number(text)) && !Number.isSafeInteger(text)) return text;
@@ -215,12 +213,12 @@ export function ExecuteData(code: string, data: funcData[], scope: Scope[]) {
       //console.log({ d });
       if (d.funcs.length) {
         //console.log({ code });
-        executed = ExecuteData(d.inside ?? "", d.funcs, scope);
+        executed = ExecuteData(parseResult(d.inside ?? ""), d.funcs, scope);
 
         scope = executed.scope;
         //console.log({ insideprev: d.inside });
         const oldtotal = d.total;
-        //console.log({ oldtot: d.total, in: d.inside });
+        console.log({ oldtot: d.total, in: d.inside });
         d.total = d.total
           .replace(d.inside ?? "", executed.code)
           .replace(
@@ -274,17 +272,18 @@ export function ExecuteData(code: string, data: funcData[], scope: Scope[]) {
         scope = executed.scope;
         // console.log({ executed });
         // console.log({ codebef: code });
-        // console.log({
-        //   total: d.total,
-        //   parsedtotal: d.total.replaceAll(";", "#FUNCTION_SEPARATOR#"),
-        //   excode: executed.code,
-        // });
+        console.log({
+          total: d.total,
+          excode: executed.code,
+          code,
+        });
         code = code
           .replace(d.total, executed.code)
           // .replace(
           //   d.total.replaceAll(";", "#FUNCTION_SEPARATOR#"),
           //   executed.code,
           // );
+          console.log({codeafter:code})
         console.log({ d });
         if (d.type === "getter" || d.type === "function_getter") {
           //console.log({ contentbef: scope[scope.length - 1].sendData.content });

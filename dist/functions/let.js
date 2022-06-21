@@ -55,8 +55,8 @@ exports.$let = {
         const currentScope = scope[scope.length - 1];
         if (currentScope.variables.includes(name)) {
             if (currentScope.variables.includes((0, util_1.parseResult)(value)) ||
-                value.startsWith("#FUNCTION_START#") ||
-                (value.startsWith("`") && value.endsWith("`"))) {
+                value.toString().startsWith("#FUNCTION_START#") ||
+                (value.toString().startsWith("`") && value.toString().endsWith("`"))) {
                 res = `${(0, util_1.escapeVars)(name)} = ${value};`;
             }
             else {
@@ -67,7 +67,7 @@ exports.$let = {
             if (typeof value !== "string" ||
                 currentScope.variables.includes((0, util_1.parseResult)(value.toString())) ||
                 value.toString().startsWith("#FUNCTION_START#") ||
-                (value.startsWith("`") && value.endsWith("`"))) {
+                (value.toString().startsWith("`") && value.toString().endsWith("`"))) {
                 res = `let ${(0, util_1.escapeVars)(name)} = ${value};`;
             }
             else {

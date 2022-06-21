@@ -32,7 +32,7 @@
     "build": "tsc -p tsconfig.json",
     "test": "node tests/transpiler.js",
     "prettier": "prettier --write '**/*.{ts,js}'",
-    "docs": "typedoc && node dist/generators/functionDoc.js && node dist/generators/homepage.js && node dist/generators/playground.js"
+    "docs": "typedoc && node docgen/index.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",

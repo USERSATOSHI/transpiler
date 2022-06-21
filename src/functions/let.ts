@@ -64,8 +64,8 @@ export const $let: FunctionData = {
     if (currentScope.variables.includes(name)) {
       if (
         currentScope.variables.includes(parseResult(value)) ||
-        value.startsWith("#FUNCTION_START#") ||
-        (value.startsWith("`") && value.endsWith("`"))
+        value.toString().startsWith("#FUNCTION_START#") ||
+        (value.toString().startsWith("`") && value.toString().endsWith("`"))
       ) {
         res = `${escapeVars(name)} = ${value};`;
       } else {
@@ -76,7 +76,7 @@ export const $let: FunctionData = {
         typeof value !== "string" ||
         currentScope.variables.includes(parseResult(value.toString())) ||
         value.toString().startsWith("#FUNCTION_START#") ||
-        (value.startsWith("`") && value.endsWith("`"))
+        (value.toString().startsWith("`") && value.toString().endsWith("`"))
       ) {
         res = `let ${escapeVars(name)} = ${value};`;
       } else {
