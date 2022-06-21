@@ -30,7 +30,6 @@ export class Condition {
     const conditions = condition.split("&&");
     let res = [];
     for (const c of conditions) {
-      //console.log({cand:c})
       if (condition.includes("||")) {
         res.push(this.solveOr(c, opposite));
       } else {
@@ -43,7 +42,6 @@ export class Condition {
     const conditions = condition.split("||");
     let res = [];
     for (const c of conditions) {
-      //console.log({ cor: c });
       res.push(this._solve(c, opposite));
     }
     return res.join("||");
@@ -55,22 +53,17 @@ export class Condition {
     if (this.nest.length) {
       for (const c of this.nest) {
         const solvedData = c.solve(opposite);
-        console.log({ solvedData, c: condition });
         condition = condition.replace("#CONDITION#", `(${solvedData})`);
-        console.log({ conditionafter: condition });
       }
       return condition;
     } else {
-      //console.log({ ogcon: condition });
       const op = operators.find((o) => this.condition.includes(o));
       let res;
       if (op) {
         const [left, right] = condition.split(op);
-        console.log({ofleft:left,ogright:right});
         let leftData, rightData;
         if (left.trim().split(" ").length === 1) {
           leftData = parseData(left.trim());
-          console.log({ trueleftData: leftData });
           if (typeof leftData === "object") {
             try {
               leftData = JSON.stringify(leftData);
@@ -86,7 +79,6 @@ export class Condition {
               leftData = leftData;
             } else {
               leftData = parseString(leftData);
-              console.log({ left: leftData });
               if (
                 typeof parseData(leftData.substring(1, leftData.length - 1)) !==
                 "string"
@@ -94,17 +86,14 @@ export class Condition {
                 leftData = parseData(
                   leftData.substring(1, leftData.length - 1),
                 );
-                console.log({ leftData });
               }
             }
           }
         } else {
           leftData = parseString(left.trim());
         }
-        //console.log({ rl: right.trim().split(" ").length });
         if (right.trim().split(" ").length === 1) {
           rightData = parseData(right.trim());
-          console.log({ truerightData: rightData });
           if (typeof rightData === "object") {
             try {
               rightData = JSON.stringify(rightData);
@@ -129,7 +118,6 @@ export class Condition {
                 rightData = parseData(
                   rightData.substring(1, rightData.length - 1),
                 );
-                console.log({ rightData });
               }
             }
           }
@@ -140,13 +128,6 @@ export class Condition {
                 ]
               }${rightData}`
             : `${leftData}${op}${rightData}`;
-          // //console.log({
-          //   res,
-          //   c: condition,
-          //   leftData,
-          //   rightData,
-          //   op,
-          // });
         } else {
           rightData = parseString(right.trim());
           res = opposite
@@ -167,7 +148,6 @@ export class Condition {
         ) {
           res = parseString(res);
         }
-        //console.log({ res, c: condition });
       }
 
       return res;
@@ -209,18 +189,15 @@ export function conditionLexer(condition: string) {
     tempCondition = condition;
   }
   const counts = countSBrackets(tempCondition);
-  //console.log(counts);
   let i = 0;
   let starter = new Condition("");
   while (i < tempCondition.length) {
     if (tempCondition[i] === "(") {
       const nest = new Condition("", starter);
       starter.add("#CONDITION#");
-      //console.log({ con: starter.condition });
       starter.nest.push(nest);
       starter = nest;
     } else if (tempCondition[i] === ")") {
-      ////console.log(starter)
       if (starter.parent) starter = starter.parent;
       else break;
     } else {

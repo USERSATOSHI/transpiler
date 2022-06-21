@@ -23,7 +23,7 @@ export const $log: FunctionData = {
     const splits = data.splits;
     if ($log.brackets) {
       if (!data.total.startsWith($log.name + "[")) {
-        console.log({ t: data.total, n: $log.name });
+
         throw new TranspilerError(`${data.name} requires closure brackets`);
       }
     }
@@ -37,7 +37,6 @@ export const $log: FunctionData = {
     }
     const parsedText = parseString(text);
     res = `${escapeFunctionResult(`console.log(${parsedText});`)}`;
-    console.log({ total: data.total, res, rest: currentScope.rest });
     currentScope.rest = currentScope.rest.replace(data.total, res);
     return { code: res, scope: scope, data };
   },

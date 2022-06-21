@@ -59,7 +59,6 @@ export const $channelSendMessage: FunctionData = {
       currentScope.setters += executedchan.scope[0].setters + "\n";
       currentScope.rest += executedchan.scope[0].rest + "\n";
       executedchan = executedchan.code;
-      console.log({ executedchan });
     } else {
       executedchan = channel;
     }
@@ -87,7 +86,6 @@ export const $channelSendMessage: FunctionData = {
     newscope.useChannel = executedchan;
     newscope.addReturn = parsedOutput;
     let res = escapeResult(newscope.toString(true));
-    console.log({ newscope });
     currentScope.functions += res + "\n";
     res = escapeResult(`(await ${newscope.name}(__$DISCORD_DATA$__))?.id`);
     currentScope.rest = currentScope.rest.replace(data.total, res);

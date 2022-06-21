@@ -34,7 +34,6 @@ exports.$has = {
             throw new error_1.TranspilerError(`${data.name} requires a name`);
         }
         const currentScope = scope[scope.length - 1];
-        ////console.log({vars:currentScope.variables})
         res = `${(0, util_1.escapeResult)(`${currentScope.variables.includes(name)}`)}`;
         currentScope.rest = currentScope.rest.replace(data.total, res);
         return {

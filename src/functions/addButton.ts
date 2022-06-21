@@ -115,7 +115,6 @@ export const $addButton: FunctionData = {
         )});`,
     );
     currentScope.setters += res + "\n";
-    console.log({ t: data.total, r: currentScope.rest });
     return {
       code: res,
       scope: scope,

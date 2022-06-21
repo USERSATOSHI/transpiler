@@ -22,7 +22,6 @@ export const $isServerPartnered: FunctionData = {
     let res;
     const id = data.inside ?? `__$DISCORD_DATA$__.guild?.id`;
     const currentScope = scope[scope.length - 1];
-    ////console.log({vars:currentScope.variables})
     const parsedId = parseString(id);
     res = escapeResult(
       `__$DISCORD_DATA$__.guilds.cache.get(${parsedId})?.partnered ?? false`,

@@ -32,7 +32,6 @@ exports.$let = {
                 throw new error_1.TranspilerError(`${data.name} requires closure brackets`);
             }
         }
-        console.log({ letData: data });
         if (splits.length !== 2) {
             throw new error_1.TranspilerError(`${data.name} requires 2 arguments`);
         }
@@ -41,11 +40,6 @@ exports.$let = {
         if (typeof value === "string" && value.includes("#FUNCTION_START#")) {
             value = (0, stringparser_1.parseString)(value);
         }
-        console.log({
-            letvalue: value,
-            starts: value.toString().startsWith("`"),
-            ends: value.toString().endsWith("`"),
-        });
         if (name === "") {
             throw new error_1.TranspilerError(`${data.name} requires a name`);
         }
@@ -74,7 +68,6 @@ exports.$let = {
                 res = `let ${(0, util_1.escapeVars)(name)} = \`${value}\`;`;
             }
         }
-        console.log({ lteres: res });
         currentScope.variables.push(name);
         currentScope.setters += (0, util_1.escapeResult)(res) + "\n";
         currentScope.rest = currentScope.rest.replace((0, util_1.removeSetFunc)(data.total).replaceAll("#FUNCTION_SEPARATOR", ";"), "");

@@ -28,7 +28,6 @@ export async function interactionCreate(
     if (!cmd.size) return;
 
     for (const cmd of cmds.values()) {
-      const start = performance.now();
       await cmd.__compiled__.func({
         interaction,
         channel: interaction.channel,
@@ -39,7 +38,6 @@ export async function interactionCreate(
         bot: client,
         command: cmd,
       });
-      console.log("transpiler: " + (performance.now() - start));
     }
   } else if (interaction instanceof ContextMenuCommandInteraction) {
     //@ts-ignore
@@ -51,7 +49,6 @@ export async function interactionCreate(
     if (!cmd.size) return;
 
     for (const cmd of cmds.values()) {
-      const start = performance.now();
       await cmd.__compiled__.func({
         interaction,
         channel: interaction.channel,
@@ -62,7 +59,6 @@ export async function interactionCreate(
         bot: client,
         command: cmd,
       });
-      console.log("transpiler: " + (performance.now() - start));
     }
   } else if (interaction instanceof ModalSubmitInteraction) {
     //@ts-ignore
@@ -76,7 +72,6 @@ export async function interactionCreate(
     if (!cmd.size) return;
 
     for (const cmd of cmds.values()) {
-      const start = performance.now();
       await cmd.__compiled__.func({
         interaction,
         channel: interaction.channel,
@@ -87,7 +82,6 @@ export async function interactionCreate(
         bot: client,
         command: cmd,
       });
-      console.log("transpiler: " + (performance.now() - start));
     }
   } else if (interaction instanceof ButtonInteraction) {
     //@ts-ignore
@@ -99,7 +93,6 @@ export async function interactionCreate(
     if (!cmd.size) return;
 
     for (const cmd of cmds.values()) {
-      const start = performance.now();
       await cmd.__compiled__.func({
         interaction,
         channel: interaction.channel,
@@ -110,7 +103,6 @@ export async function interactionCreate(
         bot: client,
         command: cmd,
       });
-      console.log("transpiler: " + (performance.now() - start));
     }
   } else if (interaction instanceof SelectMenuInteraction) {
     //@ts-ignore
@@ -122,7 +114,6 @@ export async function interactionCreate(
     if (!cmd.size) return;
 
     for (const cmd of cmds.values()) {
-      const start = performance.now();
       await cmd.__compiled__.func({
         interaction,
         channel: interaction.channel,
@@ -133,7 +124,6 @@ export async function interactionCreate(
         bot: client,
         command: cmd,
       });
-      console.log("transpiler: " + (performance.now() - start));
     }
   }
 }

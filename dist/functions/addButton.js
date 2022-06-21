@@ -94,7 +94,6 @@ exports.$addButton = {
         const res = (0, util_2.escapeResult)((0, util_2.escapeVars)(`${currentScope.name}_components`) +
             `[${currentScope.components.length - 1}].components.push(${(0, util_1.inspect)(Button.toJSON(), { depth: null })});`);
         currentScope.setters += res + "\n";
-        console.log({ t: data.total, r: currentScope.rest });
         return {
             code: res,
             scope: scope,

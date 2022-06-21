@@ -22,7 +22,6 @@ exports.$isServerVerified = {
         let res;
         const id = data.inside ?? `__$DISCORD_DATA$__.guild?.id`;
         const currentScope = scope[scope.length - 1];
-        ////console.log({vars:currentScope.variables})
         const parsedId = (0, stringparser_1.parseString)(id);
         res = (0, util_1.escapeResult)(`__$DISCORD_DATA$__.guilds.cache.get(${parsedId})?.verified ?? false`);
         currentScope.rest = currentScope.rest.replace(data.total, res);

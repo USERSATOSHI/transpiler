@@ -103,24 +103,17 @@ export class Scope {
       this.hasSendData = true;
     else this.hasSendData = false;
 
-    console.log({ h: this.hasSendData });
-
     let parsedStr = parseString(
       sendData.content.replaceAll("#NEW_LINE#", "\n").trim(),
     );
     parsedStr = parsedStr.trim() === "" ? " " : parsedStr.trim();
-    console.log({ parsedStr });
-    console.log({ res: this.rest, content: this.sendData.content });
+
     this.rest = this.replaceLast(
       this.rest.trim(),
       this.sendData.content.trim(),
       "",
     );
-    console.log({
-      restafter: this.rest,
-      content: this.sendData.content,
-      c: sendData.content,
-    });
+
     const sent = `{
   content: ${parsedStr.replaceAll("\\n", "#NEW_LINE#")},
   embeds: ${escapeVars(`${this.name}_embeds`)},
@@ -128,7 +121,7 @@ export class Scope {
   files: ${escapeVars(`${this.name}_files`)},
   stickers: ${escapeVars(`${this.name}_stickers`)},
     }`.replaceAll("#NEW_LINE#", "\\\\n");
-    console.log({ sent });
+
     return parseResult(
       `async function ${this.name}(__$DISCORD_DATA$__) {\n` +
         `const ${escapeVars(`${this.name}_embeds`)} = [];\n` +
@@ -141,10 +134,7 @@ export class Scope {
         }\n\n${this.rest.trim()}\n\n`.trim() +
         `\n${(() => {
           if (this.hasSendData && sendMessage) {
-            console.log({
-              sendata: `${sent}`,
-              replacer: `content: '${sendData.content}'`,
-            });
+
             return `${this.addReturn ? "return " : ""} await ${
               this.useChannel
                 ? `__$DISCORD_DATA$__.client.channels.cache.get(${parseString(
@@ -178,24 +168,18 @@ export class Scope {
       this.hasSendData = true;
     else this.hasSendData = false;
 
-    console.log({ h: this.hasSendData });
 
     let parsedStr = parseString(
       sendData.content.replaceAll("#NEW_LINE#", "\n").trim(),
     ).replaceAll("#STRING_LITERAL#", "`");
     parsedStr = parsedStr.trim() === "" ? " " : parsedStr.trim();
-    console.log({ parsedStr });
-    console.log({ res: this.rest, content: this.sendData.content });
+
     this.rest = this.replaceLast(
       this.rest.trim(),
       this.sendData.content.trim(),
       "",
     );
-    console.log({
-      restafter: this.rest,
-      content: this.sendData.content,
-      c: sendData.content,
-    });
+
     const sent = `{
   content: ${parsedStr.replaceAll("\\n", "#NEW_LINE#")},
   embeds: ${escapeVars(`${this.name}_embeds`)},
@@ -205,7 +189,6 @@ export class Scope {
   ephemeral: ${this.ephemeral},
 }`.replaceAll("#NEW_LINE#", "\\\\n");
 
-    console.log({ sent });
     return parseResult(
       `const ${escapeVars(`${this.name}_embeds`)} = [];\n` +
         `const ${escapeVars(`${this.name}_components`)} = [];\n` +
@@ -217,11 +200,7 @@ export class Scope {
         }\n\n${this.rest.trim()}\n\n`.trim() +
         `\n${(() => {
           if (this.hasSendData && sendMessage) {
-            console.log({
-              sendata: `${sent}`,
-              replacer: `content: '${sendData.content}'`,
-              replacer2: `content: "${sendData.content}"`,
-            });
+
             return `${this.addReturn ? "return " : ""} await ${
               this.useChannel
                 ? `__$DISCORD_DATA$__.client.channels.cache.get(\`${this.useChannel}\`)`
@@ -249,8 +228,6 @@ export class Scope {
       this.hasSendData = true;
     else this.hasSendData = false;
 
-    console.log({ h: this.hasSendData });
-
     let parsedStr = parseString(
       sendData.content.replaceAll("#NEW_LINE#", "\n").trim(),
     );
@@ -258,18 +235,12 @@ export class Scope {
       parsedStr.trim().replaceAll("#STRING_LITERAL#", "\\`") === ""
         ? " "
         : parsedStr.trim().replaceAll("#STRING_LITERAL#", "\\`");
-    console.log({ parsedStr });
-    console.log({ res: this.rest, content: this.sendData.content });
+
     this.rest = this.replaceLast(
       this.rest.trim(),
       this.sendData.content.trim(),
       "",
     );
-    console.log({
-      restafter: this.rest,
-      content: this.sendData.content,
-      c: sendData.content,
-    });
     const sent = `{
   content: ${parsedStr.replaceAll("\\n", "#NEW_LINE#")},
   embeds: ${escapeVars(`${this.name}_embeds`)},
@@ -277,7 +248,7 @@ export class Scope {
   files: ${escapeVars(`${this.name}_files`)},
   stickers: ${escapeVars(`${this.name}_stickers`)},
     }`.replaceAll("#NEW_LINE#", "\\\\n");
-    console.log({ sent });
+
     return parseResult(
       `async function ${
         this.name === "global" ? "main" : this.name
@@ -292,10 +263,7 @@ export class Scope {
         }\n\n${this.rest.trim()}\n\n`.trim() +
         `\n${(() => {
           if (this.hasSendData && sendMessage) {
-            console.log({
-              sendata: `${sent}`,
-              replacer: `content: '${sendData.content}'`,
-            });
+
             return `${this.addReturn ? "return " : ""} await ${
               this.useChannel
                 ? `__$DISCORD_DATA$__.client.channels.cache.get(${parseString(
@@ -329,24 +297,17 @@ export class Scope {
       this.hasSendData = true;
     else this.hasSendData = false;
 
-    console.log({ h: this.hasSendData });
-
     let parsedStr = parseString(
       sendData.content.replaceAll("#NEW_LINE#", "\n").trim(),
     );
     parsedStr = parsedStr.trim() === "" ? " " : parsedStr.trim();
-    console.log({ parsedStr });
-    console.log({ res: this.rest, content: this.sendData.content });
+
     this.rest = this.replaceLast(
       this.rest.trim(),
       this.sendData.content.trim(),
       "",
     );
-    console.log({
-      restafter: this.rest,
-      content: this.sendData.content,
-      c: sendData.content,
-    });
+
     const sent = `{
   content: ${parsedStr.replaceAll("\\n", "#NEW_LINE#")},
   embeds: ${escapeVars(`${this.name}_embeds`)},
@@ -354,7 +315,7 @@ export class Scope {
   files: ${escapeVars(`${this.name}_files`)},
   stickers: ${escapeVars(`${this.name}_stickers`)},
     }`.replaceAll("#NEW_LINE#", "\\\\n");
-    console.log({ sent });
+
     return {
       packages: this.packages,
       setters: this.setters,
@@ -379,24 +340,17 @@ export class Scope {
       this.hasSendData = true;
     else this.hasSendData = false;
 
-    console.log({ h: this.hasSendData });
-
     let parsedStr = parseString(
       sendData.content.replaceAll("#NEW_LINE#", "\n").trim(),
     );
     parsedStr = parsedStr.trim() === "" ? " " : parsedStr.trim();
-    console.log({ parsedStr });
-    console.log({ res: this.rest, content: this.sendData.content });
+
     this.rest = this.replaceLast(
       this.rest.trim(),
       this.sendData.content.trim(),
       "",
     );
-    console.log({
-      restafter: this.rest,
-      content: this.sendData.content,
-      c: sendData.content,
-    });
+
     const sent = `{
   content: ${parsedStr.replaceAll("\\n", "#NEW_LINE#")},
   embeds: ${escapeVars(`${this.name}_embeds`)},
@@ -404,8 +358,6 @@ export class Scope {
   files: ${escapeVars(`${this.name}_files`)},
   stickers: ${escapeVars(`${this.name}_stickers`)},
     }`.replaceAll("#NEW_LINE#", "\\\\n");
-
-    console.log({ sent });
 
     return parseResult(
       `async function ${
@@ -421,10 +373,7 @@ export class Scope {
         }\n\n${this.rest.trim()}\n\n`.trim() +
         `\n${(() => {
           if (this.hasSendData) {
-            console.log({
-              sendata: `${sent}`,
-              replacer: `content: '${sendData.content}'`,
-            });
+            
             return `${
               this.addReturn ? "return " : ""
             } await ${`__$DISCORD_DATA$__.client.channels.cache.get(${parseString(

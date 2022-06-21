@@ -34,7 +34,6 @@ exports.$get = {
             throw new error_1.TranspilerError(`${data.name} requires a name`);
         }
         const currentScope = scope[scope.length - 1];
-        ////console.log({vars:currentScope.variables})
         if (!currentScope.variables.includes(name)) {
             throw new error_1.TranspilerError(`${data.name} cannot find ${name}`);
         }
