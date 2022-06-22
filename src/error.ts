@@ -1,6 +1,5 @@
 export class TranspilerError extends Error {
-    static cause: typeof TranspilerError;
-    static message: string;
+    cause: TranspilerError;
     constructor(msg:string) {
         super(msg);
         this.name = "TranspilerError";

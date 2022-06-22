@@ -21,6 +21,7 @@ function Transpiler(code, sendMessage = true, scopeData, uglify = false) {
     const globalScope = new scope_1.Scope(scopeData?.name ?? "global", undefined, code);
     globalScope.addVariables(scopeData?.variables ?? []);
     globalScope.addEmbeds(scopeData?.embeds ?? []);
+    globalScope.env.push(...(scopeData?.env ?? []));
     globalScope.sendFunction = scopeData?.sendFunction ?? globalScope.sendFunction;
     const res = (0, util_1.ExecuteData)((0, util_1.parseResult)(code), FData.funcs, [globalScope]);
     if (res.scope[0].sendData.content.trim() !== "") {

@@ -22,10 +22,12 @@ exports.$isNumber = {
     code: (data, scope) => {
         let res;
         const num = data.inside;
-        if (!num) {
+        const currentScope = scope[scope.length - 1];
+        if (!num &&
+            (!currentScope.name.startsWith("$try_") &&
+                !currentScope.name.startsWith("$catch_"))) {
             throw new error_1.TranspilerError(`${data.name} requires 1 argument`);
         }
-        const currentScope = scope[scope.length - 1];
         let parsedNum;
         const typedNum = (0, util_1.parseData)(num);
         if (typeof typedNum === "string") {

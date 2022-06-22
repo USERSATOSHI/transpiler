@@ -27,18 +27,27 @@ export const $while: FunctionData = {
   description: "While statement",
   code: (data, scope) => {
     const splits = data.splits;
-    if (data.inside?.trim() === "" || !data.inside) {
+    const currentScope = scope[scope.length - 1];
+    if (
+      data.inside?.trim() === "" ||
+      (!data.inside &&
+        (!currentScope.name.startsWith("$try_") ||
+          !currentScope.name.startsWith("$catch_")))
+    ) {
       throw new TranspilerError(
         `${data.name} function requires condition and code`,
       );
     }
-    if (data.splits.length < 2) {
+    if (
+      data.splits.length < 2 &&
+      (!currentScope.name.startsWith("$try_") &&
+        !currentScope.name.startsWith("$catch_"))
+    ) {
       throw new TranspilerError(
         `${data.name} function requires condition and code`,
       );
     }
     let [condition, ...code] = splits;
-    const currentScope = scope[scope.length - 1];
     const conditionFunctionList = getFunctionList(
       condition,
       Object.keys(funcs),
@@ -68,11 +77,21 @@ export const $while: FunctionData = {
         embeds: currentScope.embeds,
       });
     } else {
-      throw new TranspilerError(`${data.name} requires function in code`);
+      if (
+        !currentScope.name.startsWith("$try_") ||
+        !currentScope.name.startsWith("$catch_")
+      )
+        throw new TranspilerError(`${data.name} requires function in code`);
     }
     const res = escapeResult(`
 while(${executedCondition}) {
-  ${executedCode.scope[0].getExecutable(false)}
+  ${(<
+    {
+      code: string;
+      scope: Scope[];
+      func: any;
+    }
+  >executedCode)?.scope[0].getExecutable(false)}
 }
 `);
     data.funcs = [];

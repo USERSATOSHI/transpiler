@@ -16,9 +16,6 @@ const opposites = {
 };
 exports.operators = ["===", "!==", "==", "!=", ">", "<", ">=", "<="];
 class Condition {
-    condition;
-    nest;
-    parent;
     constructor(condition, parent) {
         this.condition = condition;
         this.nest = [];

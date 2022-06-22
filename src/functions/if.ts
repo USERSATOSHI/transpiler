@@ -29,7 +29,11 @@ export const $if: FunctionData = {
     const splits = data.splits;
     const currentScope = scope[scope.length - 1];
     if ($if.brackets) {
-      if (!data.total.startsWith($if.name + "[")) {
+      if (
+        !data.total.startsWith($if.name + "[") &&
+        (!currentScope.name.startsWith("$try_") ||
+          !currentScope.name.startsWith("$catch_"))
+      ) {
         throw new TranspilerError(`${data.name} requires closure brackets`);
       }
     }

@@ -70,7 +70,12 @@ export const $author: FunctionData = {
       };
     } else {
       const index = Number(fields[0]) - 1;
-      if (index < 0 || index > 9) {
+      if (
+        index < 0 ||
+        (index > 9 &&
+          (!currentScope.name.startsWith("$try_") ||
+            !currentScope.name.startsWith("$catch_")))
+      ) {
         throw new TranspilerError(`${data.name} requires a valid index`);
       }
       const author = parseString(fields[1]);

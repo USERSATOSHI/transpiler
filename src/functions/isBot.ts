@@ -21,13 +21,18 @@ export const $isBot: FunctionData = {
   description: "Checks if the author is a bot",
   code: (data: funcData, scope: Scope[]) => {
     let res;
+    const currentScope = scope[scope.length - 1];
     const userId = data.inside ?? `__$DISCORD_DATA$__.author?.id`;
     if ($isBot.brackets) {
-      if (!data.total.startsWith($isBot.name + "[")) {
+      if (
+        !data.total.startsWith($isBot.name + "[") &&
+        (!currentScope.name.startsWith("$try_") ||
+          !currentScope.name.startsWith("$catch_"))
+      ) {
         throw new TranspilerError(`${data.name} requires closure brackets`);
       }
     }
-    const currentScope = scope[scope.length - 1];
+
     if (
       !currentScope.packages.includes(
         `const TRANSPILER_HELPERS = await import("./helpers.js")`,

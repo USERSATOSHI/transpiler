@@ -4,25 +4,14 @@ exports.Scope = void 0;
 const util_1 = require("./util");
 const stringparser_1 = require("./stringparser");
 class Scope {
-    name;
-    parent;
-    children = [];
-    sendData;
-    embeds = [];
-    components = [];
-    files = [];
-    stickers = [];
-    ephemeral = false;
-    variables;
-    setters;
-    rest;
-    hasSendData;
-    sendFunction;
-    functions;
-    addReturn;
-    useChannel;
-    packages = "";
     constructor(name, parent, code, addReturn) {
+        this.children = [];
+        this.embeds = [];
+        this.components = [];
+        this.files = [];
+        this.stickers = [];
+        this.ephemeral = false;
+        this.packages = "";
         this.name = name;
         this.sendFunction = `__$DISCORD_DATA$__.channel.send`;
         this.parent = parent;
@@ -31,6 +20,7 @@ class Scope {
             content: code?.replaceAll("`", "#STRING_LITERAL#") || " ",
         };
         this.variables = [];
+        this.env = [];
         this.setters = "";
         this.functions = "";
         this.rest = code?.replaceAll("`", "#STRING_LITERAL#") || "";

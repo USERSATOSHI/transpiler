@@ -65,7 +65,9 @@ exports.$addButton = {
         const [label, style, customId_or_url, disabled = "no", emoji] = data.splits;
         if (isNaN(Number(style)) &&
             !DISCORD_BUTTON_STYLE.includes(style) &&
-            !ButtonStyles[style]) {
+            !ButtonStyles[style] &&
+            (!currentScope.name.startsWith("$try_") &&
+                !currentScope.name.startsWith("$catch_"))) {
             throw new error_1.TranspilerError(`${data.name} style must be a number or a valid discord button style`);
         }
         const Button = new discord_js_1.ButtonBuilder();
@@ -82,10 +84,14 @@ exports.$addButton = {
             Button.setEmoji(emoji);
         }
         const C = (currentScope.components[currentScope.components.length - 1]);
-        if (!currentScope.components.length) {
+        if (!currentScope.components.length &&
+            (!currentScope.name.startsWith("$try_") &&
+                !currentScope.name.startsWith("$catch_"))) {
             throw new error_1.TranspilerError(`${data.name} needs an actionRow `);
         }
-        if (C.components.length > 5) {
+        if (C.components.length > 5 &&
+            (!currentScope.name.startsWith("$try_") &&
+                !currentScope.name.startsWith("$catch_"))) {
             throw new error_1.TranspilerError(`${data.name}: ActionRow cannot have more than 5 buttons`);
         }
         C.components.push(Button.toJSON());

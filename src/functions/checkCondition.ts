@@ -22,10 +22,12 @@ export const $checkCondition: FunctionData = {
   code: (data: funcData, scope: Scope[]) => {
     const condition = data.inside;
     const currentScope = scope[scope.length - 1];
-    if (!condition) {
+    if (!condition &&
+      (!currentScope.name.startsWith("$try_") &&
+        !currentScope.name.startsWith("$catch_"))) {
       throw new TranspilerError(`${data.name}: condition is required`);
     }
-    const parsedCondition = conditionLexer(condition).solve(false);
+    const parsedCondition = conditionLexer(<string>condition).solve(false);
     const res = escapeResult(parseResult(parsedCondition));
     currentScope.rest = currentScope.rest.replace(data.total, res);
 

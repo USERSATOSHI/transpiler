@@ -21,18 +21,29 @@ export const $log: FunctionData = {
   code: (data: funcData, scope: Scope[]) => {
     let res;
     const splits = data.splits;
+    const currentScope = scope[scope.length - 1];
     if ($log.brackets) {
-      if (!data.total.startsWith($log.name + "[")) {
-
+      if (
+        !data.total.startsWith($log.name + "[") &&
+        (!currentScope.name.startsWith("$try_") ||
+          !currentScope.name.startsWith("$catch_"))
+      ) {
         throw new TranspilerError(`${data.name} requires closure brackets`);
       }
     }
-    if (splits.length !== 1) {
+    if (
+      splits.length !== 1 &&
+      (!currentScope.name.startsWith("$try_") &&
+        !currentScope.name.startsWith("$catch_"))
+    ) {
       throw new TranspilerError(`${data.name} requires 1 argument`);
     }
     const text = splits[0];
-    const currentScope = scope[scope.length - 1];
-    if (text === "") {
+    if (
+      text === "" &&
+      (!currentScope.name.startsWith("$try_") &&
+        !currentScope.name.startsWith("$catch_"))
+    ) {
       throw new TranspilerError(`${data.name} requires a text`);
     }
     const parsedText = parseString(text);

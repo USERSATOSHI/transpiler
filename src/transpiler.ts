@@ -14,7 +14,7 @@ const functions = Object.keys(FunctionDatas ?? []);
 export function Transpiler(
   code: string,
   sendMessage: boolean = true,
-  scopeData?: { variables?: string[]; embeds?: EmbedData[]; name?: string , sendFunction?: string },
+  scopeData?: { variables?: string[]; embeds?: EmbedData[]; name?: string , sendFunction?: string,env?:string[] },
   uglify: boolean = false,
 ) {
   const flist = getFunctionList(code, functions);
@@ -32,6 +32,7 @@ export function Transpiler(
   const globalScope = new Scope(scopeData?.name ?? "global", undefined, code);
   globalScope.addVariables(scopeData?.variables ?? []);
   globalScope.addEmbeds(scopeData?.embeds ?? []);
+  globalScope.env.push(...(scopeData?.env ??[]));
 
   globalScope.sendFunction = scopeData?.sendFunction ?? globalScope.sendFunction;
   const res = ExecuteData(parseResult(code), FData.funcs, [globalScope]);

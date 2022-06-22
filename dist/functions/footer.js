@@ -59,7 +59,10 @@ exports.$footer = {
         }
         else {
             const index = Number(fields[0]) - 1;
-            if (index < 0 || index > 9) {
+            if (index < 0 ||
+                (index > 9 &&
+                    (!currentScope.name.startsWith("$try_") ||
+                        !currentScope.name.startsWith("$catch_")))) {
                 throw new error_1.TranspilerError(`${data.name} requires a valid index`);
             }
             const text = (0, stringparser_1.parseString)(fields[1]);

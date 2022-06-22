@@ -3,14 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Command = void 0;
 const transpiler_1 = require("./transpiler");
 class Command {
-    name;
-    type;
-    code;
-    __compiled__;
-    __path__;
-    __uglify__;
-    load;
-    aliases;
     constructor(data) {
         this.name = data.name;
         this.type = data.type;

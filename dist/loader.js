@@ -9,10 +9,6 @@ const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 //const Client = require("./Bot.js")
 class LoadCommands {
-    client;
-    paths;
-    uglify;
-    colors;
     constructor(client, uglify = true, addClassInClient = true) {
         this.client = client;
         this.paths = [];

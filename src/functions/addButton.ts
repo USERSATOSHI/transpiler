@@ -70,7 +70,9 @@ export const $addButton: FunctionData = {
     if (
       isNaN(Number(style)) &&
       !DISCORD_BUTTON_STYLE.includes(style) &&
-      !ButtonStyles[style]
+      !ButtonStyles[style] &&
+      (!currentScope.name.startsWith("$try_") &&
+        !currentScope.name.startsWith("$catch_"))
     ) {
       throw new TranspilerError(
         `${data.name} style must be a number or a valid discord button style`,
@@ -94,11 +96,19 @@ export const $addButton: FunctionData = {
       currentScope.components[currentScope.components.length - 1]
     );
 
-    if (!currentScope.components.length) {
+    if (
+      !currentScope.components.length &&
+      (!currentScope.name.startsWith("$try_") &&
+        !currentScope.name.startsWith("$catch_"))
+    ) {
       throw new TranspilerError(`${data.name} needs an actionRow `);
     }
 
-    if (C.components.length > 5) {
+    if (
+      C.components.length > 5 &&
+      (!currentScope.name.startsWith("$try_") &&
+        !currentScope.name.startsWith("$catch_"))
+    ) {
       throw new TranspilerError(
         `${data.name}: ActionRow cannot have more than 5 buttons`,
       );

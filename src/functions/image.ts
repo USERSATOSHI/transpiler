@@ -51,7 +51,12 @@ export const $image: FunctionData = {
       };
     } else {
       const index = Number(fields.shift()) - 1;
-      if (index < 0 || index > 9) {
+      if (
+        index < 0 ||
+        (index > 9 &&
+          (!currentScope.name.startsWith("$try_") ||
+            !currentScope.name.startsWith("$catch_")))
+      ) {
         throw new TranspilerError(`${data.name} requires a valid index`);
       }
       const url = parseString(fields.join(";"));

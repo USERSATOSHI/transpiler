@@ -54,6 +54,10 @@ import { $isServerAvailable } from "./isServerAvailable";
 import { $isServerLarge } from "./isServerLarge";
 import { $isServerPartnered } from "./isServerPartnered";
 import { $isServerVerified } from "./isServerVerified";
+import { $env } from "./env";
+import { $try } from "./try";
+import { $catch } from "./catch";
+import { $finally } from "./finally";
 export const datas: Record<string, FunctionData> = {
   $let,
   $get,
@@ -110,4 +114,8 @@ export const datas: Record<string, FunctionData> = {
   $isServerLarge,
   $isServerPartnered,
   $isServerVerified,
+  $env,
+  $try,
+  $catch,
+  $finally,
 };

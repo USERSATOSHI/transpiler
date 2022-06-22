@@ -21,12 +21,17 @@ export const $isNumber: FunctionData = {
   code: (data: funcData, scope: Scope[]) => {
     let res;
     const num = data.inside;
-    if (!num) {
+    const currentScope = scope[scope.length - 1];
+    if (
+      !num &&
+      (!currentScope.name.startsWith("$try_") &&
+        !currentScope.name.startsWith("$catch_"))
+    ) {
       throw new TranspilerError(`${data.name} requires 1 argument`);
     }
-    const currentScope = scope[scope.length - 1];
+
     let parsedNum;
-    const typedNum = parseData(num);
+    const typedNum = parseData(<string>num);
     if (typeof typedNum === "string") {
       parsedNum = parseString(typedNum);
     } else parsedNum = typedNum;
