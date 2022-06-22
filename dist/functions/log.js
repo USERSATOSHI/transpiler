@@ -22,17 +22,23 @@ exports.$log = {
     code: (data, scope) => {
         let res;
         const splits = data.splits;
+        const currentScope = scope[scope.length - 1];
         if (exports.$log.brackets) {
-            if (!data.total.startsWith(exports.$log.name + "[")) {
+            if (!data.total.startsWith(exports.$log.name + "[") &&
+                (!currentScope.name.startsWith("$try_") ||
+                    !currentScope.name.startsWith("$catch_"))) {
                 throw new error_1.TranspilerError(`${data.name} requires closure brackets`);
             }
         }
-        if (splits.length !== 1) {
+        if (splits.length !== 1 &&
+            (!currentScope.name.startsWith("$try_") &&
+                !currentScope.name.startsWith("$catch_"))) {
             throw new error_1.TranspilerError(`${data.name} requires 1 argument`);
         }
         const text = splits[0];
-        const currentScope = scope[scope.length - 1];
-        if (text === "") {
+        if (text === "" &&
+            (!currentScope.name.startsWith("$try_") &&
+                !currentScope.name.startsWith("$catch_"))) {
             throw new error_1.TranspilerError(`${data.name} requires a text`);
         }
         const parsedText = (0, stringparser_1.parseString)(text);

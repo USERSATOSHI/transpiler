@@ -28,6 +28,7 @@ export class Scope {
   >[] = [];
   files: MessageAttachment[] = [];
   stickers: StickerResolvable[] = [];
+  env: string[];
   ephemeral: boolean = false;
   variables: string[];
   setters: string;
@@ -52,6 +53,7 @@ export class Scope {
       content: code?.replaceAll("`", "#STRING_LITERAL#") || " ",
     };
     this.variables = [];
+    this.env = [];
     this.setters = "";
     this.functions = "";
     this.rest = code?.replaceAll("`", "#STRING_LITERAL#") || "";

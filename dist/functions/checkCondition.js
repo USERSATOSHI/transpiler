@@ -22,7 +22,9 @@ exports.$checkCondition = {
     code: (data, scope) => {
         const condition = data.inside;
         const currentScope = scope[scope.length - 1];
-        if (!condition) {
+        if (!condition &&
+            (!currentScope.name.startsWith("$try_") &&
+                !currentScope.name.startsWith("$catch_"))) {
             throw new error_1.TranspilerError(`${data.name}: condition is required`);
         }
         const parsedCondition = (0, conditionlexer_1.conditionLexer)(condition).solve(false);

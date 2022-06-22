@@ -27,12 +27,17 @@ exports.$let = {
     code: (data, scope) => {
         let res;
         const splits = data.splits;
+        const currentScope = scope[scope.length - 1];
         if (exports.$let.brackets) {
-            if (!data.total.startsWith(exports.$let.name + "[")) {
+            if (!data.total.startsWith(exports.$let.name + "[") &&
+                (!currentScope.name.startsWith("$try_") ||
+                    !currentScope.name.startsWith("$catch_"))) {
                 throw new error_1.TranspilerError(`${data.name} requires closure brackets`);
             }
         }
-        if (splits.length !== 2) {
+        if (splits.length !== 2 &&
+            (!currentScope.name.startsWith("$try_") &&
+                !currentScope.name.startsWith("$catch_"))) {
             throw new error_1.TranspilerError(`${data.name} requires 2 arguments`);
         }
         const name = (0, util_1.removeSetFunc)(splits[0]);
@@ -40,13 +45,16 @@ exports.$let = {
         if (typeof value === "string" && value.includes("#FUNCTION_START#")) {
             value = (0, stringparser_1.parseString)(value);
         }
-        if (name === "") {
+        if (name === "" &&
+            (!currentScope.name.startsWith("$try_") &&
+                !currentScope.name.startsWith("$catch_"))) {
             throw new error_1.TranspilerError(`${data.name} requires a name`);
         }
-        if (name === value) {
+        if (name === value &&
+            (!currentScope.name.startsWith("$try_") &&
+                !currentScope.name.startsWith("$catch_"))) {
             throw new error_1.TranspilerError(`${data.name} cannot be used to set itself`);
         }
-        const currentScope = scope[scope.length - 1];
         if (currentScope.variables.includes(name)) {
             if (currentScope.variables.includes((0, util_1.parseResult)(value)) ||
                 value.toString().startsWith("#FUNCTION_START#") ||

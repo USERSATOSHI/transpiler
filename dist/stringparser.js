@@ -2,11 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.parseString = exports.createStringAST = exports.Block = void 0;
 class Block {
-    position;
-    isMain;
-    parent;
-    nest;
-    text;
     constructor(position, isMain, parent) {
         this.position = position;
         this.isMain = isMain;

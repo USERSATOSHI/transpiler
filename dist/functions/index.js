@@ -56,6 +56,10 @@ const isServerAvailable_1 = require("./isServerAvailable");
 const isServerLarge_1 = require("./isServerLarge");
 const isServerPartnered_1 = require("./isServerPartnered");
 const isServerVerified_1 = require("./isServerVerified");
+const env_1 = require("./env");
+const try_1 = require("./try");
+const catch_1 = require("./catch");
+const finally_1 = require("./finally");
 exports.datas = {
     $let: let_1.$let,
     $get: get_1.$get,
@@ -112,5 +116,9 @@ exports.datas = {
     $isServerLarge: isServerLarge_1.$isServerLarge,
     $isServerPartnered: isServerPartnered_1.$isServerPartnered,
     $isServerVerified: isServerVerified_1.$isServerVerified,
+    $env: env_1.$env,
+    $try: try_1.$try,
+    $catch: catch_1.$catch,
+    $finally: finally_1.$finally,
 };
 //# sourceMappingURL=index.js.map

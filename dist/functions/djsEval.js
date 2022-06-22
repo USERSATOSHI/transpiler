@@ -27,16 +27,20 @@ exports.$djsEval = {
     code: (data, scope) => {
         const splits = data.splits;
         const [output, ...code] = splits;
+        const currentScope = scope[scope.length - 1];
         const parsedOutput = (0, util_1.convertToBool)(output);
         if (exports.$djsEval.brackets) {
-            if (!data.total.startsWith(exports.$djsEval.name + "[")) {
+            if (!data.total.startsWith(exports.$djsEval.name + "[") &&
+                (!currentScope.name.startsWith("$try_") ||
+                    !currentScope.name.startsWith("$catch_"))) {
                 throw new error_1.TranspilerError(`${data.name} requires closure brackets`);
             }
         }
-        if (splits.length < 2) {
+        if (splits.length < 2 &&
+            (!currentScope.name.startsWith("$try_") &&
+                !currentScope.name.startsWith("$catch_"))) {
             throw new error_1.TranspilerError(`${data.name} requires 2 arguments`);
         }
-        const currentScope = scope[scope.length - 1];
         const Code = (0, stringparser_1.parseString)(code.join(";"));
         if (!currentScope.functions.includes("async function __$djsEval$__(Code) {")) {
             const setres = `

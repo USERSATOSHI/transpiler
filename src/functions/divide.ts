@@ -20,7 +20,11 @@ export const $divide: FunctionData = {
   code: (data, scope) => {
     const numbers = data.splits;
     const currentScope = scope[scope.length - 1];
-    if (data.splits.length === 0) {
+    if (
+      data.splits.length === 0 &&
+      (!currentScope.name.startsWith("$try_") &&
+        !currentScope.name.startsWith("$catch_"))
+    ) {
       throw new TranspilerError(`${data.name} requires at least 1 argument`);
     }
     let div = `${numbers

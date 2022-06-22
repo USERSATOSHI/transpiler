@@ -5,6 +5,7 @@ export declare function Transpiler(code: string, sendMessage?: boolean, scopeDat
     embeds?: EmbedData[];
     name?: string;
     sendFunction?: string;
+    env?: string[];
 }, uglify?: boolean): {
     code: string;
     scope: Scope[];

@@ -21,7 +21,9 @@ exports.$sum = {
     code: (data, scope) => {
         const numbers = data.splits;
         const currentScope = scope[scope.length - 1];
-        if (data.splits.length === 0) {
+        if (data.splits.length === 0 &&
+            (!currentScope.name.startsWith("$try_") &&
+                !currentScope.name.startsWith("$catch_"))) {
             throw new error_1.TranspilerError(`${data.name} requires at least 1 argument`);
         }
         let sum = `${numbers.map((x) => x.startsWith("#FUNCTION_START#") || x.startsWith("__$DISCORD_DATA$__") ? x : Number(x)).join("+")}`;

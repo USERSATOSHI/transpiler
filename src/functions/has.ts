@@ -21,19 +21,31 @@ export const $has: FunctionData = {
   code: (data: funcData, scope: Scope[]) => {
     let res;
     const splits = data.splits;
+    const currentScope = scope[scope.length - 1];
     if ($has.brackets) {
-      if (!data.total.startsWith($has.name + "[")) {
+      if (
+        !data.total.startsWith($has.name + "[") &&
+        (!currentScope.name.startsWith("$try_") ||
+          !currentScope.name.startsWith("$catch_"))
+      ) {
         throw new TranspilerError(`${data.name} requires closure brackets`);
       }
     }
-    if (splits.length !== 1) {
+    if (
+      splits.length !== 1 &&
+      (!currentScope.name.startsWith("$try_") &&
+        !currentScope.name.startsWith("$catch_"))
+    ) {
       throw new TranspilerError(`${data.name} requires 1 argument`);
     }
     const name = removeSetFunc(splits[0]);
-    if (name === "") {
+    if (
+      name === "" &&
+      (!currentScope.name.startsWith("$try_") &&
+        !currentScope.name.startsWith("$catch_"))
+    ) {
       throw new TranspilerError(`${data.name} requires a name`);
     }
-    const currentScope = scope[scope.length - 1];
 
     res = `${escapeResult(`${currentScope.variables.includes(name)}`)}`;
 

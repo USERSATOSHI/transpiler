@@ -29,7 +29,11 @@ export const $increment: FunctionData = {
   code: (data: funcData, scope: Scope[]) => {
     const [variable, ...incrementFunction] = data.splits;
     const currentScope = scope[scope.length - 1];
-    if (variable === "") {
+    if (
+      variable === "" &&
+      (!currentScope.name.startsWith("$try_") &&
+        !currentScope.name.startsWith("$catch_"))
+    ) {
       throw new TranspilerError(`${data.name} requires a variable`);
     }
     if (incrementFunction.length === 0) {

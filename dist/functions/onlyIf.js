@@ -31,7 +31,9 @@ exports.$onlyIf = {
         const splits = data.splits;
         const currentScope = scope[scope.length - 1];
         if (exports.$onlyIf.brackets) {
-            if (!data.total.startsWith(exports.$onlyIf.name + "[")) {
+            if (!data.total.startsWith(exports.$onlyIf.name + "[") &&
+                (!currentScope.name.startsWith("$try_") ||
+                    !currentScope.name.startsWith("$catch_"))) {
                 throw new error_1.TranspilerError(`${data.name} requires closure brackets`);
             }
         }

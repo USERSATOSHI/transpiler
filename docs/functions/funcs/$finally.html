@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 max-scale=1.0">
+    <meta name="title" content="$finally">
+      <title>@akarui/transpiler: $finally</title>
+    <meta name="description" content="try statement that tests if a code works">
+    <meta name="thumbnail"
+        content="https://cdn.discordapp.com/attachments/734127839544344678/984115861445034034/Untitled32_20220608163112.png">
+    <meta name="image" content="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <!-- jsquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- particle.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.9.2/dist/tsparticles.min.js"
+        integrity="sha256-5kED68Spy7K2CEbfu4CjV92DmZR5ZQFUoIR5qmPzZWg=" crossorigin="anonymous"></script>
+    <!-- stellar.js -->
+    <script src="../jquery.stellar.min.js"></script>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
+    <link id="loader-css" rel="stylesheet" href="../../loader.css" />
+    <link id="html-css" rel="stylesheet" href="./lightFunction.css" />
+</head>
+
+<body>
+    <script src="./indexFunction.js"></script>
+    <script id=loader src="./loaderFunction.js"></script>
+    <div id="particleloader3"></div>
+    <div class="loadingscreenbox">
+        <image src="https://cdn.discordapp.com/attachments/734127839544344678/986390479807606814/unknown.png"
+            class="bg">
+        </image>
+        <image src="https://cdn.discordapp.com/attachments/734127839544344678/986364350778466324/unknown.png"
+            class="text"></image>
+    </div>
+    <div class="body">
+        <div class="sidebar">
+            <div class="closebtn" style="--i: 7" onclick="closesidebar()">
+                Close
+            </div>
+        <a href="https://aoi.js.org" style="--i: 6">Aoi.js</a>
+        <a href="https://github.com/usersatoshi/transpiler" style="--i: 5"
+          >Github</a
+        >
+        <a href="../typedoc/" style="--i: 4">TypeDoc</a>
+        <a href="../" style="--i: 3">Home</a>
+        <a href="https://transpilerplaygroundapi.usersatoshi.repl.co" style="--i: 2">Playground</a>
+        </div>
+        <div class="settingbar">
+            <div class="closebtn" style="--i: 7" onclick="closesettingbar()">
+                <i class="material-icons">close</i>
+            </div>
+            <div class="3d-animations" style="--top: 70px">
+                <i class="material-icons">animation</i><i>Enable 3d Animation</i><label class="switch">
+                    <input type="checkbox" checked id="3dmode" onclick="dmode()" />
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="website-mode" style="--top: 170px">
+                <i class="material-icons">filter_vintage</i>
+                <i class="text">Enable special mode</i><label class="switch">
+                    <input type="checkbox" />
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+        <div class="displaybox">
+            <div class="navbar">
+                <div class="sidebaricon" onclick="sidebaricon()">
+                    <image
+                        src="https://cdn.discordapp.com/attachments/734127839544344678/986390479807606814/unknown.png">
+                    </image>
+                </div>
+                <div class="navbarbtns">
+
+                    <div class="link">
+                        <div class="forwarda"></div>
+                        <a href="#top">Top</a>
+                        <div class="backwarda"></div>
+                    </div>
+                    <div class="link">
+                        <div class="forwarda"></div>
+                        <a href="#description">Desc</a>
+                        <div class="backwarda"></div>
+                    </div>
+                    <div class="link">
+                        <div class="forwarda"></div>
+                        <a href="#usage">Usage</a>
+                        <div class="backwarda"></div>
+                    </div>
+                    <div class="link">
+                        <div class="forwarda"></div>
+                        <a href="#params">Params</a>
+                        <div class="backwarda"></div>
+                    </div>
+                    <div class="link">
+                        <div class="forwarda"></div>
+                        <a href="#returns">Returns</a>
+                        <div class="backwarda"></div>
+                    </div>
+                    <div class="link">
+                        <div class="forwarda"></div>
+                        <a href="#default">Default</a>
+                        <div class="backwarda"></div>
+                    </div>
+                </div>
+                <div class="settings">
+                    <div class="mode">
+                        <div class="modebtn" id="modeb" onclick="mode(this)">
+                            <i id="modebtext" class="material-icons">light_mode</i>
+                        </div>
+                    </div>
+                    <div class="sets">
+                        <div class="setbtn" id="setb" onclick="sets(this)">
+                            <i id="setbtext" class="material-icons">settings</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidenav">
+                <div class=sideinside>
+                    <input type="text" id="search" placeholder="Search" oninput="search()"></input>
+                    <br>
+                    <br>
+                    <br>
+                    <div id=functions>
+                        <a href="$activity.html">$activity</a>
+<a href="$addActionRow.html">$addActionRow</a>
+<a href="$addButton.html">$addButton</a>
+<a href="$addField.html">$addField</a>
+<a href="$and.html">$and</a>
+<a href="$author.html">$author</a>
+<a href="$authorAvatar.html">$authorAvatar</a>
+<a href="$authorId.html">$authorId</a>
+<a href="$break.html">$break</a>
+<a href="$catch.html">$catch</a>
+<a href="$channelId.html">$channelId</a>
+<a href="$channelName.html">$channelName</a>
+<a href="$channelSendMessage.html">$channelSendMessage</a>
+<a href="$checkCondition.html">$checkCondition</a>
+<a href="$clientId.html">$clientId</a>
+<a href="$clientOwnerId.html">$clientOwnerId</a>
+<a href="$clientToken.html">$clientToken</a>
+<a href="$color.html">$color</a>
+<a href="$commandId.html">$commandId</a>
+<a href="$commandName.html">$commandName</a>
+<a href="$comment.html">$comment</a>
+<a href="$cpu.html">$cpu</a>
+<a href="$customId.html">$customId</a>
+<a href="$description.html">$description</a>
+<a href="$divide.html">$divide</a>
+<a href="$djsEval.html">$djsEval</a>
+<a href="$editMessage.html">$editMessage</a>
+<a href="$else.html">$else</a>
+<a href="$elseIf.html">$elseIf</a>
+<a href="$endsWith.html">$endsWith</a>
+<a href="$env.html">$env</a>
+<a href="$ephemeral.html">$ephemeral</a>
+<a href="$eval.html">$eval</a>
+<a href="$finally.html">$finally</a>
+<a href="$footer.html">$footer</a>
+<a href="$get.html">$get</a>
+<a href="$guildId.html">$guildId</a>
+<a href="$has.html">$has</a>
+<a href="$if.html">$if</a>
+<a href="$image.html">$image</a>
+<a href="$includes.html">$includes</a>
+<a href="$increment.html">$increment</a>
+<a href="$isBot.html">$isBot</a>
+<a href="$isNumber.html">$isNumber</a>
+<a href="$isServerAvailable.html">$isServerAvailable</a>
+<a href="$isServerLarge.html">$isServerLarge</a>
+<a href="$isServerPartnered.html">$isServerPartnered</a>
+<a href="$isServerPremiumProgressBarEnabled.html">$isServerPremiumProgressBarEnabled</a>
+<a href="$isServerVerified.html">$isServerVerified</a>
+<a href="$let.html">$let</a>
+<a href="$log.html">$log</a>
+<a href="$message.html">$message</a>
+<a href="$onlyIf.html">$onlyIf</a>
+<a href="$ping.html">$ping</a>
+<a href="$ram.html">$ram</a>
+<a href="$slashOption.html">$slashOption</a>
+<a href="$sum.html">$sum</a>
+<a href="$try.html">$try</a>
+<a href="$while.html">$while</a>
+                    </div>
+                </div>
+                <div class="sideslide" onclick="opensidenav()">></div>
+            </div>
+            <div class="container" id="top">
+                <h1 class="heading">$finally</h1>
+
+                <h2 class="heading" id="description">Description</h2>
+                <pre>try statement that tests if a code works</pre>
+
+                <h2 class="heading" id="usage">Usage</h2>
+                <pre>$finally[code]</pre>
+
+                <h2 class="heading" id="params">Parameters</h2>
+                <pre>code ( string ) </pre>
+
+                <h2 class="heading" id="return">Returns</h2>
+                <pre>void</pre>
+
+                <h2 class="heading" id="default">Default Value</h2>
+                <pre>code = required</pre>
+            </div>
+        </div>
+</body>
+
+</html>

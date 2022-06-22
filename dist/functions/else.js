@@ -25,7 +25,9 @@ exports.$else = {
         const splits = data.splits;
         const currentScope = scope[scope.length - 1];
         if (exports.$else.brackets) {
-            if (!data.total.startsWith(exports.$else.name + "[")) {
+            if (!data.total.startsWith(exports.$else.name + "[") &&
+                (!currentScope.name.startsWith("$try_") ||
+                    !currentScope.name.startsWith("$catch_"))) {
                 throw new error_1.TranspilerError(`${data.name} requires closure brackets`);
             }
         }

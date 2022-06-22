@@ -21,20 +21,29 @@ exports.$get = {
     code: (data, scope) => {
         let res;
         const splits = data.splits;
+        const currentScope = scope[scope.length - 1];
         if (exports.$get.brackets) {
-            if (!data.total.startsWith(exports.$get.name + "[")) {
+            if (!data.total.startsWith(exports.$get.name + "[") &&
+                (!currentScope.name.startsWith("$try_") ||
+                    !currentScope.name.startsWith("$catch_"))) {
                 throw new error_1.TranspilerError(`${data.name} requires closure brackets`);
             }
         }
-        if (splits.length !== 1) {
+        if (splits.length !== 1 &&
+            (!currentScope.name.startsWith("$try_") &&
+                !currentScope.name.startsWith("$catch_"))) {
             throw new error_1.TranspilerError(`${data.name} requires 1 argument`);
         }
         const name = (0, util_1.removeSetFunc)(splits[0]);
-        if (name === "") {
+        if (name === "" &&
+            (!currentScope.name.startsWith("$try_") &&
+                !currentScope.name.startsWith("$catch_"))) {
             throw new error_1.TranspilerError(`${data.name} requires a name`);
         }
-        const currentScope = scope[scope.length - 1];
-        if (!currentScope.variables.includes(name)) {
+        if (!currentScope.variables.includes(name) &&
+            (!currentScope.name.startsWith("$try_") &&
+                !currentScope.name.startsWith("$catch_"))) {
+            console.log({ currentScope: currentScope.name });
             throw new error_1.TranspilerError(`${data.name} cannot find ${name}`);
         }
         res = `${(0, util_1.escapeResult)((0, util_1.escapeVars)(name))}`;

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { inspect } = require('util')
-const { datas } = require('aoi-transpiler');
+const { datas } = require('../dist');
 const functionlistarray = []
 const functionlistharray = []
 const sortedKeys = Object.keys(datas).sort();
