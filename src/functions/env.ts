@@ -28,7 +28,6 @@ export const $env: FunctionData = {
       throw new TranspilerError(`${data.name}: ENV Not Provided.`);
     }
 
-    console.log({ cenv: currentScope.env, env });
     if (
       !currentScope.env.includes(<string>env) &&
       (!currentScope.name.startsWith("$try_") &&
