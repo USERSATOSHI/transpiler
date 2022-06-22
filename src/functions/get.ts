@@ -51,7 +51,6 @@ export const $get: FunctionData = {
       (!currentScope.name.startsWith("$try_") &&
         !currentScope.name.startsWith("$catch_"))
     ) {
-      console.log({currentScope:currentScope.name})
       throw new TranspilerError(`${data.name} cannot find ${name}`);
     }
     res = `${escapeResult(escapeVars(name))}`;
