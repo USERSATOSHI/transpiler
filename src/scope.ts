@@ -32,6 +32,7 @@ export class Scope {
   ephemeral: boolean = false;
   variables: string[];
   setters: string;
+  objects : Record<string,Record<string,unknown>>;
   rest: string;
   hasSendData: boolean;
   sendFunction: string;
@@ -53,6 +54,7 @@ export class Scope {
       content: code?.replaceAll("`", "#STRING_LITERAL#") || " ",
     };
     this.variables = [];
+    this.objects = {};
     this.env = [];
     this.setters = "";
     this.functions = "";

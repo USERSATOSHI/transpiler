@@ -14,7 +14,14 @@ const functions = Object.keys(FunctionDatas ?? []);
 export function Transpiler(
   code: string,
   sendMessage: boolean = true,
-  scopeData?: { variables?: string[]; embeds?: EmbedData[]; name?: string , sendFunction?: string,env?:string[] },
+  scopeData?: {
+    variables?: string[];
+    embeds?: EmbedData[];
+    name?: string;
+    sendFunction?: string;
+    env?: string[];
+    objects?: Record<string, Record<string, unknown>>;
+  },
   uglify: boolean = false,
 ) {
   const flist = getFunctionList(code, functions);
@@ -32,24 +39,23 @@ export function Transpiler(
   const globalScope = new Scope(scopeData?.name ?? "global", undefined, code);
   globalScope.addVariables(scopeData?.variables ?? []);
   globalScope.addEmbeds(scopeData?.embeds ?? []);
-  globalScope.env.push(...(scopeData?.env ??[]));
+  globalScope.env.push(...(scopeData?.env ?? []));
+  globalScope.objects = {...globalScope.objects,...scopeData?.objects}
 
-  globalScope.sendFunction = scopeData?.sendFunction ?? globalScope.sendFunction;
+  globalScope.sendFunction =
+    scopeData?.sendFunction ?? globalScope.sendFunction;
   const res = ExecuteData(parseResult(code), FData.funcs, [globalScope]);
 
   if (res.scope[0].sendData.content.trim() !== "") {
-
     const scope = res.scope[0];
     scope.hasSendData = true;
     scope.rest.replace(scope.sendData.content.trim(), "");
     res.scope[0] = scope;
-
   }
   const str = res.scope[0].toString(sendMessage);
   const functionString = uglify ? minify(str) : str;
 
   if (uglify && (<MinifyOutput>functionString).error) {
-
     throw new TranspilerError(
       `code:${str} 
 <------------------------------------------------------->

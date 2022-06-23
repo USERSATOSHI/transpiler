@@ -21,7 +21,7 @@ export const $finally: FunctionData = {
       required: true,
     },
   ],
-  description: "try statement that tests if a code works",
+  description: "final statement that executes after try / catch",
   default: ["void"],
   returns: "void",
   code: (data: funcData, scope: Scope[]) => {
@@ -49,6 +49,7 @@ export const $finally: FunctionData = {
         variables: currentScope.variables,
         embeds: currentScope.embeds,
         name: newscope.name,
+        objects: currentScope.objects,
       },
       false,
     );
@@ -67,11 +68,11 @@ export const $finally: FunctionData = {
         ${newscope.getExecutable(true)}
     }`);
     currentScope.rest = currentScope.rest.replace(data.total, res);
-     data.funcs = [];
-     return {
-       code: res,
-       scope: scope,
-       data,
-     };
+    data.funcs = [];
+    return {
+      code: res,
+      scope: scope,
+      data,
+    };
   },
 };

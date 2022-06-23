@@ -58,6 +58,7 @@ import { $env } from "./env";
 import { $try } from "./try";
 import { $catch } from "./catch";
 import { $finally } from "./finally";
+import { $createObject } from "./createObject";
 export const datas: Record<string, FunctionData> = {
   $let,
   $get,
@@ -118,4 +119,5 @@ export const datas: Record<string, FunctionData> = {
   $try,
   $catch,
   $finally,
+  $createObject,
 };

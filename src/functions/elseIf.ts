@@ -44,7 +44,12 @@ export const $elseIf: FunctionData = {
     );
     let executedCondition;
     if (conditionFunctionList.length) {
-      executedCondition = Transpiler(condition, false,{variables: currentScope.variables});
+      executedCondition = Transpiler(condition, false, {
+        variables: currentScope.variables,
+        env: currentScope.env,
+        name: currentScope.name,
+        objects: currentScope.objects,
+      });
       currentScope.functions += executedCondition.scope[0].functions + "\n";
       currentScope.packages += executedCondition.scope[0].packages;
       executedCondition = executedCondition.code;
@@ -70,6 +75,9 @@ export const $elseIf: FunctionData = {
       executedErrorMsg = Transpiler(errorMsg.join(";"), true, {
         variables: currentScope.variables,
         embeds: currentScope.embeds,
+        env: currentScope.env,
+        name: currentScope.name,
+        objects: currentScope.objects,
       });
       newscope.functions = executedErrorMsg.scope[0].functions + "\n";
       newscope.packages = executedErrorMsg.scope[0].packages + "\n";

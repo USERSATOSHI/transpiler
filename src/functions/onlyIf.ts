@@ -44,7 +44,12 @@ export const $onlyIf: FunctionData = {
     );
     let executedCondition;
     if (conditionFunctionList.length) {
-      executedCondition = Transpiler(condition, false,{variables: currentScope.variables});
+      executedCondition = Transpiler(condition, false, {
+        variables: currentScope.variables,
+        name: currentScope.name,
+        objects: currentScope.objects,
+        env: currentScope.env,
+      });
       currentScope.functions += executedCondition.scope[0].functions + "\n";
       currentScope.packages += executedCondition.scope[0].packages;
       executedCondition = executedCondition.code;

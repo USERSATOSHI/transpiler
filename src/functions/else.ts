@@ -50,6 +50,9 @@ export const $else: FunctionData = {
       executedErrorMsg = Transpiler(errorMsg.join(";"), true,{
         variables: currentScope.variables,
         embeds: currentScope.embeds,
+        env: currentScope.env,
+        name: currentScope.name,
+        objects : currentScope.objects
       });
       newscope.functions = executedErrorMsg.scope[0].functions + "\n";
       newscope.packages = executedErrorMsg.scope[0].packages + "\n";

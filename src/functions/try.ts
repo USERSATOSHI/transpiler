@@ -49,6 +49,7 @@ export const $try: FunctionData = {
         variables: currentScope.variables,
         embeds: currentScope.embeds,
         name: newscope.name,
+        objects: currentScope.objects,
       },
       false,
     );
