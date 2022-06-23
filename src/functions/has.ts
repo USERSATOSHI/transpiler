@@ -15,6 +15,7 @@ export const $has: FunctionData = {
       required: true,
     },
   ],
+  version: "1.0.0",
   default: ["void"],
   returns: "boolean",
   description: "Checks if the variable exists",
@@ -33,16 +34,16 @@ export const $has: FunctionData = {
     }
     if (
       splits.length !== 1 &&
-      (!currentScope.name.startsWith("$try_") &&
-        !currentScope.name.startsWith("$catch_"))
+      !currentScope.name.startsWith("$try_") &&
+      !currentScope.name.startsWith("$catch_")
     ) {
       throw new TranspilerError(`${data.name} requires 1 argument`);
     }
     const name = removeSetFunc(splits[0]);
     if (
       name === "" &&
-      (!currentScope.name.startsWith("$try_") &&
-        !currentScope.name.startsWith("$catch_"))
+      !currentScope.name.startsWith("$try_") &&
+      !currentScope.name.startsWith("$catch_")
     ) {
       throw new TranspilerError(`${data.name} requires a name`);
     }

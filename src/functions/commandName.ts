@@ -7,6 +7,7 @@ export const $commandName: FunctionData = {
   type: "getter",
   brackets: false,
   optional: false,
+  version: "1.0.0",
   fields: [],
   default: [],
   returns: "string",

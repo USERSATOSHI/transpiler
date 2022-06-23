@@ -31,6 +31,7 @@ export const $author: FunctionData = {
       required: false,
     },
   ],
+  version: "1.0.0",
   default: ["1", "void", "", ""],
   returns: "void",
   description: "Sets the author of the embed",

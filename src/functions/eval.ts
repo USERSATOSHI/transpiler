@@ -22,6 +22,7 @@ export const $eval: FunctionData = {
   ],
   default: ["void", "void"],
   returns: "any",
+  version: "1.0.0",
   description: "Evaluates the code",
   code: (data: funcData, scope: Scope[]) => {
     const [output, ...code] = data.splits;

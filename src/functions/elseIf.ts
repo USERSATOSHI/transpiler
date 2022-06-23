@@ -22,8 +22,9 @@ export const $elseIf: FunctionData = {
       required: false,
     },
   ],
-  default: ["void",""],
+  default: ["void", ""],
   returns: "void",
+  version: "1.0.0",
   description: "Else if statement",
   code: (data: funcData, scope: Scope[]) => {
     const splits = data.splits;

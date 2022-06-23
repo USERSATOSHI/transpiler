@@ -31,6 +31,7 @@ export const $addField: FunctionData = {
       required: false,
     },
   ],
+  version: "1.0.0",
   description: "Adds a field to the Embed",
   default: ["1", "void", "void", "no"],
   returns: "void",

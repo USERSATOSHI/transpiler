@@ -18,6 +18,7 @@ export const $else: FunctionData = {
     },
   ],
   default: ["void"],
+  version: "1.0.0",
   returns: "void",
   description: "Else statement",
   code: (data: funcData, scope: Scope[]) => {
@@ -47,12 +48,12 @@ export const $else: FunctionData = {
       Object.keys(funcs),
     );
     if (errorMsgFunctionList.length) {
-      executedErrorMsg = Transpiler(errorMsg.join(";"), true,{
+      executedErrorMsg = Transpiler(errorMsg.join(";"), true, {
         variables: currentScope.variables,
         embeds: currentScope.embeds,
         env: currentScope.env,
         name: currentScope.name,
-        objects : currentScope.objects
+        objects: currentScope.objects,
       });
       newscope.functions = executedErrorMsg.scope[0].functions + "\n";
       newscope.packages = executedErrorMsg.scope[0].packages + "\n";

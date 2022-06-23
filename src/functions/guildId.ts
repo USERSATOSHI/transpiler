@@ -14,6 +14,7 @@ export const $guildId: FunctionData = {
       required: false,
     },
   ],
+  version: "1.0.0",
   default: [""],
   returns: "Snowflake",
   description: "Returns the guild's ID",

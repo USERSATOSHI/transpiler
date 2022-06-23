@@ -27,6 +27,7 @@ export const $let: FunctionData = {
       required: true,
     },
   ],
+  version: "1.0.0",
   default: ["void", "void"],
   returns: "void",
   description: "Sets the value of the variable",
@@ -45,8 +46,8 @@ export const $let: FunctionData = {
     }
     if (
       splits.length !== 2 &&
-      (!currentScope.name.startsWith("$try_") &&
-        !currentScope.name.startsWith("$catch_"))
+      !currentScope.name.startsWith("$try_") &&
+      !currentScope.name.startsWith("$catch_")
     ) {
       throw new TranspilerError(`${data.name} requires 2 arguments`);
     }
@@ -58,15 +59,15 @@ export const $let: FunctionData = {
 
     if (
       name === "" &&
-      (!currentScope.name.startsWith("$try_") &&
-        !currentScope.name.startsWith("$catch_"))
+      !currentScope.name.startsWith("$try_") &&
+      !currentScope.name.startsWith("$catch_")
     ) {
       throw new TranspilerError(`${data.name} requires a name`);
     }
     if (
       name === value &&
-      (!currentScope.name.startsWith("$try_") &&
-        !currentScope.name.startsWith("$catch_"))
+      !currentScope.name.startsWith("$try_") &&
+      !currentScope.name.startsWith("$catch_")
     ) {
       throw new TranspilerError(`${data.name} cannot be used to set itself`);
     }

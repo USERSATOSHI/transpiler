@@ -7,6 +7,7 @@ export const $and: FunctionData = {
   type: "getter",
   brackets: true,
   optional: false,
+  version: "1.0.0",
   fields: [
     {
       name: "condition",

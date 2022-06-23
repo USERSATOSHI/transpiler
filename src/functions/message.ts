@@ -15,6 +15,7 @@ export const $message: FunctionData = {
       required: false,
     },
   ],
+  version: "1.0.0",
   default: [""],
   returns: "string",
   description: "Returns the message",
@@ -25,8 +26,8 @@ export const $message: FunctionData = {
     if (
       arg &&
       isNaN(parsedArg) &&
-      (!currentScope.name.startsWith("$try_") &&
-        !currentScope.name.startsWith("$catch_"))
+      !currentScope.name.startsWith("$try_") &&
+      !currentScope.name.startsWith("$catch_")
     ) {
       throw new TranspilerError(
         `${data.name}: requires a number as an argument`,

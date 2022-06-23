@@ -7,6 +7,7 @@ export const $clientToken: FunctionData = {
   brackets: false,
   optional: true,
   type: "getter",
+  version: "1.0.0",
   fields: [],
   default: [],
   returns: "string",

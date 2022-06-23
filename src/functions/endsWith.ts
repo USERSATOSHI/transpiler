@@ -20,6 +20,7 @@ export const $endsWith: FunctionData = {
     },
   ],
   default: ["void", "void"],
+  version: "1.0.0",
   returns: "boolean",
   description: "Checks if the text ends with the search",
   code: (data: funcData, scope: Scope[]) => {

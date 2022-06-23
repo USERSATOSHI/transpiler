@@ -22,6 +22,7 @@ export const $onlyIf: FunctionData = {
       required: false,
     },
   ],
+  version: "1.0.0",
   default: ["void", ""],
   returns: "void",
   description: "If statement",

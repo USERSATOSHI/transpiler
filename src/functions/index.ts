@@ -59,6 +59,9 @@ import { $try } from "./try";
 import { $catch } from "./catch";
 import { $finally } from "./finally";
 import { $createObject } from "./createObject";
+import { $addObjectProperty } from "./addObjectProperty";
+import { $getObject } from "./getObject";
+import { $deleteObjectProperty } from "./deleteObjectProperty";
 export const datas: Record<string, FunctionData> = {
   $let,
   $get,
@@ -120,4 +123,7 @@ export const datas: Record<string, FunctionData> = {
   $catch,
   $finally,
   $createObject,
+  $addObjectProperty,
+  $deleteObjectProperty,
+  $getObject,
 };

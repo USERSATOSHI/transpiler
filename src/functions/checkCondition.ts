@@ -16,15 +16,18 @@ export const $checkCondition: FunctionData = {
       required: true,
     },
   ],
+  version: "1.0.0",
   default: ["void"],
   returns: "boolean",
   description: "Checks the condition",
   code: (data: funcData, scope: Scope[]) => {
     const condition = data.inside;
     const currentScope = scope[scope.length - 1];
-    if (!condition &&
-      (!currentScope.name.startsWith("$try_") &&
-        !currentScope.name.startsWith("$catch_"))) {
+    if (
+      !condition &&
+      !currentScope.name.startsWith("$try_") &&
+      !currentScope.name.startsWith("$catch_")
+    ) {
       throw new TranspilerError(`${data.name}: condition is required`);
     }
     const parsedCondition = conditionLexer(<string>condition).solve(false);

@@ -21,6 +21,7 @@ export const $catch: FunctionData = {
       required: true,
     },
   ],
+  version: "1.0.0",
   description: "catch statement that executes when try fails",
   default: ["void"],
   returns: "void",

@@ -21,6 +21,7 @@ export const $try: FunctionData = {
       required: true,
     },
   ],
+  version: "1.0.0",
   description: "try statement that tests if a code works",
   default: ["void"],
   returns: "void",

@@ -16,6 +16,7 @@ export const $isBot: FunctionData = {
       required: false,
     },
   ],
+  version: "1.0.0",
   default: ["__$DISCORD_DATA$__.author?.id"],
   returns: "boolean",
   description: "Checks if the author is a bot",

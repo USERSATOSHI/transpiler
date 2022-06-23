@@ -19,6 +19,7 @@ export const $color: FunctionData = {
       required: true,
     },
   ],
+  version: "1.0.0",
   default: ["1", "void"],
   returns: "void",
   description: "Sets the color of the embed",

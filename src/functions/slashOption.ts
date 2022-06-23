@@ -15,6 +15,7 @@ export const $slashOption: FunctionData = {
       required: true,
     },
   ],
+  version: "1.0.0",
   default: ["void"],
   returns: "any",
   description: "Returns the value of the slash option",

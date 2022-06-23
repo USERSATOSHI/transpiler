@@ -15,6 +15,7 @@ export const $isNumber: FunctionData = {
       required: true,
     },
   ],
+  version: "1.0.0",
   default: ["void"],
   returns: "boolean",
   description: "Checks if the query is a number",
@@ -24,8 +25,8 @@ export const $isNumber: FunctionData = {
     const currentScope = scope[scope.length - 1];
     if (
       !num &&
-      (!currentScope.name.startsWith("$try_") &&
-        !currentScope.name.startsWith("$catch_"))
+      !currentScope.name.startsWith("$try_") &&
+      !currentScope.name.startsWith("$catch_")
     ) {
       throw new TranspilerError(`${data.name} requires 1 argument`);
     }

@@ -8,6 +8,7 @@ export const $createObject: FunctionData = {
   brackets: true,
   optional: false,
   type: "setter",
+  version: "1.0.0",
   fields: [
     {
       name: "name",
@@ -20,8 +21,8 @@ export const $createObject: FunctionData = {
       required: true,
     },
   ],
-  description: "",
-  default: [],
+  description: "creates an Object",
+  default: ["void", "void"],
   returns: "void",
   code: (data: funcData, scope: Scope[]) => {
     const currentScope = scope[scope.length - 1];

@@ -21,6 +21,7 @@ export const $finally: FunctionData = {
       required: true,
     },
   ],
+  version: "1.0.0",
   description: "final statement that executes after try / catch",
   default: ["void"],
   returns: "void",

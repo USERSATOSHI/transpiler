@@ -23,6 +23,7 @@ export const $activity: FunctionData = {
       required: false,
     },
   ],
+  version: "1.0.0",
   description: "Returns the activity of provided user",
   default: ["__$DISCORD_DATA$__.author?.id", "__$DISCORD_DATA$__.guild?.id",","],
   returns: "string",

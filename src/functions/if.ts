@@ -22,6 +22,7 @@ export const $if: FunctionData = {
       required: true,
     },
   ],
+  version: "1.0.0",
   default: ["void", "void"],
   returns: "void",
   description: "If statement",

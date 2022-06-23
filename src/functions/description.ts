@@ -7,6 +7,7 @@ export const $description: FunctionData = {
   type: "setter",
   brackets: true,
   optional: false,
+  version: "1.0.0",
   fields: [
     {
       name: "index",
