@@ -9,4 +9,5 @@ export * from "./conditionlexer";
 export * from './stringparser';
 export * from './events';
 export * from './loader';
+export * from './objectParser';
 //# sourceMappingURL=index.d.ts.map

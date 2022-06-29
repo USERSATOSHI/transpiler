@@ -25,4 +25,5 @@ __exportStar(require("./conditionlexer"), exports);
 __exportStar(require("./stringparser"), exports);
 __exportStar(require("./events"), exports);
 __exportStar(require("./loader"), exports);
+__exportStar(require("./objectParser"), exports);
 //# sourceMappingURL=index.js.map
