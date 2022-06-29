@@ -10,6 +10,7 @@ import fs from "fs";
 import { minify, MinifyOutput } from "uglify-js";
 import { EmbedData } from "discord.js";
 import { TranspilerError } from "./error";
+import { StringObject } from "./objectParser";
 const functions = Object.keys(FunctionDatas ?? []);
 export function Transpiler(
   code: string,
@@ -20,7 +21,7 @@ export function Transpiler(
     name?: string;
     sendFunction?: string;
     env?: string[];
-    objects?: Record<string, Record<string, unknown>>;
+    objects?: Record<string, StringObject>;
   },
   uglify: boolean = false,
 ) {

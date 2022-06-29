@@ -26,30 +26,34 @@ export const $addObjectProperty: FunctionData = {
   ],
   version: "1.0.0",
   description: "adds a value to the key in the object",
-  default: ["void", "void", "void"],
+  default: [ "void", "void", "void" ],
   returns: "void",
-  code: (data: funcData, scope: Scope[]) => {
-    const currentScope = scope[scope.length - 1];
-    const [name, key, ...value] = data.splits;
-    const parsedValue = parseData(value.join(";"));
+  code: ( data: funcData, scope: Scope[] ) =>
+  {
+    const currentScope = scope[ scope.length - 1 ];
+    const [ name, key, ...value ] = data.splits;
+    const parsedValue = parseData( value.join( ";" ) );
 
     if (
       !value.length &&
-      !currentScope.name.startsWith("$try_") &&
-      !currentScope.name.startsWith("$catch_")
-    ) {
-      throw new TranspilerError(`${data.name}: No Value Provided`);
+      !currentScope.name.startsWith( "$try_" ) &&
+      !currentScope.name.startsWith( "$catch_" )
+    )
+    {
+      throw new TranspilerError( `${ data.name }: No Value Provided` );
     }
     if (
-      !currentScope.objects[name] &&
-      !currentScope.name.startsWith("$try_") &&
-      !currentScope.name.startsWith("$catch_")
-    ) {
-      throw new TranspilerError(`${data.name}: Invalid Object Name Provided`);
+      !currentScope.objects[ name ] &&
+      !currentScope.name.startsWith( "$try_" ) &&
+      !currentScope.name.startsWith( "$catch_" )
+    )
+    {
+      throw new TranspilerError( `${ data.name }: Invalid Object Name Provided` );
     }
-    currentScope.objects[name][key] = value;
-    const res = escapeResult(`${escapeVars(name)}.${key} = ${parsedValue}`);
-    currentScope.rest = currentScope.rest.replace(data.total, res);
+    currentScope.objects[ name ].addKey( key );
+    currentScope.objects[ name ].addValue( parsedValue );
+    const res = escapeResult( `${ escapeVars( name ) }.${ key } = ${ parsedValue }` );
+    currentScope.rest = currentScope.rest.replace( data.total, res );
     return {
       code: res,
       scope,

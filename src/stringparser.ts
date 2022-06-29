@@ -89,3 +89,5 @@ export function parseString(text: string) {
   return ast.parse();
 }
 
+console.log(parseString("#FUNCTION_START#__$DISCORD_DATA__#FUNCTION_END#"))
+

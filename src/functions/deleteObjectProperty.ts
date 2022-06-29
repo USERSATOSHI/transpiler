@@ -21,29 +21,35 @@ export const $deleteObjectProperty: FunctionData = {
     },
   ],
   description: "deletes a key from the object",
-  default: ["void", "void"],
+  default: [ "void", "void" ],
   returns: "void",
-  code: (data: funcData, scope: Scope[]) => {
-    const currentScope = scope[scope.length - 1];
-    const [name, key] = data.splits;
+  code: ( data: funcData, scope: Scope[] ) =>
+  {
+    const currentScope = scope[ scope.length - 1 ];
+    const [ name, key ] = data.splits;
 
     if (
       !key.length &&
-      !currentScope.name.startsWith("$try_") &&
-      !currentScope.name.startsWith("$catch_")
-    ) {
-      throw new TranspilerError(`${data.name}: No Key Provided`);
+      !currentScope.name.startsWith( "$try_" ) &&
+      !currentScope.name.startsWith( "$catch_" )
+    )
+    {
+      throw new TranspilerError( `${ data.name }: No Key Provided` );
     }
     if (
-      !currentScope.objects[name] &&
-      !currentScope.name.startsWith("$try_") &&
-      !currentScope.name.startsWith("$catch_")
-    ) {
-      throw new TranspilerError(`${data.name}: Invalid Object Name Provided`);
+      !currentScope.objects[ name ] &&
+      !currentScope.name.startsWith( "$try_" ) &&
+      !currentScope.name.startsWith( "$catch_" )
+    )
+    {
+      throw new TranspilerError( `${ data.name }: Invalid Object Name Provided` );
     }
-    delete currentScope.objects[name][key];
-    const res = escapeResult(`delete ${escapeVars(name)}.${key}`);
-    currentScope.rest = currentScope.rest.replace(data.total, res);
+    const o = currentScope.objects[ name ];
+    const index = o.keys.indexOf( key );
+    o.keys.splice( index, 1 );
+    o.values.splice( index, 1 );
+    const res = escapeResult( `delete ${ escapeVars( name ) }.${ key }` );
+    currentScope.rest = currentScope.rest.replace( data.total, res );
     return {
       code: res,
       scope,

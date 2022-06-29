@@ -1,3 +1,4 @@
+import { StringObject } from './objectParser';
 import {
   ActionRow,
   ButtonComponent,
@@ -32,7 +33,7 @@ export class Scope {
   ephemeral: boolean = false;
   variables: string[];
   setters: string;
-  objects : Record<string,Record<string,unknown>>;
+  objects : Record<string,StringObject>;
   rest: string;
   hasSendData: boolean;
   sendFunction: string;
