@@ -65,10 +65,17 @@ export function Transpiler(
       }`,
     );
   }
-  const func = new Function(
-    "return " +
-      (uglify ? (<MinifyOutput>functionString).code : <string>functionString),
-  )();
+  let func;
+  try
+  {
+    func = new Function(
+      "return " +
+      ( uglify ? ( <MinifyOutput> functionString ).code : <string> functionString ),
+    )();
+  } catch ( e:any )
+  {
+    throw new TranspilerError( e );
+  }
 
   return { func, ...res };
 }

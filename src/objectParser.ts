@@ -127,7 +127,7 @@ export function getObjectData ( stringObject: string,currentObj:StringObject )
                 {
                     t = parseString( t );
                 }
-                currentObj.addKey( t );
+                currentObj.addValue( t );
             } else
             {
                 let t = parseData( text.trim() );
