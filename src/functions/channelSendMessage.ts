@@ -31,7 +31,8 @@ export const $channelSendMessage: FunctionData = {
       required: false,
     },
   ],
-  default: ["void", "void",  "no"],
+  version: "1.0.0",
+  default: ["void", "void", "no"],
   returns: "?string",
   description: "Sends a message to a channel",
   code: (data: funcData, scope: Scope[]) => {

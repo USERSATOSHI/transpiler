@@ -14,6 +14,7 @@ export const $channelId: FunctionData = {
       required: true,
     },
   ],
+  version: "1.0.0",
   default: [""],
   returns: "Snowflake",
   description: "Returns the channel's ID",

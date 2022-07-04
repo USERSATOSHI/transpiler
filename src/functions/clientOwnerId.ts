@@ -7,6 +7,7 @@ export const $clientOwnerId: FunctionData = {
   brackets: false,
   optional: true,
   type: "getter",
+  version: "1.0.0",
   fields: [
     {
       name: "separator",

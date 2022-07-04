@@ -15,6 +15,7 @@ export const $log: FunctionData = {
       required: true,
     },
   ],
+  version: "1.0.0",
   default: ["void"],
   returns: "void",
   description: "Logs the text",
@@ -33,16 +34,16 @@ export const $log: FunctionData = {
     }
     if (
       splits.length !== 1 &&
-      (!currentScope.name.startsWith("$try_") &&
-        !currentScope.name.startsWith("$catch_"))
+      !currentScope.name.startsWith("$try_") &&
+      !currentScope.name.startsWith("$catch_")
     ) {
       throw new TranspilerError(`${data.name} requires 1 argument`);
     }
     const text = splits[0];
     if (
       text === "" &&
-      (!currentScope.name.startsWith("$try_") &&
-        !currentScope.name.startsWith("$catch_"))
+      !currentScope.name.startsWith("$try_") &&
+      !currentScope.name.startsWith("$catch_")
     ) {
       throw new TranspilerError(`${data.name} requires a text`);
     }

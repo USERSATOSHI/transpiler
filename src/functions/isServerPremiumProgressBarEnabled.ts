@@ -15,6 +15,7 @@ export const $isServerPremiumProgressBarEnabled: FunctionData = {
       required: false,
     },
   ],
+  version: "1.0.0",
   default: ["__$DISCORD_DATA$__.guild?.id"],
   returns: "boolean",
   description: "Checks if the server has premium progress bar enabled",

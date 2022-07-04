@@ -16,22 +16,23 @@ export const $env: FunctionData = {
   ],
   description: "",
   default: ["void"],
+  version: "1.0.0",
   returns: "?string",
   code: (data: funcData, scope: Scope[]) => {
     const env = data.inside;
     const currentScope = scope[scope.length - 1];
     if (
       !env &&
-      (!currentScope.name.startsWith("$try_") &&
-        !currentScope.name.startsWith("$catch_"))
+      !currentScope.name.startsWith("$try_") &&
+      !currentScope.name.startsWith("$catch_")
     ) {
       throw new TranspilerError(`${data.name}: ENV Not Provided.`);
     }
 
     if (
       !currentScope.env.includes(<string>env) &&
-      (!currentScope.name.startsWith("$try_") &&
-        !currentScope.name.startsWith("$catch_"))
+      !currentScope.name.startsWith("$try_") &&
+      !currentScope.name.startsWith("$catch_")
     ) {
       throw new TranspilerError(`${data.name}: ENV ${env} Not Found`);
     }

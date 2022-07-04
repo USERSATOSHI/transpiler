@@ -22,7 +22,8 @@ export const $if: FunctionData = {
       required: true,
     },
   ],
-  default: ["void","void"],
+  version: "1.0.0",
+  default: ["void", "void"],
   returns: "void",
   description: "If statement",
   code: (data: funcData, scope: Scope[]) => {
@@ -44,7 +45,12 @@ export const $if: FunctionData = {
     );
     let executedCondition;
     if (conditionFunctionList.length) {
-      executedCondition = Transpiler(condition, false,{variables: currentScope.variables});
+      executedCondition = Transpiler(condition, false, {
+        variables: currentScope.variables,
+        name: currentScope.name,
+        objects: currentScope.objects,
+        env: currentScope.env,
+      });
       currentScope.functions += executedCondition.scope[0].functions + "\n";
       currentScope.packages += executedCondition.scope[0].packages;
       executedCondition = executedCondition.code;
@@ -72,6 +78,9 @@ export const $if: FunctionData = {
       executedErrorMsg = Transpiler(errorMsg.join(";"), true, {
         variables: currentScope.variables,
         embeds: currentScope.embeds,
+        name: currentScope.name,
+        objects: currentScope.objects,
+        env: currentScope.env,
       });
       newscope.functions = executedErrorMsg.scope[0].functions + "\n";
       newscope.packages = executedErrorMsg.scope[0].packages + "\n";

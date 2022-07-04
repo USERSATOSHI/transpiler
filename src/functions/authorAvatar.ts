@@ -25,7 +25,8 @@ export const $authorAvatar: FunctionData = {
       required: false,
     },
   ],
-  default: ["4096","yes","webp"],
+  version: "1.0.0",
+  default: ["4096", "yes", "webp"],
   returns: "string",
   description: "Returns the avatar of the author",
   code: (data: funcData, scope: Scope[]) => {

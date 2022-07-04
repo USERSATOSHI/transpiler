@@ -7,6 +7,7 @@ export const $break: FunctionData = {
   brackets: false,
   optional: false,
   fields: [],
+  version: "1.0.0",
   default: [],
   returns: "void",
   description: "Breaks out of a loop",

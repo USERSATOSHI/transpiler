@@ -16,6 +16,7 @@ export interface FunctionData {
   returns: any;
   default: string[];
   description: string;
+  version: string;
   extra?: any;
   code: (data:funcData,scope:Scope[]) => {code:string,scope:Scope[],data?:funcData};
 }

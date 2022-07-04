@@ -20,6 +20,7 @@ export const $djsEval: FunctionData = {
       required: true,
     },
   ],
+  version: "1.0.0",
   default: ["void", "void"],
   returns: "any",
   description: "Evaluates the provided Js code",
@@ -39,8 +40,8 @@ export const $djsEval: FunctionData = {
     }
     if (
       splits.length < 2 &&
-      (!currentScope.name.startsWith("$try_") &&
-        !currentScope.name.startsWith("$catch_"))
+      !currentScope.name.startsWith("$try_") &&
+      !currentScope.name.startsWith("$catch_")
     ) {
       throw new TranspilerError(`${data.name} requires 2 arguments`);
     }

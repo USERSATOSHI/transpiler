@@ -9,6 +9,7 @@ export const $authorId: FunctionData = {
   type: "getter",
   fields: [],
   default: [],
+  version: "1.0.0",
   returns: "Snowflake",
   description: "Returns the author's ID",
   code: (data: funcData, scope: Scope[]) => {

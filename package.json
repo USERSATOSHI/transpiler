@@ -30,13 +30,14 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "node tests/transpiler.js",
+    "test": "jest",
     "prettier": "prettier --write '**/*.{ts,js}'",
     "docs": "typedoc && node docgen/index.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",
     "@babel/core": "^7.18.2",
+    "@types/jest": "^28.1.3",
     "@types/showdown": "^2.0.0",
     "@types/uglify-js": "^3.13.2",
     "@typescript-eslint/eslint-plugin": "^5.27.0",
@@ -45,6 +46,7 @@
     "benny": "^3.7.1",
     "eslint": "^8.17.0",
     "eslint-config-google": "^0.14.0",
+    "jest": "^28.1.2",
     "showdown": "^2.1.0",
     "typescript": "^4.6.2"
   },

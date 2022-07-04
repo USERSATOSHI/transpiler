@@ -22,6 +22,7 @@ export const $while: FunctionData = {
       required: true,
     },
   ],
+  version: "1.0.0",
   default: ["void", "void"],
   returns: "void",
   description: "While statement",
@@ -40,8 +41,8 @@ export const $while: FunctionData = {
     }
     if (
       data.splits.length < 2 &&
-      (!currentScope.name.startsWith("$try_") &&
-        !currentScope.name.startsWith("$catch_"))
+      !currentScope.name.startsWith("$try_") &&
+      !currentScope.name.startsWith("$catch_")
     ) {
       throw new TranspilerError(
         `${data.name} function requires condition and code`,
@@ -56,6 +57,9 @@ export const $while: FunctionData = {
     if (conditionFunctionList.length) {
       executedCondition = Transpiler(condition, false, {
         variables: currentScope.variables,
+        name: currentScope.name,
+        objects: currentScope.objects,
+        env: currentScope.env,
       });
       currentScope.functions += executedCondition.scope[0].functions + "\n";
       currentScope.packages += executedCondition.scope[0].packages;
@@ -75,6 +79,9 @@ export const $while: FunctionData = {
       executedCode = Transpiler(code.join(";"), false, {
         variables: currentScope.variables,
         embeds: currentScope.embeds,
+        name: currentScope.name,
+        objects: currentScope.objects,
+        env: currentScope.env,
       });
     } else {
       if (

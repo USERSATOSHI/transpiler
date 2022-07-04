@@ -19,6 +19,7 @@ export const $includes: FunctionData = {
       required: true,
     },
   ],
+  version: "1.0.0",
   default: ["void", "void"],
   returns: "boolean",
   description: "Checks if the text includes the search",

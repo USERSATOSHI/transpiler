@@ -6,6 +6,7 @@ export const $customId: FunctionData = {
   name: "$customId",
   type: "getter",
   brackets: false,
+  version: "1.0.0",
   optional: false,
   fields: [],
   default: [],

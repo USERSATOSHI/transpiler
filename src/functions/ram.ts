@@ -15,6 +15,7 @@ export const $ram: FunctionData = {
       required: false,
     },
   ],
+  version: "1.0.0",
   default: ["rss"],
   returns: "number",
   description: "Returns the bot's ram usage",
@@ -22,7 +23,9 @@ export const $ram: FunctionData = {
     const currentScope = scope[scope.length - 1];
     const type = parseString(data.inside ?? "rss");
 
-    let res = escapeResult(`(process.memoryUsage()[${type}] / 1024 / 1024).toFixed(2)`);
+    let res = escapeResult(
+      `(process.memoryUsage()[${type}] / 1024 / 1024).toFixed(2)`,
+    );
     currentScope.rest = currentScope.rest.replace(data.total, res);
     return {
       code: res,

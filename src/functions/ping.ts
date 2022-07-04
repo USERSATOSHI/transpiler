@@ -11,17 +11,15 @@ export const $ping: FunctionData = {
   default: [],
   returns: "number",
   description: "Returns the bot's ping",
+  version: "1.0.0",
   code: (data: funcData, scope: Scope[]) => {
     const res = escapeResult("__$DISCORD_DATA$__.client.ws.ping");
-      const currentScope = scope[scope.length - 1];
-    currentScope.rest = currentScope.rest.replace(
-      data.total,
-      res,
-    );
+    const currentScope = scope[scope.length - 1];
+    currentScope.rest = currentScope.rest.replace(data.total, res);
     return {
       code: res,
       scope: scope,
-      data
+      data,
     };
   },
 };

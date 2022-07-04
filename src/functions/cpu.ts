@@ -7,6 +7,7 @@ export const $cpu: FunctionData = {
   name: "$cpu",
   brackets: true,
   optional: true,
+  version: "1.0.0",
   type: "function_getter",
   fields: [
     {

@@ -630,6 +630,11 @@ for(const key of sortedKeys) {
                     </div>
                     <div class="link">
                         <div class="forwarda"></div>
+                        <a href="#version">Version</a>
+                        <div class="backwarda"></div>
+                    </div>
+                    <div class="link">
+                        <div class="forwarda"></div>
                         <a href="#usage">Usage</a>
                         <div class="backwarda"></div>
                     </div>
@@ -680,6 +685,9 @@ for(const key of sortedKeys) {
 
                 <h2 class="heading" id="description">Description</h2>
                 <pre>${datas[key].description}</pre>
+
+                <h2 class="heading" id="version">Version</h2>
+                <pre>Added in ${datas[key].version}</pre>
 
                 <h2 class="heading" id="usage">Usage</h2>
                 <pre>${

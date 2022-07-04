@@ -10,6 +10,7 @@ export const $ephemeral: FunctionData = {
   fields: [],
   default: [],
   returns: "void",
+  version: "1.0.0",
   description: "Sets the ephemeral value",
   code: (data: funcData, scope: Scope[]) => {
     const currentScope = scope[scope.length - 1];

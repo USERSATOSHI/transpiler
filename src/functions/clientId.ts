@@ -9,6 +9,7 @@ export const $clientId: FunctionData = {
   type: "getter",
   fields: [],
   default: [],
+  version: "1.0.0",
   returns: "Snowflake",
   description: "Returns the client's ID",
   code: (data: funcData, scope: Scope[]) => {

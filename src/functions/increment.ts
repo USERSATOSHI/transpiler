@@ -20,9 +20,10 @@ export const $increment: FunctionData = {
       required: false,
     },
   ],
+  version: "1.0.0",
   default: ["void", "++"],
   extra: {
-    example: "$increment[$get[i];++]"
+    example: "$increment[$get[i];++]",
   },
   returns: "void",
   description: "Increments the variable",
@@ -31,8 +32,8 @@ export const $increment: FunctionData = {
     const currentScope = scope[scope.length - 1];
     if (
       variable === "" &&
-      (!currentScope.name.startsWith("$try_") &&
-        !currentScope.name.startsWith("$catch_"))
+      !currentScope.name.startsWith("$try_") &&
+      !currentScope.name.startsWith("$catch_")
     ) {
       throw new TranspilerError(`${data.name} requires a variable`);
     }
