@@ -1,6 +1,6 @@
 import { TranspilerError } from "../error";
 import { FunctionData } from "../typings/interface";
-import { escapeResult } from "../util";
+import { escapeMathResult, escapeResult } from "../util";
 
 export const $divide: FunctionData = {
   name: "$divide",
@@ -36,7 +36,7 @@ export const $divide: FunctionData = {
       )
       .join("/")}`;
 
-    const res = escapeResult(div);
+    const res = escapeMathResult(escapeResult(div));
     currentScope.rest = currentScope.rest.replace(data.total, res);
     return {
       code: res,

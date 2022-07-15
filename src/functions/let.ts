@@ -53,7 +53,7 @@ export const $let: FunctionData = {
     }
     const name = removeSetFunc(splits[0]);
     let value = parseData(removeSetFunc(splits[1]));
-    if (typeof value === "string" && value.includes("#FUNCTION_START#")) {
+    if (typeof value === "string" && value.includes("#FUNCTION_START#") && !value.includes("#MATH_FUNCTION_START#")) {
       value = parseString(value);
     }
 
@@ -71,12 +71,12 @@ export const $let: FunctionData = {
     ) {
       throw new TranspilerError(`${data.name} cannot be used to set itself`);
     }
-
+console.log({value})
     if (currentScope.variables.includes(name)) {
       if (
         currentScope.variables.includes(parseResult(value)) ||
         value.toString().startsWith("#FUNCTION_START#") ||
-        (value.toString().startsWith("`") && value.toString().endsWith("`"))
+        ( value.toString().startsWith( "`" ) && value.toString().endsWith( "`" ) ) || value.includes( "#MATH_FUNCTION_START#" )
       ) {
         res = `${escapeVars(name)} = ${value};`;
       } else {
@@ -87,7 +87,7 @@ export const $let: FunctionData = {
         typeof value !== "string" ||
         currentScope.variables.includes(parseResult(value.toString())) ||
         value.toString().startsWith("#FUNCTION_START#") ||
-        (value.toString().startsWith("`") && value.toString().endsWith("`"))
+        (value.toString().startsWith("`") && value.toString().endsWith("`")) || value.includes("#MATH_FUNCTION_START#")
       ) {
         res = `let ${escapeVars(name)} = ${value};`;
       } else {

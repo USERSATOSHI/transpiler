@@ -54,6 +54,10 @@ export function escapeResult ( res: string )
 {
 	return `#FUNCTION_START#${ res }#FUNCTION_END#`;
 }
+export function escapeMathResult ( res: string )
+{
+	return `#MATH_FUNCTION_START#${ res }#MATH_FUNCTION_END#`;
+}
 export function parseResult ( result: string )
 {
 	return result
@@ -68,7 +72,9 @@ export function parseResult ( result: string )
 		.replaceAll( "#FUNCTION_SCOPE_START#", "" )
 		.replaceAll( "#FUNCTION_SCOPE_END#", "" )
 		.replaceAll( "#FUNCTION_FUNCTION_START#", "" )
-		.replaceAll( "#FUNCTION_FUNCTION_END#", "" );
+		.replaceAll( "#FUNCTION_FUNCTION_END#", "" )
+		.replaceAll( "#MATH_FUNCTION_START#", "" )
+		.replaceAll( "#MATH_FUNCTION_END#", "" );
 }
 export function removeSetFunc ( code: string )
 {

@@ -19,7 +19,7 @@ const while_1 = require("./while");
 const break_1 = require("./break");
 const sum_1 = require("./sum");
 const addField_1 = require("./addField");
-const increment_1 = require("./increment");
+const inc_1 = require("./inc");
 const if_1 = require("./if");
 const elseIf_1 = require("./elseIf");
 const else_1 = require("./else");
@@ -84,7 +84,7 @@ exports.datas = {
     $break: break_1.$break,
     $sum: sum_1.$sum,
     $addField: addField_1.$addField,
-    $increment: increment_1.$increment,
+    $inc: inc_1.$inc,
     $if: if_1.$if,
     $elseIf: elseIf_1.$elseIf,
     $else: else_1.$else,

@@ -9,6 +9,7 @@ export declare function countBrackets(code: string): {
 export declare function parseData(text: string): any;
 export declare function escapeVars(name: string): string;
 export declare function escapeResult(res: string): string;
+export declare function escapeMathResult(res: string): string;
 export declare function parseResult(result: string): string;
 export declare function removeSetFunc(code: string): string;
 export declare function escapeFunctionResult(result: string): string;

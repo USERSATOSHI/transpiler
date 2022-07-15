@@ -32,7 +32,7 @@ exports.$divide = {
             ? x
             : Number(x))
             .join("/")}`;
-        const res = (0, util_1.escapeResult)(div);
+        const res = (0, util_1.escapeMathResult)((0, util_1.escapeResult)(div));
         currentScope.rest = currentScope.rest.replace(data.total, res);
         return {
             code: res,

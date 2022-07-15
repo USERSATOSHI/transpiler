@@ -61,7 +61,7 @@ class Condition {
             return condition;
         }
         else {
-            const op = exports.operators.find((o) => this.condition.includes(o));
+            const op = exports.operators.find((o) => condition.includes(o));
             let res;
             if (op) {
                 const [left, right] = condition.split(op);

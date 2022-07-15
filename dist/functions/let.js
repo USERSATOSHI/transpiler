@@ -43,7 +43,7 @@ exports.$let = {
         }
         const name = (0, util_1.removeSetFunc)(splits[0]);
         let value = (0, util_1.parseData)((0, util_1.removeSetFunc)(splits[1]));
-        if (typeof value === "string" && value.includes("#FUNCTION_START#")) {
+        if (typeof value === "string" && value.includes("#FUNCTION_START#") && !value.includes("#MATH_FUNCTION_START#")) {
             value = (0, stringparser_1.parseString)(value);
         }
         if (name === "" &&
@@ -56,10 +56,11 @@ exports.$let = {
             !currentScope.name.startsWith("$catch_")) {
             throw new error_1.TranspilerError(`${data.name} cannot be used to set itself`);
         }
+        console.log({ value });
         if (currentScope.variables.includes(name)) {
             if (currentScope.variables.includes((0, util_1.parseResult)(value)) ||
                 value.toString().startsWith("#FUNCTION_START#") ||
-                (value.toString().startsWith("`") && value.toString().endsWith("`"))) {
+                (value.toString().startsWith("`") && value.toString().endsWith("`")) || value.includes("#MATH_FUNCTION_START#")) {
                 res = `${(0, util_1.escapeVars)(name)} = ${value};`;
             }
             else {
@@ -70,7 +71,7 @@ exports.$let = {
             if (typeof value !== "string" ||
                 currentScope.variables.includes((0, util_1.parseResult)(value.toString())) ||
                 value.toString().startsWith("#FUNCTION_START#") ||
-                (value.toString().startsWith("`") && value.toString().endsWith("`"))) {
+                (value.toString().startsWith("`") && value.toString().endsWith("`")) || value.includes("#MATH_FUNCTION_START#")) {
                 res = `let ${(0, util_1.escapeVars)(name)} = ${value};`;
             }
             else {

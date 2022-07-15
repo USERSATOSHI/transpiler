@@ -27,12 +27,12 @@ exports.$sum = {
             !currentScope.name.startsWith("$catch_")) {
             throw new error_1.TranspilerError(`${data.name} requires at least 1 argument`);
         }
-        let sum = `${numbers
+        let sum = numbers
             .map((x) => x.startsWith("#FUNCTION_START#") || x.startsWith("__$DISCORD_DATA$__")
             ? x
             : Number(x))
-            .join("+")}`;
-        const res = (0, util_1.escapeResult)(sum);
+            .join("+");
+        const res = (0, util_1.escapeMathResult)((0, util_1.escapeResult)(sum));
         currentScope.rest = currentScope.rest.replace(data.total, res);
         return {
             code: res,

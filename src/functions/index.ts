@@ -17,7 +17,7 @@ import { $while } from "./while";
 import { $break } from "./break";
 import { $sum } from "./sum";
 import { $addField } from "./addField";
-import { $increment } from "./increment";
+import { $inc } from "./inc";
 import { $if } from "./if";
 import { $elseIf } from "./elseIf";
 import { $else } from "./else";
@@ -82,7 +82,7 @@ export const datas: Record<string, FunctionData> = {
 	$break,
 	$sum,
 	$addField,
-	$increment,
+	$inc,
 	$if,
 	$elseIf,
 	$else,
