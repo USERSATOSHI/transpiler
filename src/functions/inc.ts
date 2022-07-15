@@ -23,7 +23,7 @@ export const $inc: FunctionData = {
   version: "1.0.0",
   default: ["void", "++"],
   extra: {
-    example: "$increment[$get[i];++]",
+    example: "$inc[$get[i];++]",
   },
   returns: "void",
   description: "Increments the variable",
