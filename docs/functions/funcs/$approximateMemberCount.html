@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 max-scale=1.0">
-    <meta name="title" content="$increment">
-      <title>@akarui/transpiler: $increment</title>
-    <meta name="description" content="Increments the variable">
+    <meta name="title" content="$approximateMemberCount">
+      <title>@akarui/transpiler: $approximateMemberCount</title>
+    <meta name="description" content="returns approx member count for provided guildId">
     <meta name="thumbnail"
         content="https://cdn.discordapp.com/attachments/734127839544344678/984115861445034034/Untitled32_20220608163112.png">
     <meta name="image" content="">
@@ -141,15 +141,24 @@
 <a href="$addButton.html">$addButton</a>
 <a href="$addField.html">$addField</a>
 <a href="$addObjectProperty.html">$addObjectProperty</a>
+<a href="$addSelectMenu.html">$addSelectMenu</a>
+<a href="$addSelectMenuOption.html">$addSelectMenuOption</a>
+<a href="$allMembersCount.html">$allMembersCount</a>
 <a href="$and.html">$and</a>
+<a href="$approximateMemberCount.html">$approximateMemberCount</a>
+<a href="$approximatePresenceCount .html">$approximatePresenceCount </a>
 <a href="$author.html">$author</a>
 <a href="$authorAvatar.html">$authorAvatar</a>
 <a href="$authorId.html">$authorId</a>
 <a href="$break.html">$break</a>
 <a href="$catch.html">$catch</a>
 <a href="$channelId.html">$channelId</a>
+<a href="$channelNSFW.html">$channelNSFW</a>
 <a href="$channelName.html">$channelName</a>
 <a href="$channelSendMessage.html">$channelSendMessage</a>
+<a href="$channelSlowMode.html">$channelSlowMode</a>
+<a href="$channelTopic.html">$channelTopic</a>
+<a href="$channelType.html">$channelType</a>
 <a href="$checkCondition.html">$checkCondition</a>
 <a href="$clientId.html">$clientId</a>
 <a href="$clientOwnerId.html">$clientOwnerId</a>
@@ -177,12 +186,14 @@
 <a href="$footer.html">$footer</a>
 <a href="$get.html">$get</a>
 <a href="$getObject.html">$getObject</a>
+<a href="$getTimestamp.html">$getTimestamp</a>
 <a href="$guildId.html">$guildId</a>
+<a href="$guildLeave.html">$guildLeave</a>
 <a href="$has.html">$has</a>
 <a href="$if.html">$if</a>
 <a href="$image.html">$image</a>
+<a href="$inc.html">$inc</a>
 <a href="$includes.html">$includes</a>
-<a href="$increment.html">$increment</a>
 <a href="$isBot.html">$isBot</a>
 <a href="$isNumber.html">$isNumber</a>
 <a href="$isServerAvailable.html">$isServerAvailable</a>
@@ -193,6 +204,7 @@
 <a href="$let.html">$let</a>
 <a href="$log.html">$log</a>
 <a href="$message.html">$message</a>
+<a href="$messageReferenceId.html">$messageReferenceId</a>
 <a href="$onlyIf.html">$onlyIf</a>
 <a href="$ping.html">$ping</a>
 <a href="$ram.html">$ram</a>
@@ -205,27 +217,25 @@
                 <div class="sideslide" onclick="opensidenav()">></div>
             </div>
             <div class="container" id="top">
-                <h1 class="heading">$increment</h1>
+                <h1 class="heading">$approximateMemberCount</h1>
 
                 <h2 class="heading" id="description">Description</h2>
-                <pre>Increments the variable</pre>
+                <pre>returns approx member count for provided guildId</pre>
 
                 <h2 class="heading" id="version">Version</h2>
                 <pre>Added in 1.0.0</pre>
 
                 <h2 class="heading" id="usage">Usage</h2>
-                <pre>$increment[variable;incrementFunction?]</pre>
+                <pre>$approximateMemberCount[guildId?]</pre>
 
                 <h2 class="heading" id="params">Parameters</h2>
-                <pre>variable ( string ) 
-?incrementFunction ( function ) </pre>
+                <pre>?guildId ( Snowflake ) </pre>
 
                 <h2 class="heading" id="return">Returns</h2>
-                <pre>void</pre>
+                <pre>number | null</pre>
 
                 <h2 class="heading" id="default">Default Value</h2>
-                <pre>variable = required
-incrementFunction = ++</pre>
+                <pre>guildId = __$DISCORD_DATA$__.guild?.id</pre>
             </div>
         </div>
 </body>

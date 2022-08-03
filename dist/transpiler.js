@@ -1,4 +1,7 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Transpiler = void 0;
 const util_1 = require("./util");
@@ -6,6 +9,7 @@ const index_1 = require("./functions/index");
 const scope_1 = require("./scope");
 const uglify_js_1 = require("uglify-js");
 const error_1 = require("./error");
+const mathlexer_1 = __importDefault(require("./mathlexer"));
 const functions = Object.keys(index_1.datas ?? []);
 function Transpiler(code, sendMessage = true, scopeData, uglify = false) {
     const flist = (0, util_1.getFunctionList)(code, functions);
@@ -32,7 +36,8 @@ function Transpiler(code, sendMessage = true, scopeData, uglify = false) {
         scope.rest.replace(scope.sendData.content.trim(), "");
         res.scope[0] = scope;
     }
-    const str = res.scope[0].toString(sendMessage);
+    let str = res.scope[0].toString(sendMessage);
+    str = (0, mathlexer_1.default)(str);
     const functionString = uglify ? (0, uglify_js_1.minify)(str) : str;
     if (uglify && functionString.error) {
         throw new error_1.TranspilerError(`code:${str} 

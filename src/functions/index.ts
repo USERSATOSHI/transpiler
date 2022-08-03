@@ -17,7 +17,7 @@ import { $while } from "./while";
 import { $break } from "./break";
 import { $sum } from "./sum";
 import { $addField } from "./addField";
-import { $increment } from "./increment";
+import { $inc } from "./inc";
 import { $if } from "./if";
 import { $elseIf } from "./elseIf";
 import { $else } from "./else";
@@ -63,6 +63,18 @@ import { $addObjectProperty } from "./addObjectProperty";
 import { $getObject } from "./getObject";
 import { $deleteObjectProperty } from "./deleteObjectProperty";
 import { $createArray } from "./createArray";
+import { $addSelectMenu } from "./addSelectMenu";
+import { $addSelectMenuOption } from "./addSelectMenuOption";
+import { $allMembersCount } from "./allMembersCount";
+import { $channelNSFW } from "./channelNSFW";
+import { $approximateMemberCount } from "./approximateMemberCount";
+import { $approximatePresenceCount } from "./approximatePresenceCount";
+import { $channelSlowMode } from "./channelSlowMode";
+import { $channelTopic } from "./channelTopic";
+import { $channelType } from "./channelType";
+import { $getTimestamp } from "./getTimestamp";
+import { $guildLeave } from "./guildLeave";
+import { $messageReferenceId } from "./messageReferenceId";
 export const datas: Record<string, FunctionData> = {
 	$let,
 	$get,
@@ -82,7 +94,7 @@ export const datas: Record<string, FunctionData> = {
 	$break,
 	$sum,
 	$addField,
-	$increment,
+	$inc,
 	$if,
 	$elseIf,
 	$else,
@@ -128,4 +140,17 @@ export const datas: Record<string, FunctionData> = {
 	$deleteObjectProperty,
 	$getObject,
 	$createArray,
+	$addSelectMenu,
+	$addSelectMenuOption,
+	$allMembersCount,
+	$channelNSFW,
+	$approximateMemberCount,
+	$approximatePresenceCount,
+	$channelSlowMode,
+	$channelTopic,
+	$channelType,
+	$getTimestamp,
+	$guildLeave,
+	$messageReferenceId,
+	
 };

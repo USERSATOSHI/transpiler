@@ -6,6 +6,7 @@ export declare function Transpiler(code: string, sendMessage?: boolean, scopeDat
     embeds?: EmbedData[];
     name?: string;
     sendFunction?: string;
+    functions?: string;
     env?: string[];
     objects?: Record<string, StringObject>;
 }, uglify?: boolean): {

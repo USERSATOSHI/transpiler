@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.resolveColor = exports.removeFunction = exports.convertToBool = exports._parseString = exports.ExecuteData = exports.getFunctionList = exports.functionFinderRegex = exports.getFunctionData = exports.hasFunction = exports.escapeFunctionResult = exports.removeSetFunc = exports.parseResult = exports.escapeResult = exports.escapeVars = exports.parseData = exports.countBrackets = exports.areBracketsBalanced = void 0;
+exports.resolveColor = exports.removeFunction = exports.convertToBool = exports._parseString = exports.ExecuteData = exports.getFunctionList = exports.functionFinderRegex = exports.getFunctionData = exports.hasFunction = exports.escapeFunctionResult = exports.removeSetFunc = exports.parseResult = exports.escapeMathResult = exports.escapeResult = exports.escapeVars = exports.parseData = exports.countBrackets = exports.areBracketsBalanced = void 0;
 const discord_js_1 = require("discord.js");
 const error_1 = require("./error");
 const index_1 = require("./functions/index");
@@ -51,6 +51,10 @@ function escapeResult(res) {
     return `#FUNCTION_START#${res}#FUNCTION_END#`;
 }
 exports.escapeResult = escapeResult;
+function escapeMathResult(res) {
+    return `#MATH_FUNCTION_START#${res}#MATH_FUNCTION_END#`;
+}
+exports.escapeMathResult = escapeMathResult;
 function parseResult(result) {
     return result
         .replaceAll("#FUNCTION_START#", "")
@@ -64,7 +68,9 @@ function parseResult(result) {
         .replaceAll("#FUNCTION_SCOPE_START#", "")
         .replaceAll("#FUNCTION_SCOPE_END#", "")
         .replaceAll("#FUNCTION_FUNCTION_START#", "")
-        .replaceAll("#FUNCTION_FUNCTION_END#", "");
+        .replaceAll("#FUNCTION_FUNCTION_END#", "")
+        .replaceAll("#MATH_FUNCTION_START#", "")
+        .replaceAll("#MATH_FUNCTION_END#", "");
 }
 exports.parseResult = parseResult;
 function removeSetFunc(code) {

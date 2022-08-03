@@ -27,7 +27,8 @@ exports.$env = {
             !currentScope.name.startsWith("$catch_")) {
             throw new error_1.TranspilerError(`${data.name}: ENV Not Provided.`);
         }
-        if (!currentScope.env.includes(env) &&
+        const mainenv = env?.split(".")[0];
+        if (!currentScope.env.includes(mainenv) &&
             !currentScope.name.startsWith("$try_") &&
             !currentScope.name.startsWith("$catch_")) {
             throw new error_1.TranspilerError(`${data.name}: ENV ${env} Not Found`);

@@ -19,6 +19,7 @@ async function messageCreate(message, client) {
     if (!commands?.size)
         return;
     for (const cmd of commands.values()) {
+        console.time("aoijs");
         await cmd.__compiled__.func({
             message,
             channel: message.channel,
@@ -30,6 +31,7 @@ async function messageCreate(message, client) {
             member: message.member,
             command: cmd,
         });
+        console.timeEnd("aoijs");
     }
 }
 exports.messageCreate = messageCreate;

@@ -28,7 +28,7 @@ exports.$createObject = {
     code: (data, scope) => {
         const currentScope = scope[scope.length - 1];
         const [name, ...obj] = data.splits;
-        const parsedObj = obj.join(";");
+        const parsedObj = obj.join(";").trim();
         if (!obj.length &&
             !currentScope.name.startsWith("$try_") &&
             !currentScope.name.startsWith("$catch_")) {

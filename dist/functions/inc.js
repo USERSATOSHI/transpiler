@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.$increment = void 0;
+exports.$inc = void 0;
 const error_1 = require("../error");
 const util_1 = require("../util");
-exports.$increment = {
-    name: "$increment",
+exports.$inc = {
+    name: "$inc",
     type: "function",
     brackets: true,
     optional: false,
@@ -23,7 +23,7 @@ exports.$increment = {
     version: "1.0.0",
     default: ["void", "++"],
     extra: {
-        example: "$increment[$get[i];++]",
+        example: "$inc[$get[i];++]",
     },
     returns: "void",
     description: "Increments the variable",
@@ -47,4 +47,4 @@ exports.$increment = {
         };
     },
 };
-//# sourceMappingURL=increment.js.map
+//# sourceMappingURL=inc.js.map

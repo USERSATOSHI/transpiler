@@ -3,8 +3,8 @@ import { Scope } from "../scope";
 import { funcData, FunctionData } from "../typings/interface";
 import { escapeFunctionResult, escapeResult } from "../util";
 
-export const $increment: FunctionData = {
-  name: "$increment",
+export const $inc: FunctionData = {
+  name: "$inc",
   type: "function",
   brackets: true,
   optional: false,
@@ -23,7 +23,7 @@ export const $increment: FunctionData = {
   version: "1.0.0",
   default: ["void", "++"],
   extra: {
-    example: "$increment[$get[i];++]",
+    example: "$inc[$get[i];++]",
   },
   returns: "void",
   description: "Increments the variable",

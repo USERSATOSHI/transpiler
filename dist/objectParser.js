@@ -28,7 +28,7 @@ class StringObject {
     }
     solve() {
         if (this.children) {
-            this.children.forEach(x => {
+            this.children.forEach((x) => {
                 const res = x.solve();
                 const index = this.values.indexOf(`#StringObject_${x.name}#`);
                 const keyIndex = this.keys.indexOf(`#StringObject_${x.name}#`);
@@ -39,7 +39,7 @@ class StringObject {
             const values = this.values;
             let i = 0;
             let text = ``;
-            if (this.start === '[') {
+            if (this.start === "[") {
                 text = values.join(",");
                 return `${this.start}${text}${this.end}`;
             }
@@ -55,7 +55,7 @@ class StringObject {
             const values = this.values;
             let i = 0;
             let text = ``;
-            if (this.start === '[') {
+            if (this.start === "[") {
                 text = values.join(",");
                 return `${this.start}${text}${this.end}`;
             }
@@ -70,23 +70,35 @@ class StringObject {
 }
 exports.StringObject = StringObject;
 function getObjectData(stringObject, currentObj) {
-    let i = 0, text = '';
+    let i = 0, text = "";
     while (i < stringObject.length) {
         const char = stringObject[i];
-        if (char === '{' || char === '[') {
+        if (char === "{" || char === "[") {
             const newObj = new StringObject(char, currentObj);
             currentObj.addValue(`#StringObject_${newObj.name}#`);
             currentObj = newObj;
         }
-        else if (char === '}' || char === ']') {
+        else if (char === "}" || char === "]") {
             currentObj.addEnd(char);
-            if (text.trim() !== '') {
+            if (text.trim() !== "") {
                 let t = (0, util_1.parseData)(text.trim());
-                if (typeof t === 'string') {
-                    t = (0, stringparser_1.parseString)(t);
+                if (typeof t === "string") {
+                    if (t.trim().startsWith("'") || t.trim().startsWith("\"") || t.trim().startsWith("`")) {
+                        t = t.trim().slice(1, t.trim().length - 1);
+                        t = (0, stringparser_1.parseString)(t);
+                    }
+                    else if (t.includes("#FUNCTION_START#")) {
+                        if (t
+                            .replaceAll(/#FUNCTION_START#(.+?)#FUNCTION_END#/g, "")
+                            .trim() !== "") {
+                            t = (0, stringparser_1.parseString)(t);
+                        }
+                    }
+                    else
+                        t = (0, stringparser_1.parseString)(t);
                 }
                 currentObj.addValue(t);
-                text = '';
+                text = "";
             }
             currentObj.parent?.pushChild(currentObj);
             currentObj = currentObj.parent;
@@ -96,31 +108,67 @@ function getObjectData(stringObject, currentObj) {
             text = "";
         }
         else if (char === ",") {
-            if (currentObj.start === '[') {
+            if (currentObj.start === "[") {
                 let t = (0, util_1.parseData)(text.trim());
-                if (typeof t === 'string') {
-                    t = (0, stringparser_1.parseString)(t);
+                if (typeof t === "string") {
+                    if (t.trim().startsWith("'") || t.trim().startsWith("\"") || t.trim().startsWith("`")) {
+                        t = t.trim().slice(1, t.trim().length - 1);
+                        t = (0, stringparser_1.parseString)(t);
+                    }
+                    else if (t.includes("#FUNCTION_START#")) {
+                        if (t
+                            .replaceAll(/#FUNCTION_START#(.+?)#FUNCTION_END#/g, "")
+                            .trim() !== "") {
+                            t = (0, stringparser_1.parseString)(t);
+                        }
+                    }
+                    else
+                        t = (0, stringparser_1.parseString)(t);
                 }
                 currentObj.addValue(t);
             }
             else {
                 let t = (0, util_1.parseData)(text.trim());
-                if (typeof t === 'string') {
-                    t = (0, stringparser_1.parseString)(t);
+                if (typeof t === "string") {
+                    if (t.trim().startsWith("'") || t.trim().startsWith("\"") || t.trim().startsWith("`")) {
+                        t = t.trim().slice(1, t.trim().length - 1);
+                        t = (0, stringparser_1.parseString)(t);
+                    }
+                    else if (t.includes("#FUNCTION_START#")) {
+                        if (t
+                            .replaceAll(/#FUNCTION_START#(.+?)#FUNCTION_END#/g, "")
+                            .trim() !== "") {
+                            t = (0, stringparser_1.parseString)(t);
+                        }
+                    }
+                    else
+                        t = (0, stringparser_1.parseString)(t);
                 }
                 currentObj.addValue(t);
             }
-            text = '';
+            text = "";
         }
         else {
             text += char;
         }
         i++;
     }
-    if (text.trim() !== '') {
+    if (text.trim() !== "") {
         let t = (0, util_1.parseData)(text.trim());
-        if (typeof t === 'string') {
-            t = (0, stringparser_1.parseString)(t);
+        if (typeof t === "string") {
+            if (t.trim().startsWith("'") || t.trim().startsWith("\"") || t.trim().startsWith("`")) {
+                t = t.trim().slice(1, t.trim().length - 1);
+                t = (0, stringparser_1.parseString)(t);
+            }
+            else if (t.includes("#FUNCTION_START#")) {
+                if (t
+                    .replaceAll(/#FUNCTION_START#(.+?)#FUNCTION_END#/g, "")
+                    .trim() !== "") {
+                    t = (0, stringparser_1.parseString)(t);
+                }
+            }
+            else
+                t = (0, stringparser_1.parseString)(t);
         }
         currentObj.addValue(t);
     }
@@ -130,7 +178,7 @@ exports.getObjectData = getObjectData;
 function parseStringObject(stringObject, currentObj) {
     const quotes = stringObject.match(exports.ObjectQuoteRegex);
     if (quotes) {
-        quotes.forEach(x => {
+        quotes.forEach((x) => {
             const newx = x
                 .replaceAll(":", "#OBJECT_SEPARATER#")
                 .replaceAll("{", "#OBJECT_STARTER#")
@@ -138,8 +186,7 @@ function parseStringObject(stringObject, currentObj) {
                 .replaceAll("[", "#ARRAY_STARTER#")
                 .replaceAll("]", "#ARRAY_ENDER#")
                 .replaceAll(",", "#ARRAY_SEPARATOR#");
-            stringObject = stringObject
-                .replace(x, newx);
+            stringObject = stringObject.replace(x, newx);
         });
     }
     return getObjectData(stringObject.slice(1, stringObject.length - 1), currentObj);

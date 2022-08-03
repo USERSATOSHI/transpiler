@@ -18,7 +18,9 @@ export async function messageCreate(message: Message, client: AoiClient) {
   >(<LoadCommands>client.loader).paths[0].commandsLocation["basicCommand"]?.filter((c: Command) => c.name.toLowerCase() === cmd || (c.aliases ? c.aliases.includes(cmd) : false)));
 
   if (!commands?.size) return;
-  for (const cmd of commands.values()) {
+  for ( const cmd of commands.values() )
+  {
+    console.time("aoijs")
     await cmd.__compiled__.func({
       message,
       channel: message.channel,
@@ -29,6 +31,7 @@ export async function messageCreate(message: Message, client: AoiClient) {
       bot: client,
       member: message.member,
       command: cmd,
-    });
+    } );
+    console.timeEnd( "aoijs" )
   }
 }
