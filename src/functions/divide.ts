@@ -1,6 +1,6 @@
 import { TranspilerError } from "../error";
 import { FunctionData } from "../typings/interface";
-import { escapeMathResult, escapeResult } from "../util";
+import { escapeMathResult, escapeResult, parseResult } from "../util";
 
 export const $divide: FunctionData = {
   name: "$divide",
@@ -15,29 +15,31 @@ export const $divide: FunctionData = {
     },
   ],
   version: "1.0.0",
-  default: ["void"],
+  default: [ "void" ],
   returns: "number",
   description: "Divides the numbers",
-  code: (data, scope) => {
+  code: ( data, scope ) =>
+  {
     const numbers = data.splits;
-    const currentScope = scope[scope.length - 1];
+    const currentScope = scope[ scope.length - 1 ];
     if (
       data.splits.length === 0 &&
-      !currentScope.name.startsWith("$try_") &&
-      !currentScope.name.startsWith("$catch_")
-    ) {
-      throw new TranspilerError(`${data.name} requires at least 1 argument`);
+      !currentScope.name.startsWith( "$try_" ) &&
+      !currentScope.name.startsWith( "$catch_" )
+    )
+    {
+      throw new TranspilerError( `${ data.name } requires at least 1 argument` );
     }
-    let div = `${numbers
-      .map((x) =>
-        x.startsWith("#FUNCTION_START#") || x.startsWith("__$DISCORD_DATA$__")
-          ? x
-          : Number(x),
+    let div = `${ numbers
+      .map( ( x ) =>
+        x.includes( "#FUNCTION_START#" ) || x.includes( "__$DISCORD_DATA$__" ) || x.includes("#MATH_FUNCTION_START#")
+          ? parseResult(x.trim()) 
+          : Number( x ),
       )
-      .join("/")}`;
+      .join( "/" ) }`;
 
-    const res = escapeMathResult(escapeResult(div));
-    currentScope.rest = currentScope.rest.replace(data.total, res);
+    const res = (( escapeMathResult(`(${ div })`) ) );
+    currentScope.rest = currentScope.rest.replace( data.total, res );
     return {
       code: res,
       scope,

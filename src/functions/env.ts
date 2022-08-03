@@ -28,9 +28,10 @@ export const $env: FunctionData = {
     ) {
       throw new TranspilerError(`${data.name}: ENV Not Provided.`);
     }
+        const mainenv = env?.split(".")[0];
 
     if (
-      !currentScope.env.includes(<string>env) &&
+      !currentScope.env.includes(<string>mainenv) &&
       !currentScope.name.startsWith("$try_") &&
       !currentScope.name.startsWith("$catch_")
     ) {

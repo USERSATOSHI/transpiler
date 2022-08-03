@@ -1,6 +1,6 @@
 import { TranspilerError } from "../error";
 import { FunctionData } from "../typings/interface";
-import { escapeMathResult, escapeResult } from "../util";
+import { escapeMathResult, escapeResult, parseResult } from "../util";
 
 export const $sum: FunctionData = {
   name: "$sum",
@@ -32,13 +32,13 @@ export const $sum: FunctionData = {
     }
     let sum = numbers
       .map( ( x ) =>
-        x.startsWith( "#FUNCTION_START#" ) || x.startsWith( "__$DISCORD_DATA$__" )
-          ? x
+        x.includes( "#FUNCTION_START#" ) || x.includes( "__$DISCORD_DATA$__" ) || x.includes( "#MATH_FUNCTION_START#" )
+          ? parseResult( x.trim() ) 
           : Number( x ),
       )
       .join( "+" );
 
-    const res = escapeMathResult( escapeResult( sum ) );
+    const res = ( ( escapeMathResult( `(${ sum })` ) ) );
     currentScope.rest = currentScope.rest.replace( data.total, res );
     return {
       code: res,

@@ -1,22 +1,24 @@
-const fs = require('fs');
-const { inspect } = require('util')
-const { datas } = require('../dist');
-const functionlistarray = []
-const functionlistharray = []
+const fs = require("fs");
+const { inspect } = require("util");
+const { datas } = require("../dist");
+const functionlistarray = [];
+const functionlistharray = [];
 const sortedKeys = Object.keys(datas).sort();
-for(const data of sortedKeys) {
+for (const data of sortedKeys) {
     functionlistarray.push(`
     <a href="./funcs/${datas[data].name}.html" class="functions">
                     <div class= 'functionName'>${datas[data].name}</div>
                     <div id="${datas[data].name}" class = 'functionDesc'>${datas[data].description}</div>
                 </a>
 `);
-functionlistharray.push(`<a href="${datas[data].name}.html">${datas[data].name}</a>`)
+    functionlistharray.push(
+        `<a href="${datas[data].name}.html">${datas[data].name}</a>`,
+    );
 }
 
 fs.writeFileSync(
-  "./docs/functions/index.html",
-  `<!DOCTYPE html>
+    "./docs/functions/index.html",
+    `<!DOCTYPE html>
 <html class="light">
 
 <head>
@@ -120,8 +122,8 @@ fs.writeFileSync(
 );
 
 fs.writeFileSync(
-  "./docs/functions/index.js",
-  `const keys = ${inspect(sortedKeys, { depth: null })}
+    "./docs/functions/index.js",
+    `const keys = ${inspect(sortedKeys, { depth: null })}
 const datas = ${JSON.stringify(datas)}
 
 function getcurrentmode() {
@@ -534,10 +536,10 @@ $(document).on(
 `,
 );
 
-for(const key of sortedKeys) {
+for (const key of sortedKeys) {
     fs.writeFileSync(
-      `./docs/functions/funcs/${key}.html`,
-      `<!DOCTYPE html>
+        `./docs/functions/funcs/${key}.html`,
+        `<!DOCTYPE html>
 <html class="light">
 
 <head>
@@ -691,24 +693,24 @@ for(const key of sortedKeys) {
 
                 <h2 class="heading" id="usage">Usage</h2>
                 <pre>${
-                  datas[key].fields.length > 0
-                    ? `${datas[key].name}[${datas[key].fields
-                        .map((x) => (x.required ? x.name : `${x.name}?`))
-                        .join(";")}]`
-                    : key
+                    datas[key].fields.length > 0
+                        ? `${datas[key].name}[${datas[key].fields
+                              .map((x) => (x.required ? x.name : `${x.name}?`))
+                              .join(";")}]`
+                        : key
                 }</pre>
 
                 <h2 class="heading" id="params">Parameters</h2>
                 <pre>${
-                  datas[key].fields.length > 0
-                    ? datas[key].fields
-                        .map(
-                          (x) =>
-                            (!x.required ? "?" : "") +
-                            `${x.name} ( ${x.type} ) `,
-                        )
-                        .join("\n")
-                    : "no parameters available"
+                    datas[key].fields.length > 0
+                        ? datas[key].fields
+                              .map(
+                                  (x) =>
+                                      (!x.required ? "?" : "") +
+                                      `${x.name} ( ${x.type} ) `,
+                              )
+                              .join("\n")
+                        : "no parameters available"
                 }</pre>
 
                 <h2 class="heading" id="return">Returns</h2>
@@ -716,14 +718,16 @@ for(const key of sortedKeys) {
 
                 <h2 class="heading" id="default">Default Value</h2>
                 <pre>${
-                  datas[key].default.length > 0
-                    ? datas[key].default
-                        .map((x, y) => {
-                          const field = datas[key].fields[y].name;
-                          return `${field} = ${x === "void" ? "required" : x}`;
-                        })
-                        .join("\n")
-                    : "no default datas"
+                    datas[key].default.length > 0
+                        ? datas[key].default
+                              .map((x, y) => {
+                                  const field = datas[key].fields[y].name;
+                                  return `${field} = ${
+                                      x === "void" ? "required" : x
+                                  }`;
+                              })
+                              .join("\n")
+                        : "no default datas"
                 }</pre>
             </div>
         </div>
@@ -733,7 +737,9 @@ for(const key of sortedKeys) {
     );
 }
 
-fs.writeFileSync("./docs/functions/funcs/indexFunction.js", `
+fs.writeFileSync(
+    "./docs/functions/funcs/indexFunction.js",
+    `
 const keys = ${inspect(sortedKeys, { depth: null })}
 const datas = ${JSON.stringify(datas)}
 
@@ -1242,4 +1248,5 @@ function opensidenav() {
   }
 }
 
-`)
+`,
+);

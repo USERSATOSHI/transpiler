@@ -1,8 +1,12 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Scope = void 0;
 const util_1 = require("./util");
 const stringparser_1 = require("./stringparser");
+const mathlexer_1 = __importDefault(require("./mathlexer"));
 class Scope {
     constructor(name, parent, code, addReturn) {
         this.children = [];
@@ -73,7 +77,7 @@ class Scope {
         parsedStr = parsedStr.trim() === "" ? " " : parsedStr.trim();
         this.rest = this.replaceLast(this.rest.trim(), this.sendData.content.trim(), "");
         const sent = `{
-  content: ${parsedStr.replaceAll("\\n", "#NEW_LINE#")},
+  content: ${(0, mathlexer_1.default)(parsedStr.trim() === "``" ? "` `" : parsedStr)},
   embeds: ${(0, util_1.escapeVars)(`${this.name}_embeds`)},
   components: ${(0, util_1.escapeVars)(`${this.name}_components`)},
   files: ${(0, util_1.escapeVars)(`${this.name}_files`)},
@@ -117,7 +121,7 @@ class Scope {
         parsedStr = parsedStr.trim() === "" ? " " : parsedStr.trim();
         this.rest = this.replaceLast(this.rest.trim(), this.sendData.content.trim(), "");
         const sent = `{
-  content: ${parsedStr.replaceAll("\\n", "#NEW_LINE#")},
+  content: ${(0, mathlexer_1.default)(parsedStr.trim() === "``" ? "` `" : parsedStr)},
   embeds: ${(0, util_1.escapeVars)(`${this.name}_embeds`)},
   components: ${(0, util_1.escapeVars)(`${this.name}_components`)},
   files: ${(0, util_1.escapeVars)(`${this.name}_files`)},
@@ -161,8 +165,9 @@ class Scope {
                 ? " "
                 : parsedStr.trim().replaceAll("#STRING_LITERAL#", "\\`");
         this.rest = this.replaceLast(this.rest.trim(), this.sendData.content.trim(), "");
+        parsedStr = parsedStr.replaceAll("\\n", "#NEW_LINE#");
         const sent = `{
-  content: ${parsedStr.replaceAll("\\n", "#NEW_LINE#")},
+  content: ${(0, mathlexer_1.default)(parsedStr.trim() === "``" ? "` `" : parsedStr)},
   embeds: ${(0, util_1.escapeVars)(`${this.name}_embeds`)},
   components: ${(0, util_1.escapeVars)(`${this.name}_components`)},
   files: ${(0, util_1.escapeVars)(`${this.name}_files`)},

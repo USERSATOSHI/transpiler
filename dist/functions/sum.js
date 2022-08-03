@@ -28,11 +28,11 @@ exports.$sum = {
             throw new error_1.TranspilerError(`${data.name} requires at least 1 argument`);
         }
         let sum = numbers
-            .map((x) => x.startsWith("#FUNCTION_START#") || x.startsWith("__$DISCORD_DATA$__")
-            ? x
+            .map((x) => x.includes("#FUNCTION_START#") || x.includes("__$DISCORD_DATA$__") || x.includes("#MATH_FUNCTION_START#")
+            ? (0, util_1.parseResult)(x.trim())
             : Number(x))
             .join("+");
-        const res = (0, util_1.escapeMathResult)((0, util_1.escapeResult)(sum));
+        const res = (((0, util_1.escapeMathResult)(`(${sum})`)));
         currentScope.rest = currentScope.rest.replace(data.total, res);
         return {
             code: res,

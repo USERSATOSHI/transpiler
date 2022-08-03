@@ -11,6 +11,7 @@ import { minify, MinifyOutput } from "uglify-js";
 import { EmbedData } from "discord.js";
 import { TranspilerError } from "./error";
 import { StringObject } from "./objectParser";
+import fixMath from "./mathlexer";
 const functions = Object.keys(FunctionDatas ?? []);
 export function Transpiler(
   code: string,
@@ -20,6 +21,7 @@ export function Transpiler(
     embeds?: EmbedData[];
     name?: string;
     sendFunction?: string;
+    functions?: string;
     env?: string[];
     objects?: Record<string, StringObject>;
   },
@@ -53,7 +55,8 @@ export function Transpiler(
     scope.rest.replace(scope.sendData.content.trim(), "");
     res.scope[0] = scope;
   }
-  const str = res.scope[0].toString(sendMessage);
+  let str = res.scope[ 0 ].toString( sendMessage );
+  str = fixMath( str );
   const functionString = uglify ? minify(str) : str;
 
   if (uglify && (<MinifyOutput>functionString).error) {

@@ -65,6 +65,18 @@ const addObjectProperty_1 = require("./addObjectProperty");
 const getObject_1 = require("./getObject");
 const deleteObjectProperty_1 = require("./deleteObjectProperty");
 const createArray_1 = require("./createArray");
+const addSelectMenu_1 = require("./addSelectMenu");
+const addSelectMenuOption_1 = require("./addSelectMenuOption");
+const allMembersCount_1 = require("./allMembersCount");
+const channelNSFW_1 = require("./channelNSFW");
+const approximateMemberCount_1 = require("./approximateMemberCount");
+const approximatePresenceCount_1 = require("./approximatePresenceCount");
+const channelSlowMode_1 = require("./channelSlowMode");
+const channelTopic_1 = require("./channelTopic");
+const channelType_1 = require("./channelType");
+const getTimestamp_1 = require("./getTimestamp");
+const guildLeave_1 = require("./guildLeave");
+const messageReferenceId_1 = require("./messageReferenceId");
 exports.datas = {
     $let: let_1.$let,
     $get: get_1.$get,
@@ -130,5 +142,17 @@ exports.datas = {
     $deleteObjectProperty: deleteObjectProperty_1.$deleteObjectProperty,
     $getObject: getObject_1.$getObject,
     $createArray: createArray_1.$createArray,
+    $addSelectMenu: addSelectMenu_1.$addSelectMenu,
+    $addSelectMenuOption: addSelectMenuOption_1.$addSelectMenuOption,
+    $allMembersCount: allMembersCount_1.$allMembersCount,
+    $channelNSFW: channelNSFW_1.$channelNSFW,
+    $approximateMemberCount: approximateMemberCount_1.$approximateMemberCount,
+    $approximatePresenceCount: approximatePresenceCount_1.$approximatePresenceCount,
+    $channelSlowMode: channelSlowMode_1.$channelSlowMode,
+    $channelTopic: channelTopic_1.$channelTopic,
+    $channelType: channelType_1.$channelType,
+    $getTimestamp: getTimestamp_1.$getTimestamp,
+    $guildLeave: guildLeave_1.$guildLeave,
+    $messageReferenceId: messageReferenceId_1.$messageReferenceId,
 };
 //# sourceMappingURL=index.js.map

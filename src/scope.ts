@@ -16,6 +16,7 @@ import {
 import { escapeResult, escapeVars, parseResult } from "./util";
 import { inspect } from "util";
 import { parseString } from "./stringparser";
+import fixMath from './mathlexer';
 export class Scope {
   name: string;
   parent: string | undefined;
@@ -120,7 +121,7 @@ export class Scope {
     );
 
     const sent = `{
-  content: ${parsedStr.replaceAll("\\n", "#NEW_LINE#")},
+  content: ${fixMath( parsedStr.trim() === "``" ? "` `" : parsedStr )},
   embeds: ${escapeVars(`${this.name}_embeds`)},
   components: ${escapeVars(`${this.name}_components`)},
   files: ${escapeVars(`${this.name}_files`)},
@@ -186,7 +187,7 @@ export class Scope {
     );
 
     const sent = `{
-  content: ${parsedStr.replaceAll("\\n", "#NEW_LINE#")},
+  content: ${fixMath( parsedStr.trim() === "``" ? "` `" : parsedStr )},
   embeds: ${escapeVars(`${this.name}_embeds`)},
   components: ${escapeVars(`${this.name}_components`)},
   files: ${escapeVars(`${this.name}_files`)},
@@ -246,8 +247,10 @@ export class Scope {
       this.sendData.content.trim(),
       "",
     );
+    parsedStr = parsedStr.replaceAll( "\\n", "#NEW_LINE#" );
+
     const sent = `{
-  content: ${parsedStr.replaceAll("\\n", "#NEW_LINE#")},
+  content: ${fixMath(parsedStr.trim() === "``" ? "` `" : parsedStr)},
   embeds: ${escapeVars(`${this.name}_embeds`)},
   components: ${escapeVars(`${this.name}_components`)},
   files: ${escapeVars(`${this.name}_files`)},
