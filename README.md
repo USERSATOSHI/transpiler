@@ -1,10 +1,10 @@
-# Transpiler
+# @akarui/transpiler
 A Transpiler that converts aoi.js code to javascript.
 
 ## Usage
 
 ```js
-const { Transpiler } = require('aoi-transpiler');
+const { Transpiler } = require('@akarui/transpiler');
 
 const code =
 `$let[hi;1]
