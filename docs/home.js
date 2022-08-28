@@ -15,9 +15,9 @@ function setcurrenttheme(theme) {
 function setcurrentmode(mode) {
   localStorage.setItem("3dmode", mode);
 }
-var orginal_width = 0;
+var original_width = 0;
 $(document).ready(async function () {
-  orginal_width = window.screen.width;
+  original_width = window.screen.width;
   $(".body").css("display", "none");
   $(".background").css("display", "none");
   if (getcurrenttheme() === "light") {
