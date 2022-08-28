@@ -75,6 +75,8 @@ import { $channelType } from "./channelType";
 import { $getTimestamp } from "./getTimestamp";
 import { $guildLeave } from "./guildLeave";
 import { $messageReferenceId } from "./messageReferenceId";
+import { $sub } from "./sub";
+import { $parseMs } from "./parseMs";
 export const datas: Record<string, FunctionData> = {
 	$let,
 	$get,
@@ -152,5 +154,6 @@ export const datas: Record<string, FunctionData> = {
 	$getTimestamp,
 	$guildLeave,
 	$messageReferenceId,
-	
+	$sub,
+	$parseMs,
 };

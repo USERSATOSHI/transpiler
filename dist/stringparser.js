@@ -92,5 +92,5 @@ function parseString(text) {
     return ast.parse();
 }
 exports.parseString = parseString;
-console.log(parseString("#FUNCTION_START#__$DISCORD_DATA__#FUNCTION_END#"));
+//console.log(parseString("#FUNCTION_START#__$DISCORD_DATA__#FUNCTION_END#"))
 //# sourceMappingURL=stringparser.js.map

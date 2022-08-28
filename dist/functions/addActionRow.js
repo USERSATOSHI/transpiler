@@ -27,6 +27,7 @@ exports.$addActionRow = {
             throw new error_1.TranspilerError(`${data.name} cannot have more than 5 components`);
         }
         const component = { type: 1, components: [] };
+        //@ts-ignore
         currentScope.components.push(component);
         currentScope.rest = currentScope.rest.replace(data.total, "");
         const res = (0, util_2.escapeResult)(`${(0, util_2.escapeVars)(`${currentScope.name}_components`)}.push(${(0, util_1.inspect)(component, { depth: null })});`);

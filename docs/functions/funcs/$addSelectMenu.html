@@ -206,9 +206,11 @@
 <a href="$message.html">$message</a>
 <a href="$messageReferenceId.html">$messageReferenceId</a>
 <a href="$onlyIf.html">$onlyIf</a>
+<a href="$parseMs.html">$parseMs</a>
 <a href="$ping.html">$ping</a>
 <a href="$ram.html">$ram</a>
 <a href="$slashOption.html">$slashOption</a>
+<a href="$sub.html">$sub</a>
 <a href="$sum.html">$sum</a>
 <a href="$try.html">$try</a>
 <a href="$while.html">$while</a>
@@ -226,24 +228,24 @@
                 <pre>Added in 1.0.0</pre>
 
                 <h2 class="heading" id="usage">Usage</h2>
-                <pre>$addSelectMenu[label?;style;customId | url;disabled?;emoji?]</pre>
+                <pre>$addSelectMenu[customId?;placeholder;minValues?;maxValues?;disabled?]</pre>
 
                 <h2 class="heading" id="params">Parameters</h2>
-                <pre>?label ( string ) 
-style ( string | number ) 
-customId | url ( string ) 
-?disabled ( boolean ) 
-?emoji ( string ) </pre>
+                <pre>?customId ( string ) 
+placeholder ( string ) 
+?minValues ( number ) 
+?maxValues ( number ) 
+?disabled ( boolean ) </pre>
 
                 <h2 class="heading" id="return">Returns</h2>
                 <pre>void</pre>
 
                 <h2 class="heading" id="default">Default Value</h2>
-                <pre>label = 
-style = required
-customId | url = required
-disabled = no
-emoji = </pre>
+                <pre>customId = required
+placeholder = required
+minValues = 1
+maxValues = 1
+disabled = no</pre>
             </div>
         </div>
 </body>

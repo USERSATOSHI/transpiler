@@ -247,7 +247,7 @@ function _parseString(text) {
         let i = 0;
         let u = 0;
         while (i < (matches?.length ?? 0)) {
-            const match = matches[i];
+            const match = matches?.[i];
             const position = temptext.indexOf(match);
             const part = temptext.slice(position, position + match.length);
             const temppart = parseResult(part);
@@ -255,12 +255,12 @@ function _parseString(text) {
                 .toString()
                 .repeat(temppart.length - 3)}$__`}${temptext.slice(position + part.length, text.length)}`;
             text = `${text.slice(0, position)}\${${temppart}}${text.slice(position + part.length, text.length)}`;
-            matches = temptext.match(reg)?.reverse() ?? [];
+            matches = (temptext.match(reg)?.reverse() ?? []);
             i = 0;
             u++;
         }
-        matches = text.match(/__\$[0-9]+\$__/gi)?.reverse() ?? [];
-        matches.forEach((x, y) => {
+        matches = ((text.match(/__\$[0-9]+\$__/gi)?.reverse() ?? []));
+        matches?.forEach((x, y) => {
             text = text.replace(x, `\${${parseResult(functionlist[y])}}`);
         });
         text = `\`${text}\``;
@@ -304,7 +304,7 @@ function resolveColor(color) {
         resolvedColor = color;
     }
     try {
-        return discord_js_1.Util.resolveColor(resolvedColor);
+        return (0, discord_js_1.resolveColor)(resolvedColor);
     }
     catch (e) {
         console.error(e);

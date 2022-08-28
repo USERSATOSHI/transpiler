@@ -33,6 +33,7 @@ export const $addActionRow: FunctionData = {
       );
     }
     const component = { type: 1, components: [] };
+    //@ts-ignore
     currentScope.components.push(component);
     currentScope.rest = currentScope.rest.replace(data.total, "");
     const res = escapeResult(

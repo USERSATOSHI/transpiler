@@ -53,6 +53,7 @@ export const $addSelectMenuOption: FunctionData = {
             throw new TranspilerError( `${ data.name }: Label or Value Missing` );
         }
         const op = new SelectMenuOptionBuilder();
+        //@ts-ignore
         op.setLabel( label ).setValue( value ).setDescription( description ).setDefault( convertToBool( def ) );
         if ( emoji )
         {
@@ -83,11 +84,13 @@ export const $addSelectMenuOption: FunctionData = {
             );
         }
         const SM = C.components[ C.components.length - 1 ];
+        //@ts-ignore
         SM.options.push( op.toJSON() );
         currentScope.rest = currentScope.rest.replace( data.total, "" );
         const res = escapeResult(
             escapeVars( `${ currentScope.name }_components` ) +
             `[${ currentScope.components.length - 1 }].components[0].options.push(${ inspect(
+                //@ts-ignore
                 op.toJSON(),
                 { depth: null },
             ) });`,

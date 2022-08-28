@@ -77,6 +77,8 @@ const channelType_1 = require("./channelType");
 const getTimestamp_1 = require("./getTimestamp");
 const guildLeave_1 = require("./guildLeave");
 const messageReferenceId_1 = require("./messageReferenceId");
+const sub_1 = require("./sub");
+const parseMs_1 = require("./parseMs");
 exports.datas = {
     $let: let_1.$let,
     $get: get_1.$get,
@@ -154,5 +156,7 @@ exports.datas = {
     $getTimestamp: getTimestamp_1.$getTimestamp,
     $guildLeave: guildLeave_1.$guildLeave,
     $messageReferenceId: messageReferenceId_1.$messageReferenceId,
+    $sub: sub_1.$sub,
+    $parseMs: parseMs_1.$parseMs,
 };
 //# sourceMappingURL=index.js.map

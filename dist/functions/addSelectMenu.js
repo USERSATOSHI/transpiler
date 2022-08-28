@@ -24,39 +24,39 @@ exports.$addSelectMenu = {
     optional: false,
     fields: [
         {
-            name: "label",
+            name: "customId",
             type: "string",
             required: false,
         },
         {
-            name: "style",
-            type: "string | number",
+            name: "placeholder",
+            type: "string",
             required: true,
         },
         {
-            name: "customId | url",
-            type: "string",
-            required: true,
+            name: "minValues",
+            type: "number",
+            required: false,
+        },
+        {
+            name: "maxValues",
+            type: "number",
+            required: false,
         },
         {
             name: "disabled",
             type: "boolean",
             required: false,
-        },
-        {
-            name: "emoji",
-            type: "string",
-            required: false,
-        },
+        }
     ],
-    default: ["", "void", "void", "no", ""],
+    default: ["void", "void", "1", "1", "no"],
     version: "1.0.0",
     description: "Adds a button to the ActionRow",
     returns: "void",
     type: "setter",
     code: (data, scope) => {
         const currentScope = scope[scope.length - 1];
-        const [customId, placeholder, min_values, max_values, disabled = "no"] = data.splits;
+        const [customId, placeholder, min_values = 1, max_values = 1, disabled = "no"] = data.splits;
         if ((!customId || customId === "") &&
             !currentScope.name.startsWith("$try_") &&
             !currentScope.name.startsWith("$catch_")) {

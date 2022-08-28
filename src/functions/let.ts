@@ -71,7 +71,7 @@ export const $let: FunctionData = {
     ) {
       throw new TranspilerError(`${data.name} cannot be used to set itself`);
     }
-console.log({value})
+//console.log({value})
     if (currentScope.variables.includes(name)) {
       if (
         currentScope.variables.includes(parseResult(value)) ||

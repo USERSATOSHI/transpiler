@@ -50,6 +50,7 @@ exports.$addSelectMenuOption = {
             throw new error_1.TranspilerError(`${data.name}: Label or Value Missing`);
         }
         const op = new discord_js_1.SelectMenuOptionBuilder();
+        //@ts-ignore
         op.setLabel(label).setValue(value).setDescription(description).setDefault((0, util_1.convertToBool)(def));
         if (emoji) {
             op.setEmoji(emoji);
@@ -66,10 +67,13 @@ exports.$addSelectMenuOption = {
             throw new error_1.TranspilerError(`${data.name}: ActionRow cannot have more than 5 buttons`);
         }
         const SM = C.components[C.components.length - 1];
+        //@ts-ignore
         SM.options.push(op.toJSON());
         currentScope.rest = currentScope.rest.replace(data.total, "");
         const res = (0, util_1.escapeResult)((0, util_1.escapeVars)(`${currentScope.name}_components`) +
-            `[${currentScope.components.length - 1}].components[0].options.push(${(0, util_2.inspect)(op.toJSON(), { depth: null })});`);
+            `[${currentScope.components.length - 1}].components[0].options.push(${(0, util_2.inspect)(
+            //@ts-ignore
+            op.toJSON(), { depth: null })});`);
         currentScope.setters += res + "\n";
         return {
             code: res,

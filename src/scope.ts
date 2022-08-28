@@ -4,7 +4,7 @@ import {
   ButtonComponent,
   EmbedBuilder,
   EmbedData,
-  MessageAttachment,
+  AttachmentBuilder as MessageAttachment,
   NewsChannel,
   SelectMenuComponent,
   Snowflake,
