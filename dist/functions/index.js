@@ -79,6 +79,8 @@ const guildLeave_1 = require("./guildLeave");
 const messageReferenceId_1 = require("./messageReferenceId");
 const sub_1 = require("./sub");
 const parseMs_1 = require("./parseMs");
+const multi_1 = require("./multi");
+const or_1 = require("./or");
 exports.datas = {
     $let: let_1.$let,
     $get: get_1.$get,
@@ -156,6 +158,8 @@ exports.datas = {
     $getTimestamp: getTimestamp_1.$getTimestamp,
     $guildLeave: guildLeave_1.$guildLeave,
     $messageReferenceId: messageReferenceId_1.$messageReferenceId,
+    $multi: multi_1.$multi,
+    $or: or_1.$or,
     $sub: sub_1.$sub,
     $parseMs: parseMs_1.$parseMs,
 };

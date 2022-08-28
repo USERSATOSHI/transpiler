@@ -77,6 +77,8 @@ import { $guildLeave } from "./guildLeave";
 import { $messageReferenceId } from "./messageReferenceId";
 import { $sub } from "./sub";
 import { $parseMs } from "./parseMs";
+import { $multi } from "./multi";
+import { $or } from "./or";
 export const datas: Record<string, FunctionData> = {
 	$let,
 	$get,
@@ -154,6 +156,8 @@ export const datas: Record<string, FunctionData> = {
 	$getTimestamp,
 	$guildLeave,
 	$messageReferenceId,
+	$multi,
+	$or,
 	$sub,
 	$parseMs,
 };
