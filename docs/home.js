@@ -16,7 +16,44 @@ function setcurrentmode(mode) {
   localStorage.setItem("3dmode", mode);
 }
 var original_width = 0;
-$(document).ready(async function () {
+$( document ).ready( async function ()
+{
+  
+$("#copy").click(function () {
+    $("#copy").text("done");
+    $(this).attr("id", "copied");
+    const text = `const { Transpiler, LoadCommands, onMessage } = require( "@akarui/transpiler" );
+
+const { AoiClient } = require( "aoi.js" ); //aoi.js ( version: 6.0.0 )
+const { Collection } = require( "@discordjs/collection" );
+
+const client = new AoiClient({
+  token: "token",
+  prefix: "!",
+  intents: [ "Guilds", "GuildMessages", "MessageContent" ],
+});
+
+onMessage( client );
+
+client.cmds = {
+  basicCommand: new Collection(),
+  slashCommand: new Collection(),
+};
+
+const loader = new LoadCommands( client, true );
+
+loader.load( client.cmds, "./commands/" );
+
+client.start();`;
+
+    navigator.clipboard.writeText(text);
+    const t = setTimeout(() => {
+        $("#copied").text("content_copy");
+        $("#copied").attr("id", "copy");
+        clearTimeout(t);
+    }, 5000);
+});
+
   original_width = window.screen.width;
   $(".body").css("display", "none");
   $(".background").css("display", "none");
@@ -429,38 +466,3 @@ function dmode() {
     $(".displaybox").css("height", "50%");
   }
 }
-
-$("#copy").click(function () {
-  $("#copy").text("done");
-  $(this).attr("id", "copied");
-  const text = `const { Transpiler, LoadCommands, onMessage } = require( "@akarui/transpiler" );
-
-const { AoiClient } = require( "aoi.js" ); //aoi.js ( version: 6.0.0 )
-const { Collection } = require( "@discordjs/collection" );
-
-const client = new AoiClient({
-  token: "token",
-  prefix: "!",
-  intents: [ "Guilds", "GuildMessages", "MessageContent" ],
-});
-
-onMessage( client );
-
-client.cmds = {
-  basicCommand: new Collection(),
-  slashCommand: new Collection(),
-};
-
-const loader = new LoadCommands( client, true );
-
-loader.load( client.cmds, "./commands/" );
-
-client.start();`;
-
-  navigator.clipboard.writeText(text);
-  const t = setTimeout(() => {
-    $("#copied").text("content_copy");
-    $("#copied").attr("id", "copy");
-    clearTimeout(t);
-  }, 5000);
-});

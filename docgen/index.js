@@ -760,7 +760,7 @@ function setcurrenttheme(theme) {
 function setcurrentmode(mode) {
   localStorage.setItem("3dmode", mode);
 }
-
+var original_width = 0;
 $(document).ready(async function () {
   $(".functions").hover(
     function () {
@@ -771,7 +771,7 @@ $(document).ready(async function () {
     },
   );
   $(".functionDesc").hide();
-  var orginal_width = window.screen.width;
+  var original_width = window.screen.width;
   $(".body").css("display", "none");
   $(".background").css("display", "none");
   if (getcurrenttheme() === "light") {
