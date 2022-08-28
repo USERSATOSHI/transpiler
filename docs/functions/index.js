@@ -460,14 +460,13 @@ function dmode() {
 function search(input) {
       let value = document.getElementById("search").value;
       if(value === "$") return;
-    value = value.replace("$", "");
       const startsWith = keys.filter((x) =>
         x.toLowerCase().startsWith(value.toLowerCase()),
       );
       const includes = keys.filter((x) =>
         x.toLowerCase().includes(value.toLowerCase()),
       );
-      const set = Array.from(new Set(startsWith.concat(includes)));
+  const set = Array.from( new Set( startsWith.concat( includes ) ) );
       const results = set.map((x) => {
         return ` <a href="./funcs/${datas[x].name}.html" class="functions">
                     <div class= 'functionName'>${datas[x].name}</div>
