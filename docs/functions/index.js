@@ -460,11 +460,12 @@ function dmode() {
 function search(input) {
       let value = document.getElementById("search").value;
       if(value === "$") return;
+    value = value.replace("$", "");
       const startsWith = keys.filter((x) =>
-        x.toLowerCase().startsWith(value.toLowerCase()),
+        x.replace("$","").toLowerCase().startsWith(value.toLowerCase()),
       );
       const includes = keys.filter((x) =>
-        x.toLowerCase().includes(value.toLowerCase()),
+          x.replace("$", "").toLowerCase().includes(value.toLowerCase()),
       );
   const set = Array.from( new Set( startsWith.concat( includes ) ) );
       const results = set.map((x) => {
