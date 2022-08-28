@@ -56,7 +56,7 @@ exports.$let = {
             !currentScope.name.startsWith("$catch_")) {
             throw new error_1.TranspilerError(`${data.name} cannot be used to set itself`);
         }
-        console.log({ value });
+        //console.log({value})
         if (currentScope.variables.includes(name)) {
             if (currentScope.variables.includes((0, util_1.parseResult)(value)) ||
                 value.toString().startsWith("#FUNCTION_START#") ||

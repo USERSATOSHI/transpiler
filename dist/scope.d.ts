@@ -1,5 +1,5 @@
 import { StringObject } from './objectParser';
-import { ActionRow, ButtonComponent, EmbedData, MessageAttachment, SelectMenuComponent, Snowflake, StickerResolvable, TextInputComponent } from "discord.js";
+import { ActionRow, ButtonComponent, EmbedData, AttachmentBuilder as MessageAttachment, SelectMenuComponent, Snowflake, StickerResolvable, TextInputComponent } from "discord.js";
 export declare class Scope {
     name: string;
     parent: string | undefined;
