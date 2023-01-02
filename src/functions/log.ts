@@ -1,4 +1,5 @@
 import { TranspilerError } from "../error";
+import fixMath from "../mathlexer";
 import { Scope } from "../scope";
 import { parseString } from "../stringparser";
 import { funcData, FunctionData } from "../typings/interface";
@@ -47,7 +48,7 @@ export const $log: FunctionData = {
     ) {
       throw new TranspilerError(`${data.name} requires a text`);
     }
-    const parsedText = parseString(text);
+    const parsedText = parseString(fixMath(text));
     res = `${escapeFunctionResult(`console.log(${parsedText});`)}`;
     currentScope.rest = currentScope.rest.replace(data.total, res);
     return { code: res, scope: scope, data };

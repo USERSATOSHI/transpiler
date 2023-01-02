@@ -1,4 +1,4 @@
-import { AoiClient } from "aoi.js";
+import { Bot as AoiClient } from "aoi.js";
 import {
   ButtonInteraction,
   CacheType,
@@ -10,7 +10,7 @@ import {
 } from "discord.js";
 import { LoadCommands } from "../loader";
 export function onInteraction(client: AoiClient) {
-  client.client.on("interactionCreate", async (interaction) => {
+  client.on("interactionCreate", async (interaction) => {
     await interactionCreate(interaction, client);
   });
 }

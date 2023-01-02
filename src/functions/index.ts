@@ -79,6 +79,12 @@ import { $sub } from "./sub";
 import { $parseMs } from "./parseMs";
 import { $multi } from "./multi";
 import { $or } from "./or";
+import { $httpRequest } from "./httpRequest";
+import { $jsonRequest } from "./jsonRequest";
+import { $allChannelsCount } from "./allChannelsCount";
+import { $allEmojisCount } from "./allEmojisCount";
+import { $authorAccentColor } from "./authorAccentColor";
+import { $authorBanner } from "./authorBanner";
 export const datas: Record<string, FunctionData> = {
 	$let,
 	$get,
@@ -160,4 +166,10 @@ export const datas: Record<string, FunctionData> = {
 	$or,
 	$sub,
 	$parseMs,
+	$httpRequest,
+	$jsonRequest,
+	$allChannelsCount,
+	$allEmojisCount,
+	$authorAccentColor,
+	$authorBanner,
 };

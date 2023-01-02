@@ -13,5 +13,5 @@ function fixMath(code) {
     return res;
 }
 exports.default = fixMath;
-// console.log( fixMath( `#MATH_FUNCTION_START#(1+2*#MATH_FUNCTION_START#(1-3)#MATH_FUNCTION_END#)#MATH_FUNCTION_END# lol ok #MATH_FUNCTION_START#(2+#MATH_FUNCTION_START#(3/2)#MATH_FUNCTION_END#)#MATH_FUNCTION_END#` ) );
+// console.log( fixMath( "log(`#MATH_FUNCTION_START#(1+2*#MATH_FUNCTION_START#(1-3)#MATH_FUNCTION_END#)#MATH_FUNCTION_END# lol ok #MATH_FUNCTION_START#(2+#MATH_FUNCTION_START#(3/2)#MATH_FUNCTION_END#)#MATH_FUNCTION_END#`)" ) );
 //# sourceMappingURL=mathlexer.js.map

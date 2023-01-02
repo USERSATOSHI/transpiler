@@ -81,6 +81,12 @@ const sub_1 = require("./sub");
 const parseMs_1 = require("./parseMs");
 const multi_1 = require("./multi");
 const or_1 = require("./or");
+const httpRequest_1 = require("./httpRequest");
+const jsonRequest_1 = require("./jsonRequest");
+const allChannelsCount_1 = require("./allChannelsCount");
+const allEmojisCount_1 = require("./allEmojisCount");
+const authorAccentColor_1 = require("./authorAccentColor");
+const authorBanner_1 = require("./authorBanner");
 exports.datas = {
     $let: let_1.$let,
     $get: get_1.$get,
@@ -162,5 +168,11 @@ exports.datas = {
     $or: or_1.$or,
     $sub: sub_1.$sub,
     $parseMs: parseMs_1.$parseMs,
+    $httpRequest: httpRequest_1.$httpRequest,
+    $jsonRequest: jsonRequest_1.$jsonRequest,
+    $allChannelsCount: allChannelsCount_1.$allChannelsCount,
+    $allEmojisCount: allEmojisCount_1.$allEmojisCount,
+    $authorAccentColor: authorAccentColor_1.$authorAccentColor,
+    $authorBanner: authorBanner_1.$authorBanner,
 };
 //# sourceMappingURL=index.js.map

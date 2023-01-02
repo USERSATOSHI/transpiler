@@ -1,7 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.$log = void 0;
 const error_1 = require("../error");
+const mathlexer_1 = __importDefault(require("../mathlexer"));
 const stringparser_1 = require("../stringparser");
 const util_1 = require("../util");
 exports.$log = {
@@ -42,7 +46,7 @@ exports.$log = {
             !currentScope.name.startsWith("$catch_")) {
             throw new error_1.TranspilerError(`${data.name} requires a text`);
         }
-        const parsedText = (0, stringparser_1.parseString)(text);
+        const parsedText = (0, stringparser_1.parseString)((0, mathlexer_1.default)(text));
         res = `${(0, util_1.escapeFunctionResult)(`console.log(${parsedText});`)}`;
         currentScope.rest = currentScope.rest.replace(data.total, res);
         return { code: res, scope: scope, data };

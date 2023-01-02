@@ -56,6 +56,8 @@ function escapeMathResult(res) {
 }
 exports.escapeMathResult = escapeMathResult;
 function parseResult(result) {
+    if (typeof result !== "string")
+        return result;
     return result
         .replaceAll("#FUNCTION_START#", "")
         .replaceAll("#FUNCTION_END#", "")

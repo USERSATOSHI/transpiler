@@ -56,10 +56,10 @@ exports.$parseMs = {
         const parsedMs = Number(ms);
         const parsedLimit = Number(limit);
         const res = (0, util_1.escapeResult)(`
-            __$DISCORD_DATA$__.bot.parser.parseToString(parsedMs,{
-                limit: parsedLimit,
-                separator: separator,
-                addAnd: parsedAddAnd,
+            __$DISCORD_DATA$__.bot.parser.parseToString(${parsedMs},{
+                limit: ${parsedLimit},
+                separator: \`${separator}\`,
+                addAnd: ${parsedAddAnd},
             })
       `);
         currentScope.rest = currentScope.rest.replace(data.total, res);

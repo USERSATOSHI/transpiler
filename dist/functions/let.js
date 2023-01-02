@@ -60,7 +60,7 @@ exports.$let = {
         if (currentScope.variables.includes(name)) {
             if (currentScope.variables.includes((0, util_1.parseResult)(value)) ||
                 value.toString().startsWith("#FUNCTION_START#") ||
-                (value.toString().startsWith("`") && value.toString().endsWith("`")) || value.includes("#MATH_FUNCTION_START#")) {
+                (value.toString().startsWith("`") && value.toString().endsWith("`")) || value.toString().includes("#MATH_FUNCTION_START#")) {
                 res = `${(0, util_1.escapeVars)(name)} = ${value};`;
             }
             else {

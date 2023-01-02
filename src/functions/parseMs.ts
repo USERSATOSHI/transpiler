@@ -69,10 +69,10 @@ export const $parseMs: FunctionData = {
         const parsedMs = Number(ms);
         const parsedLimit = Number(limit);
         const res = escapeResult(`
-            __$DISCORD_DATA$__.bot.parser.parseToString(parsedMs,{
-                limit: parsedLimit,
-                separator: separator,
-                addAnd: parsedAddAnd,
+            __$DISCORD_DATA$__.bot.parser.parseToString(${parsedMs},{
+                limit: ${parsedLimit},
+                separator: \`${separator}\`,
+                addAnd: ${parsedAddAnd},
             })
       `);
         currentScope.rest = currentScope.rest.replace(data.total, res);

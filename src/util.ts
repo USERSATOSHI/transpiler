@@ -50,6 +50,7 @@ export function escapeMathResult(res: string) {
     return `#MATH_FUNCTION_START#${res}#MATH_FUNCTION_END#`;
 }
 export function parseResult(result: string) {
+    if(typeof result !== "string") return result;
     return result
         .replaceAll("#FUNCTION_START#", "")
         .replaceAll("#FUNCTION_END#", "")
