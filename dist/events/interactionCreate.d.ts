@@ -1,5 +1,5 @@
-import { AoiClient } from "aoi.js";
 import { CacheType, Interaction } from "discord.js";
-export declare function onInteraction(client: AoiClient): void;
-export declare function interactionCreate(interaction: Interaction<CacheType>, client: AoiClient): Promise<void>;
+import { ClientWrapper } from "../clientWrapper";
+export declare function onInteraction(client: ClientWrapper): void;
+export declare function interactionCreate(interaction: Interaction<CacheType>, client: ClientWrapper): Promise<void>;
 //# sourceMappingURL=interactionCreate.d.ts.map

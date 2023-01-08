@@ -1,4 +1,3 @@
-import { Bot as AoiClient } from "aoi.js";
 import {
   ButtonInteraction,
   CacheType,
@@ -9,14 +8,15 @@ import {
   SelectMenuInteraction,
 } from "discord.js";
 import { LoadCommands } from "../loader";
-export function onInteraction(client: AoiClient) {
-  client.on("interactionCreate", async (interaction) => {
+import {ClientWrapper} from "../clientWrapper";
+export function onInteraction(client: ClientWrapper) {
+  client.client.on("interactionCreate", async (interaction) => {
     await interactionCreate(interaction, client);
   });
 }
 export async function interactionCreate(
   interaction: Interaction<CacheType>,
-  client: AoiClient,
+  client: ClientWrapper,
 ) {
   if (interaction instanceof ChatInputCommandInteraction) {
     //@ts-ignore

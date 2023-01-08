@@ -1,13 +1,13 @@
-import { AoiClient } from "aoi.js";
 import { Collection, Message } from "discord.js";
 import { Command } from "../command";
 import { LoadCommands } from "../loader";
-export function onMessage(client: AoiClient) {
+import {ClientWrapper} from "../clientWrapper";
+export function onMessage(client: ClientWrapper) {
   client.client.on("messageCreate", async (message) => {
     await messageCreate(message, client);
   });
 }
-export async function messageCreate(message: Message, client: AoiClient) {
+export async function messageCreate(message: Message, client: ClientWrapper) {
   const prefix = client.prefixes.find((c) => message.content.startsWith(c));
   if (!prefix) return;
   const args = message.content.slice(prefix.length).trim().split(/ +/);

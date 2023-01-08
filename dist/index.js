@@ -26,4 +26,5 @@ __exportStar(require("./stringparser"), exports);
 __exportStar(require("./events"), exports);
 __exportStar(require("./loader"), exports);
 __exportStar(require("./objectParser"), exports);
+__exportStar(require("./clientWrapper"), exports);
 //# sourceMappingURL=index.js.map
